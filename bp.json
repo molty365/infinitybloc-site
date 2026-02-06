@@ -1,0 +1,77 @@
+{
+  "producer_account_name": "infinitybloc",
+  "org": {
+    "candidate_name": "infinitybloc",
+    "website": "https://infinitybloc.io",
+    "code_of_conduct":"https://infinitybloc.io/code-of-conduct",
+    "ownership_disclosure":"https://infinitybloc.io/team",
+    "email":"justin@infinitybloc.io",
+    "phone":"tf-registry",
+    "branding":{
+      "logo_256":"https://infinitybloc.io/s/infinity-logo-black-256.png",
+      "logo_1024":"https://infinitybloc.io/s/infinity-logo-black-1024.png",
+      "logo_svg":"https://infinitybloc.io/s/infinity-logo-black.svg"
+    },
+    "location": {
+      "name": "Miami",
+      "country": "US",
+      "latitude": 25.7617,
+      "longitude": -80.1918
+    },
+    "social": {
+      "steemit": "infinitybloc",
+      "twitter": "infinitybloc",
+      "facebook": "infinity.bloc",
+      "github":"infinitybloc",
+      "reddit": "infinitybloc",
+      "keybase": "infinitybloc",
+      "telegram": "infinitybloc",
+      "wechat":"infinitybloc"
+    }
+  },
+  "nodes": [
+    {
+      "location": {
+        "name": "bp-telos",
+        "country": "US",
+        "latitude": 25.7617,
+        "longitude": -80.1918
+      },
+      "node_type": "producer",
+      "p2p_endpoint": "",
+      "bnet_endpoint": "",
+      "api_endpoint": "",
+      "ssl_endpoint": ""
+    },
+    {
+      "location": {
+        "name": "api-telos",
+        "country": "US",
+        "latitude": 25.7617,
+        "longitude": -80.1918
+      },
+      "node_type": "query",
+      "p2p_endpoint": "",
+      "bnet_endpoint": "",
+      "api_endpoint": "http://telos-mainnet.infinitybloc.io",
+      "ssl_endpoint": "https://telos-mainnet.infinitybloc.io",
+      "features": [
+        "chain-api",
+        "account-query"
+      ]
+    },
+    {
+      "location": {
+        "name": "seed-telos",
+        "country": "US",
+        "latitude": 25.7617,
+        "longitude": -80.1918
+      },
+      "node_type":"seed",
+      "p2p_endpoint": "peer-telos-mainnet.infinitybloc.io:9876",
+      "bnet_endpoint": "",
+      "api_endpoint": "",
+      "ssl_endpoint": ""
+    }
+  ]
+}
