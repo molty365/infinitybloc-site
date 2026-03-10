@@ -3,14 +3,13 @@
   "org": {
     "candidate_name": "infinitybloc",
     "website": "https://infinitybloc.io",
-    "code_of_conduct":"https://infinitybloc.io/code-of-conduct",
-    "ownership_disclosure":"https://infinitybloc.io/team",
-    "email":"justin@infinitybloc.io",
-    "phone":"tf-registry",
-    "branding":{
-      "logo_256":"https://infinitybloc.io/s/infinity-logo-black-256.png",
-      "logo_1024":"https://infinitybloc.io/s/infinity-logo-black-1024.png",
-      "logo_svg":"https://infinitybloc.io/s/infinity-logo-black.svg"
+    "code_of_conduct": "https://infinitybloc.io/code-of-conduct",
+    "ownership_disclosure": "https://infinitybloc.io/team",
+    "email": "bp@infinitybloc.io",
+    "branding": {
+      "logo_256": "https://infinitybloc.io/images/logo-256.png",
+      "logo_1024": "https://infinitybloc.io/images/logo-1024.png",
+      "logo_svg": "https://infinitybloc.io/images/logo.svg"
     },
     "location": {
       "name": "Miami",
@@ -22,11 +21,11 @@
       "steemit": "infinitybloc",
       "twitter": "infinitybloc",
       "facebook": "infinity.bloc",
-      "github":"infinitybloc",
+      "github": "infinitybloc",
       "reddit": "infinitybloc",
       "keybase": "infinitybloc",
       "telegram": "infinitybloc",
-      "wechat":"infinitybloc"
+      "wechat": "infinitybloc"
     }
   },
   "nodes": [
@@ -38,6 +37,7 @@
         "longitude": -80.1918
       },
       "node_type": "producer",
+      "full": true,
       "p2p_endpoint": "",
       "bnet_endpoint": "",
       "api_endpoint": "",
@@ -51,6 +51,7 @@
         "longitude": -80.1918
       },
       "node_type": "query",
+      "full": true,
       "p2p_endpoint": "",
       "bnet_endpoint": "",
       "api_endpoint": "http://telos-mainnet.infinitybloc.io",
@@ -67,7 +68,8 @@
         "latitude": 25.7617,
         "longitude": -80.1918
       },
-      "node_type":"seed",
+      "node_type": "seed",
+      "full": true,
       "p2p_endpoint": "peer-telos-mainnet.infinitybloc.io:9876",
       "bnet_endpoint": "",
       "api_endpoint": "",
