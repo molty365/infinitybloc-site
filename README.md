@@ -22,28 +22,4 @@ python -m http.server 8000
 - **Production:** Auto-deploys on push to `main`
 - **PR Previews:** Every PR gets a unique preview URL (posted as a comment)
 
-## CMS
-
-Decap CMS is available at `/admin/`.
-
-### Editable content
-- `content/site.json` — homepage content
-- `content/team.json` — ownership/team page content
-- `bp.json` — BP export
-- `chains.json` — chain exports
-
-### Regenerating the static pages
-If you edit the JSON content manually, re-render the static HTML with:
-
-```bash
-python3 scripts/render-site.py
-```
-
-### Netlify setup required
-To make Decap CMS work in production, enable these in Netlify for the site:
-- Identity
-- Git Gateway
-
-Once enabled, `/admin/` will let you edit content and commit changes back to GitHub.
-
 Built with ❤️ by Tobias 🦞
