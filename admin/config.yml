@@ -1,0 +1,253 @@
+backend:
+  name: github
+  repo: infinitybloc/infinitybloc-site
+  branch: main
+
+media_folder: "."
+public_folder: "/"
+publish_mode: editorial_workflow
+site_url: https://infinitybloc-site.netlify.app
+logo_url: /images/logo-256.png
+
+collections:
+  - name: "site"
+    label: "Website"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "content/site.json"
+        format: "json"
+        fields:
+          - label: "Site"
+            name: "site"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Brand Name", name: "brandName", widget: "string" }
+              - { label: "Logo Symbol", name: "logoSymbol", widget: "string" }
+              - { label: "Primary CTA Label", name: "primaryCtaLabel", widget: "string", required: false }
+          - label: "Navigation"
+            name: "navigation"
+            widget: "object"
+            fields:
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                summary: "{{fields.label}} → {{fields.href}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "CTA"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge", name: "badge", widget: "string" }
+              - { label: "Title Prefix", name: "titlePrefix", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Primary Button"
+                name: "primaryButton"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - label: "Secondary Button"
+                name: "secondaryButton"
+                widget: "object"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Expertise"
+            name: "expertise"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Expertise Items"
+                name: "items"
+                widget: "list"
+                summary: "{{fields.text}}"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+              - label: "Tech Cards"
+                name: "techCards"
+                widget: "list"
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "string" }
+          - label: "Booking Section"
+            name: "book"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Calendly URL", name: "calendlyUrl", widget: "string" }
+              - { label: "Fallback URL", name: "fallbackUrl", widget: "string" }
+              - { label: "Fallback Label", name: "fallbackLabel", widget: "string" }
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Image", name: "image", widget: "string" }
+              - { label: "Image Alt", name: "imageAlt", widget: "string" }
+              - label: "Paragraphs"
+                name: "paragraphs"
+                widget: "list"
+                field: { label: "Paragraph", name: "paragraph", widget: "text" }
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - label: "Links"
+                name: "links"
+                widget: "list"
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Href", name: "href", widget: "string" }
+              - { label: "Copyright", name: "copyright", widget: "string" }
+
+      - name: "team"
+        label: "Team / Ownership Page"
+        file: "content/team.json"
+        format: "json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Intro", name: "intro", widget: "text" }
+          - { label: "Mission Title", name: "missionTitle", widget: "string" }
+          - { label: "Mission", name: "mission", widget: "text" }
+          - { label: "Leadership Title", name: "leadershipTitle", widget: "string" }
+          - { label: "Leader Name", name: "leaderName", widget: "string" }
+          - { label: "Leader Role", name: "leaderRole", widget: "string" }
+          - { label: "Leader Bio", name: "leaderBio", widget: "text" }
+          - { label: "Ownership Title", name: "ownershipTitle", widget: "string" }
+          - { label: "Ownership", name: "ownership", widget: "text" }
+          - { label: "Contact Email", name: "contactEmail", widget: "string" }
+          - { label: "Last Updated", name: "lastUpdated", widget: "string" }
+
+      - name: "bp"
+        label: "BP Export"
+        file: "bp.json"
+        format: "json"
+        fields:
+          - { label: "Producer Account Name", name: "producer_account_name", widget: "string" }
+          - label: "Organization"
+            name: "org"
+            widget: "object"
+            fields:
+              - { label: "Candidate Name", name: "candidate_name", widget: "string" }
+              - { label: "Website", name: "website", widget: "string" }
+              - { label: "Code of Conduct URL", name: "code_of_conduct", widget: "string" }
+              - { label: "Ownership Disclosure URL", name: "ownership_disclosure", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - label: "Branding"
+                name: "branding"
+                widget: "object"
+                fields:
+                  - { label: "Logo 256", name: "logo_256", widget: "string" }
+                  - { label: "Logo 1024", name: "logo_1024", widget: "string" }
+                  - { label: "Logo SVG", name: "logo_svg", widget: "string" }
+              - label: "Location"
+                name: "location"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Country", name: "country", widget: "string" }
+                  - { label: "Latitude", name: "latitude", widget: "number", value_type: "float" }
+                  - { label: "Longitude", name: "longitude", widget: "number", value_type: "float" }
+              - label: "Social"
+                name: "social"
+                widget: "object"
+                fields:
+                  - { label: "Steemit", name: "steemit", widget: "string", required: false }
+                  - { label: "Twitter", name: "twitter", widget: "string", required: false }
+                  - { label: "Facebook", name: "facebook", widget: "string", required: false }
+                  - { label: "GitHub", name: "github", widget: "string", required: false }
+                  - { label: "Reddit", name: "reddit", widget: "string", required: false }
+                  - { label: "Keybase", name: "keybase", widget: "string", required: false }
+                  - { label: "Telegram", name: "telegram", widget: "string", required: false }
+                  - { label: "Wechat", name: "wechat", widget: "string", required: false }
+          - label: "Nodes"
+            name: "nodes"
+            widget: "list"
+            summary: "{{fields.node_type}} - {{fields.location.name}}"
+            fields:
+              - label: "Location"
+                name: "location"
+                widget: "object"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Country", name: "country", widget: "string" }
+                  - { label: "Latitude", name: "latitude", widget: "number", value_type: "float" }
+                  - { label: "Longitude", name: "longitude", widget: "number", value_type: "float" }
+              - { label: "Node Type", name: "node_type", widget: "string" }
+              - { label: "Full Node", name: "full", widget: "boolean" }
+              - { label: "P2P Endpoint", name: "p2p_endpoint", widget: "string", required: false }
+              - { label: "BNet Endpoint", name: "bnet_endpoint", widget: "string", required: false }
+              - { label: "API Endpoint", name: "api_endpoint", widget: "string", required: false }
+              - { label: "SSL Endpoint", name: "ssl_endpoint", widget: "string", required: false }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                required: false
+                field: { label: "Feature", name: "feature", widget: "string" }
+
+      - name: "chains"
+        label: "Chain Exports"
+        file: "chains.json"
+        format: "json"
+        fields:
+          - label: "Chains"
+            name: "chains"
+            widget: "map"
+            value_field:
+              label: "Chain"
+              name: "chain"
+              widget: "object"
+              fields:
+                - { label: "Chain ID", name: "chain_id", widget: "string" }
+                - { label: "Name", name: "name", widget: "string" }
+                - { label: "SSL Endpoint", name: "ssl_endpoint", widget: "string" }
+                - { label: "API Endpoint", name: "api_endpoint", widget: "string" }
+                - label: "Features"
+                  name: "features"
+                  widget: "list"
+                  required: false
+                  field: { label: "Feature", name: "feature", widget: "string" }
