@@ -1,1 +1,4060 @@
-{"generatedAt": null, "totalProducers": 0, "producers": []}
+{
+  "generatedAt": "2026-04-08T16:30:13.382084+00:00",
+  "totalProducers": 186,
+  "producers": [
+    {
+      "owner": "caleosblocks",
+      "total_votes": "950408696875.72192382812500000",
+      "url": "https://caleos.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "telos.caleos.io:9877",
+      "org": {
+        "candidate_name": "CALEOS",
+        "website": "https://caleos.io",
+        "code_of_conduct": "https://caleos.io#conduct",
+        "ownership_disclosure": "https://caleos.io#team",
+        "email": "info@caleos.io",
+        "branding": {
+          "logo_256": "https://caleos.io/images/caleos_black.png",
+          "logo_1024": "https://caleos.io/images/caleos_black_lg.png",
+          "caleos_white_png": "https://caleos.io/images/caleos_white.png",
+          "logo_svg": "https://caleos.io/images/caleos_black.svg",
+          "caleos_white_svg": "https://caleos.io/images/caleos_white.svg"
+        },
+        "location": {
+          "name": "California",
+          "country": "US",
+          "latitude": 36.972323,
+          "longitude": -122.024017
+        },
+        "social": {
+          "twitter": "caleosblocks",
+          "medium": "caleosblocks",
+          "github": "caleos",
+          "telegram": "caleosblocks"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.794256+00:00"
+    },
+    {
+      "owner": "infinitybloc",
+      "total_votes": "844623769110.38940429687500000",
+      "url": "https://infinitybloc.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "peer-telos-mainnet.infinitybloc.io:9876",
+      "org": {
+        "candidate_name": "infinitybloc",
+        "website": "https://infinitybloc.io",
+        "code_of_conduct": "https://infinitybloc.io/code-of-conduct",
+        "ownership_disclosure": "https://infinitybloc.io/team",
+        "email": "bp@infinitybloc.io",
+        "branding": {
+          "logo_256": "https://infinitybloc.io/images/logo-256.png",
+          "logo_1024": "https://infinitybloc.io/images/logo-1024.png",
+          "logo_svg": "https://infinitybloc.io/images/logo.svg"
+        },
+        "location": {
+          "name": "Miami",
+          "country": "US",
+          "latitude": 25.7617,
+          "longitude": -80.1918
+        },
+        "social": {
+          "twitter": "infinitybloc",
+          "telegram": "infinitybloc",
+          "github": "infinitybloc"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.794519+00:00"
+    },
+    {
+      "owner": "kainosblkpro",
+      "total_votes": "839944080575.35144042968750000",
+      "url": "https://kainosbp.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.794880+00:00"
+    },
+    {
+      "owner": "telosmadrid1",
+      "total_votes": "831233866498.99072265625000000",
+      "url": "https://telosmadrid.io",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "seed.telosmadrid.io:9878",
+      "org": {
+        "candidate_name": "Telos Madrid",
+        "website": "https://telosmadrid.io",
+        "code_of_conduct": "https://telosmadrid.io/conduct.html",
+        "ownership_disclosure": "https://telosmadrid.io/ownership/index.html",
+        "email": "contact@telosmadrid.io",
+        "github_user": "eosiomadrid",
+        "phone": "TF Registry",
+        "branding": {
+          "logo_256": "https://telosmadrid.io/images/logo_small.png",
+          "logo_1024": "https://telosmadrid.io/images/logo_high_resolution.png",
+          "logo_svg": "https://telosmadrid.io/images/image2vector.svg"
+        },
+        "location": {
+          "name": "Madrid",
+          "country": "ES",
+          "latitude": 40.420191,
+          "longitude": -3.688714
+        },
+        "social": {
+          "steemit": "mikelo",
+          "telegram": "telosmadrid",
+          "twitter": "madridtelos",
+          "keybase": "msegurola"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://hyperion.telosmadrid.io",
+        "API failed: https://hyperion.telosmadrid.io/v1/chain/get_info",
+        "Testnet SSL failed: https://api-testnet.telosmadrid.io",
+        "Testnet API failed: https://api-testnet.telosmadrid.io/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.795242+00:00"
+    },
+    {
+      "owner": "telosunlimit",
+      "total_votes": "766938480117.65930175781250000",
+      "url": "https://telosunlimited.com",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p.telosunlimited.com:9876",
+      "org": {
+        "candidate_name": "TelosUnlimited",
+        "website": "https://telosunlimited.com",
+        "code_of_conduct": "https://telosunlimited.com/code-of-conduct",
+        "ownership_disclosure": "https://telosunlimited.com/ownership-disclosure-and-code-of-conduct",
+        "phone": "1-866-875-7004",
+        "email": "contact@telosunlimited.com",
+        "branding": {
+          "logo_256": "https://telosunlimited.com/images/logo_256x256.png",
+          "logo_1024": "https://telosunlimited.com/images/logo_1024x1024.png",
+          "logo_svg": "https://telosunlimited.com/images/logo_128x128.svg"
+        },
+        "location": {
+          "name": "St.Louis",
+          "country": "US",
+          "latitude": 38.6291475,
+          "longitude": -90.1972851
+        },
+        "social": {
+          "steemit": "",
+          "twitter": "telosunlimited",
+          "youtube": "@telosunlimited",
+          "facebook": "",
+          "github": "telosunlimited",
+          "reddit": "",
+          "keybase": "telosunlimited",
+          "telegram": "telosunlimited",
+          "wechat": ""
+        }
+      },
+      "validationErrors": [
+        "Testnet SSL failed: https://api.testnet.telosunlimited.com"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.795592+00:00"
+    },
+    {
+      "owner": "votetelosusa",
+      "total_votes": "746512718052.41345214843750000",
+      "url": "https://eosusa.io/bp/telos",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://eosusa.io/bp/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.795937+00:00"
+    },
+    {
+      "owner": "eosphereiobp",
+      "total_votes": "741522840974.67749023437500000",
+      "url": "https://www.eosphere.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "peer1-telos.eosphere.io:9876",
+      "org": {
+        "candidate_name": "EOSphere",
+        "website": "https://www.eosphere.io",
+        "code_of_conduct": "https://www.eosphere.io/code-of-conduct",
+        "ownership_disclosure": "https://www.eosphere.io/ownership",
+        "email": "info@eosphere.io",
+        "phone": "TF Registry",
+        "github_user": "rossco99",
+        "branding": {
+          "logo_256": "https://www.eosphere.io/eospherelogosquare256.png",
+          "logo_1024": "https://www.eosphere.io/eospherelogosquare1024.png",
+          "logo_svg": "https://www.eosphere.io/eospherelogosquare.svg"
+        },
+        "location": {
+          "name": "Australia",
+          "country": "AU",
+          "latitude": -31.953512,
+          "longitude": 115.857048
+        },
+        "social": {
+          "steemit": "eosphere",
+          "twitter": "eosphere_io",
+          "youtube": "eosphere",
+          "facebook": "eosphereio",
+          "github": "eosphere",
+          "reddit": "eosphere",
+          "keybase": "eosphere",
+          "telegram": "eosphere_io",
+          "wechat": "ross-eosphere"
+        }
+      },
+      "validationErrors": [
+        "Testnet SSL failed: https://telos-testnet.eosphere.io"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.796292+00:00"
+    },
+    {
+      "owner": "telosgreenbp",
+      "total_votes": "724706496970.82958984375000000",
+      "url": "https://telosgreen.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p2.telos.telosgreen.com:9877",
+      "org": {
+        "candidate_name": "TelosGreen",
+        "website": "https://www.telosgreen.com",
+        "code_of_conduct": "https://www.telosgreen.com/coc.html",
+        "ownership_disclosure": "https://www.telosgreen.com/ownership.html",
+        "email": "contact@telosgreen.com",
+        "github_user": "sukeshtedla",
+        "other_resources": [
+          "https://kryptoskatt.com",
+          "https://unbiased.ml"
+        ],
+        "branding": {
+          "logo_256": "https://www.telosgreen.com/images/logo_256x256.png",
+          "logo_1024": "https://www.telosgreen.com/images/logo_1024x1024.png",
+          "logo_svg": "https://www.telosgreen.com/images/logo_128x128.svg"
+        },
+        "location": {
+          "name": "G\u00f6teborg",
+          "country": "SE",
+          "latitude": 57.728435,
+          "longitude": 11.971045
+        },
+        "social": {
+          "twitter": "greeneosio",
+          "youtube": "channel/UCKWClh6yFuswj0pIoIvaU7g",
+          "github": "greeneosio",
+          "reddit": "greeneosio",
+          "keybase": "greeneosio",
+          "telegram": "TelosGreen"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api.telos.telosgreen.com"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.796702+00:00"
+    },
+    {
+      "owner": "teamgreymass",
+      "total_votes": "689021422469.16235351562500000",
+      "url": "https://greymass.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808764+00:00"
+    },
+    {
+      "owner": "telosarabia1",
+      "total_votes": "590001579564.54431152343750000",
+      "url": "https://eosarabia.net",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p.telosarabia.net:9876",
+      "org": {
+        "candidate_name": "EOSArabia",
+        "website": "https://eosarabia.net",
+        "code_of_conduct": "https://eosarabia.net/code-conduct",
+        "ownership_disclosure": "https://eosarabia.net/ownership",
+        "email": "info@telosarabia.net",
+        "phone": "+966507338865",
+        "github_user": "EOS-Arabia",
+        "branding": {
+          "logo_256": "https://eosarabia.net/Gold_Logo-256.png",
+          "logo_1024": "https://eosarabia.net/Gold_Logo-1024.png",
+          "logo_svg": "https://eosarabia.net/Gold_Logo.svg"
+        },
+        "location": {
+          "name": "UAE,Dubai",
+          "country": "AE",
+          "latitude": 25.0929383,
+          "longitude": 55.1901911
+        },
+        "social": {
+          "steemit": "telosarabia",
+          "twitter": "Telosarabia",
+          "youtube": "channel/UCku8FY8kPuJ7asKw5LKTDIg",
+          "telegram": "Telos_Arabia"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.797030+00:00"
+    },
+    {
+      "owner": "persiantelos",
+      "total_votes": "557056536168.64440917968750000",
+      "url": "https://persiantelos.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "mainnet.persiantelos.com:8880",
+      "org": {
+        "candidate_name": "Persian Telos",
+        "website": "https://persiantelos.com",
+        "code_of_conduct": "https://gitlab.com/persian-telos/bp-disclosure/-/blob/master/code-of-conduct.md",
+        "ownership_disclosure": "https://gitlab.com/persian-telos/bp-disclosure/-/blob/master/ownership-disclosure.md",
+        "email": "s.mahdi.hossaini@gmail.com",
+        "phone": "TF Registry",
+        "branding": {
+          "logo_256": "https://persiantelos.com/images/logo_256.png",
+          "logo_1024": "https://persiantelos.com/images/logo_1024.png",
+          "logo_svg": "https://persiantelos.com/images/logo.svg"
+        },
+        "location": {
+          "name": "Iran",
+          "country": "IR",
+          "latitude": 35.720258,
+          "longitude": 51.3651572
+        },
+        "social": {
+          "twitter": "persiantelos",
+          "telegram": "areax_en"
+        }
+      },
+      "validationErrors": [
+        "No ssl_endpoint found in any bp.json node"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.797233+00:00"
+    },
+    {
+      "owner": "bp.boid",
+      "total_votes": "518405491748.89489746093750000",
+      "url": "https://telos.boid.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808712+00:00"
+    },
+    {
+      "owner": "teloscentral",
+      "total_votes": "512825844451.99932861328125000",
+      "url": "https://teloscentral.com",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "sslapi.teloscentral.com:9876",
+      "org": {
+        "candidate_name": "Tel\ud83d\udd35sCentral",
+        "website": "https://teloscentral.com",
+        "code_of_conduct": "https://teloscentral.com/compliance/codeOfConduct",
+        "ownership_disclosure": "https://teloscentral.com/compliance/ownership",
+        "email": "teloscentral@gmail.com",
+        "branding": {
+          "logo_256": "https://teloscentral.com/media/logo/logo256.png",
+          "logo_1024": "https://teloscentral.com/media/logo/logo1024.png",
+          "logo_svg": "https://teloscentral.com/media/logo/logo1024.svg"
+        },
+        "location": {
+          "name": "Germany",
+          "country": "DE",
+          "latitude": 51.235279,
+          "longitude": 6.77568
+        },
+        "social": {
+          "steemit": "t-central",
+          "twitter": "teloscentral",
+          "youtube": "channel/UCV3EiLLMQ3SgFgnQYmHDuWw",
+          "telegram": "TelosCentral"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.797397+00:00"
+    },
+    {
+      "owner": "katalyotelos",
+      "total_votes": "471009800045.52331542968750000",
+      "url": "https://www.katalyo.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.797554+00:00"
+    },
+    {
+      "owner": "telosgermany",
+      "total_votes": "439518770229.58111572265625000",
+      "url": "https://genereos.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p.telosgermany.genereos.io:9876",
+      "org": {
+        "candidate_name": "GenerEOS",
+        "website": "https://www.genereos.io",
+        "code_of_conduct": "https://www.genereos.io/index.php/code-of-conduct",
+        "ownership_disclosure": "https://www.genereos.io/index.php/ownership-disclosure",
+        "email": "contact@genereos.io",
+        "github_user": "RalfWeinand",
+        "branding": {
+          "logo_256": "https://www.genereos.io/wp-content/uploads/2018/07/genereos_256.png",
+          "logo_1024": "https://www.genereos.io/wp-content/uploads/2018/07/genereos_1024.png",
+          "logo_svg": "https://www.genereos.io/Genereos-Logo-Stack.svg"
+        },
+        "location": {
+          "name": "Sydney",
+          "country": "AU",
+          "latitude": -33.865143,
+          "longitude": 151.2099
+        },
+        "social": {
+          "steemit": "genereos",
+          "twitter": "GenerEOSAus",
+          "youtube": "channel/UC7TN0V2KCVTYvIHbtj_9Dvw",
+          "facebook": "generEOS",
+          "github": "generEOS",
+          "reddit": "generEOS",
+          "keybase": "genereos1",
+          "telegram": "generEOS",
+          "wechat": "ralf-genereos"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.797688+00:00"
+    },
+    {
+      "owner": "swapsicledex",
+      "total_votes": "415623701319.93389892578125000",
+      "url": "https://www.swapsicle.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808670+00:00"
+    },
+    {
+      "owner": "nation.tlos",
+      "total_votes": "408586717445.38220214843750000",
+      "url": "https://eosnation.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "telos.seed.eosnation.io:9876",
+      "org": {
+        "candidate_name": "EOS Nation",
+        "website": "https://eosnation.io",
+        "ownership_disclosure": "https://eosnation.io/ownership-disclosure",
+        "code_of_conduct": "https://steemit.com/eos/@eosnation/eos-nation-roadmap-on-values-community-project-timeline-finances-and-transparency",
+        "email": "info@eosnation.io",
+        "github_user": [
+          "deniscarriere",
+          "matthewdarwin"
+        ],
+        "chain_resources": "https://snapshots.eosnation.io",
+        "branding": {
+          "logo_256": "https://eosnation.io/logos/logo_256.png",
+          "logo_1024": "https://eosnation.io/logos/logo_1024.png",
+          "logo_svg": "https://eosnation.io/logos/logo.svg"
+        },
+        "location": {
+          "name": "Canada",
+          "country": "CA",
+          "latitude": 45.425532,
+          "longitude": -75.700269
+        },
+        "social": {
+          "medium": "eosnationbp",
+          "hive": "eosnation",
+          "steemit": "eosnation",
+          "twitter": "EOS_Nation",
+          "facebook": "groups/EOSNation",
+          "github": "EOS-Nation",
+          "telegram": "EOSNation",
+          "youtube": "channel/UCXgAY9DyooykrubRXw3xK1g",
+          "reddit": "EOSNation",
+          "keybase": "eosnation",
+          "wechat": "Eosnation"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.797851+00:00"
+    },
+    {
+      "owner": "telosindiabp",
+      "total_votes": "398514180291.55670166015625000",
+      "url": "https://telos.blocksindia.com",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.telos.blocksindia.com:7776",
+      "org": {
+        "candidate_name": "TelosIndiaBP",
+        "website": "https://telos.blocksindia.com",
+        "code_of_conduct": "https://telos.blocksindia.com/ownership",
+        "ownership_disclosure": "https://telos.blocksindia.com/ownership",
+        "email": "telos@blocksindia.com",
+        "phone": "TFRegistry",
+        "github_user": "thatzprem",
+        "branding": {
+          "logo_256": "https://telos.blocksindia.com/bp/telosindiabp_256.png",
+          "logo_1024": "https://telos.blocksindia.com/bp/telosindiabp_1024.png",
+          "logo_svg": "https://telos.blocksindia.com/bp/telosindiabp_s.svg"
+        },
+        "location": {
+          "name": "India",
+          "country": "IN",
+          "latitude": 19.7515,
+          "longitude": 75.7139
+        },
+        "social": {
+          "keybase": "thatzprem",
+          "twitter": "telosindiabp",
+          "github": "thatzprem",
+          "telegram": "thatzprem"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.797957+00:00"
+    },
+    {
+      "owner": "bigironbptex",
+      "total_votes": "394784378943.50909423828125000",
+      "url": "https://bigironbp.io",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.bigironbp.io:9876",
+      "org": {
+        "candidate_name": "Big Iron",
+        "website": "https://bigironbp.io",
+        "code_of_conduct": "https://bigironbp.io#code_of_conduct",
+        "ownership_disclosure": "https://bigironbp.io#ownership_disclosure",
+        "email": "info@bigironbp.io",
+        "github_user": "bigironbp",
+        "branding": {
+          "logo_256": "https://bigironbp.io/bigiron-256.jpg",
+          "logo_1024": "https://bigironbp.io/bigiron-1024.jpg",
+          "logo_svg": "https://bigironbp.io/bigiron.svg"
+        },
+        "location": {
+          "name": "Hillsboro, OR",
+          "country": "US",
+          "latitude": 45.5339,
+          "longitude": -122.957
+        },
+        "social": {
+          "github": "BigIron-Dev",
+          "twitter": "BigIronBP",
+          "telegram": "BigIronBP",
+          "facebook": "bigironbp",
+          "youtube": "bigironbp"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api.bigironbp.io",
+        "API failed: https://api.bigironbp.io/v1/chain/get_info",
+        "Testnet bp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798063+00:00"
+    },
+    {
+      "owner": "amsterdam",
+      "total_votes": "388983234808.36932373046875000",
+      "url": "https://telos.eosamsterdam.net",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telos.eu.eosamsterdam.net:9120",
+      "org": {
+        "candidate_name": "EOSAmsterdam",
+        "website": "https://eosamsterdam.net",
+        "code_of_conduct": "https://steemit.com/eos/@eosamsterdam/eos-amsterdam-code-of-conduct",
+        "ownership_disclosure": "https://eosamsterdam.net#partners",
+        "email": "contact@eosamsterdam.net",
+        "branding": {
+          "logo_256": "https://eosamsterdam.net/branding/logo_256.png",
+          "logo_1024": "https://eosamsterdam.net/branding/logo_1024.png",
+          "logo_svg": "https://eosamsterdam.net/branding/logo_svg.svg"
+        },
+        "location": {
+          "name": "Amsterdam",
+          "country": "NL",
+          "latitude": 52.3548445,
+          "longitude": 4.9600367
+        },
+        "social": {
+          "steemit": "eosamsterdam",
+          "twitter": "eosamsterdam",
+          "facebook": "EOS-Amsterdam-1586544661442120",
+          "github": "eosamsterdam",
+          "reddit": "eosamsterdam",
+          "telegram": "EOS_Amsterdam",
+          "wechat": "eosamsterdam"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.798165+00:00"
+    },
+    {
+      "owner": "eosriobrazil",
+      "total_votes": "388311680863.31188964843750000",
+      "url": "https://eosrio.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telos.eosrio.io:8092",
+      "org": {
+        "candidate_name": "EOS Rio",
+        "website": "https://eosrio.io",
+        "code_of_conduct": "https://eosrio.io/code-of-conduct",
+        "ownership_disclosure": "https://eosrio.io/ownership-disclosure",
+        "email": "contact@eosrio.io",
+        "branding": {
+          "logo_256": "https://eosrio.io/wp-content/uploads/2018/06/logo-eosrio-square-bgblack-1.jpg",
+          "logo_1024": "https://eosrio.io/logo-eosrio1024.png",
+          "logo_svg": "https://eosrio.io/logo-eosrio-black-square-01.svg"
+        },
+        "location": {
+          "name": "Rio de Janeiro",
+          "country": "BR",
+          "latitude": -22.9068,
+          "longitude": -43.1729
+        },
+        "social": {
+          "steemit": "eosrio",
+          "twitter": "rioblocks",
+          "facebook": "EOSRioBP",
+          "github": "eosrio",
+          "reddit": "eosrio",
+          "keybase": "igorls",
+          "telegram": "eosrio",
+          "medium": "eosriobrazil"
+        },
+        "chain_resources": "https://hyperion.docs.eosrio.io"
+      },
+      "validationErrors": [
+        "Testnet SSL failed: https://testnet.telos.eosrio.io",
+        "Testnet API failed: https://testnet.telos.eosrio.io/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798289+00:00"
+    },
+    {
+      "owner": "teleologytls",
+      "total_votes": "385873345360.29315185546875000",
+      "url": "https://bp.teleology.one",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "peers.teleology.one:9876",
+      "org": {
+        "candidate_name": "Teleology One",
+        "website": "https://bp.teleology.one",
+        "code_of_conduct": "https://bp.teleology.one#code-of-conduct",
+        "ownership_disclosure": "https://bp.teleology.one#code-of-conduct?owner=BP.Teleology%20is%20100%20percent%20owned%20by%20Ryan%20Jones",
+        "email": "antispam-blockops@teleology.one",
+        "phone": "TF Registry",
+        "branding": {
+          "logo_256": "https://bp.teleology.one/logos/teleology-logo-256.jpg",
+          "logo_1024": "https://bp.teleology.one/logos/teleology-logo-1024.jpg",
+          "logo_svg": "https://bp.teleology.one/logos/teleology-logo-1024.svg"
+        },
+        "location": {
+          "name": "Australia",
+          "country": "AU",
+          "latitude": -27.5648,
+          "longitude": -151.9526
+        },
+        "social": {
+          "twitter": "Teleology_One",
+          "medium": "Teleology",
+          "telegram": "TeleologyOneAnnouncements",
+          "github": "ryanlj77"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://telos.teleology.one",
+        "API failed: https://telos.teleology.one/v1/chain/get_info",
+        "Testnet SSL failed: https://telos.teleology.one:343",
+        "Testnet API failed: https://telos.teleology.one:343/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808587+00:00"
+    },
+    {
+      "owner": "argentinatls",
+      "total_votes": "380417303891.09033203125000000",
+      "url": "https://eosargentina.io",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.telos.eosargentina.io:9879",
+      "org": {
+        "candidate_name": "EOSArgentina",
+        "website": "https://www.eosargentina.io",
+        "code_of_conduct": "https://www.eosargentina.io/disclosures.html#codeofconduct",
+        "ownership_disclosure": "https://www.eosargentina.io/disclosures.html#disclosures",
+        "email": "info@eosargentina.io",
+        "branding": {
+          "logo_256": "https://www.eosargentina.io/assets/img/eosar_logo_256.png",
+          "logo_1024": "https://www.eosargentina.io/assets/img/eosar_logo_1024.png",
+          "logo_svg": "https://www.eosargentina.io/assets/img/eosar_logo.svg"
+        },
+        "location": {
+          "name": "BuenosAires",
+          "country": "AR",
+          "latitude": -34.61315,
+          "longitude": -58.37723
+        },
+        "social": {
+          "steemit": "eosargentina",
+          "twitter": "eosargentina",
+          "facebook": "EOSArgentina",
+          "github": "eosargentina",
+          "reddit": "eosargentina",
+          "keybase": "eosargentina",
+          "telegram": "eosarg",
+          "wechat": "wxid_3r2tf35z69fk22"
+        }
+      },
+      "validationErrors": [
+        "No ssl_endpoint found in any bp.json node"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798405+00:00"
+    },
+    {
+      "owner": "eosauthority",
+      "total_votes": "357313350742.98773193359375000",
+      "url": "https://eosauthority.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "node-telos.eosauthority.com:10311",
+      "org": {
+        "candidate_name": "EOS Authority",
+        "website": "https://eosauthority.com",
+        "code_of_conduct": "https://eosauthority.com/bpinfo/telos/code_of_conduct",
+        "ownership_disclosure": "https://eosauthority.com/bpinfo/telos/ownership",
+        "email": "hello@eosauthority.com",
+        "github_user": "eosauthority",
+        "branding": {
+          "logo_256": "https://eosauthority.com/common/bp-standard-info/EOS-AUTHORITY-256.jpg",
+          "logo_1024": "https://eosauthority.com/common/bp-standard-info/EOS-AUTHORITY-1024.jpg",
+          "logo_svg": "https://eosauthority.com/common/bp-standard-info/eosauthority.svg"
+        },
+        "location": {
+          "name": "London",
+          "country": "GB",
+          "latitude": 51.512838,
+          "longitude": -0.087177
+        },
+        "social": {
+          "steemit": "eosauthority",
+          "twitter": "eosauthority",
+          "youtube": "eosauthority",
+          "facebook": "",
+          "github": "eosauthority",
+          "reddit": "eosauthority",
+          "keybase": "eosauthority",
+          "telegram": "eosauthority",
+          "wechat": "eosauthority"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api-telos.eosauthority.com",
+        "API failed: https://api-telos.eosauthority.com/v1/chain/get_info",
+        "Testnet API failed: https://api-telostest.eosauthority.com/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798553+00:00"
+    },
+    {
+      "owner": "mosaicblocks",
+      "total_votes": "341938134141.71252441406250000",
+      "url": "https://mosaicblocks.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798657+00:00"
+    },
+    {
+      "owner": "southafrica1",
+      "total_votes": "332549615436.76257324218750000",
+      "url": "https://eosza.io",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.telos.africa:9876",
+      "org": {
+        "candidate_name": "South Africa",
+        "website": "https://eosza.io",
+        "email": "info@eosza.io",
+        "github_user": "Rory-M",
+        "phone": "TF Registry",
+        "code_of_conduct": "https://steemit.com/eos/@eossouthafrica/eos-south-africa-code-of-conduct",
+        "ownership_disclosure": "https://steemit.com/eos/@eossouthafrica/eos-south-africa-ownership-disclosure",
+        "branding": {
+          "logo_256": "https://eosza.io/logo_256.jpg",
+          "logo_1024": "https://eosza.io/logo_1024.jpg",
+          "logo_svg": "https://eosza.io/logo.svg"
+        },
+        "location": {
+          "name": "South Africa",
+          "country": "ZA",
+          "latitude": -25.7582734,
+          "longitude": 28.0575234
+        },
+        "social": {
+          "twitter": "EOSZAio",
+          "github": "EOSZAio",
+          "medium": "eoszaio",
+          "telegram": "eoszaio",
+          "youtube": "channel/UCs1IEnqgsI9qlK4af0HuxCA"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api.telos.africa",
+        "API failed: https://api.telos.africa/v1/chain/get_info",
+        "Testnet SSL failed: https://testnet.telos.africa",
+        "Testnet API failed: https://testnet.telos.africa/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798759+00:00"
+    },
+    {
+      "owner": "bp.yknot",
+      "total_votes": "304336798831.88641357421875000",
+      "url": "https://y-knot.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p-telos.y-knot.io",
+      "org": {
+        "candidate_name": "bp.yknot",
+        "website": "https://y-knot.io",
+        "email": "stefan@y-knot.io",
+        "github_user": "Yknot-BCS",
+        "phone": "+27760602066",
+        "code_of_conduct": "http://y-knot.io/code-of-conduct",
+        "ownership_disclosure": "http://y-knot.io/ownership-disclosure",
+        "branding": {
+          "logo_256": "https://y-knot.io/logo_256.png",
+          "logo_1024": "https://y-knot.io/logo_1024.png",
+          "logo_svg": "https://y-knot.io/icon.svg"
+        },
+        "location": {
+          "name": "South Africa",
+          "country": "ZA",
+          "latitude": -25.7582734,
+          "longitude": 28.0575234
+        },
+        "social": {
+          "github": "Yknot-BCS",
+          "medium": "y-knot",
+          "telegram": "SBeukes_YKnot"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.798855+00:00"
+    },
+    {
+      "owner": "sentnlagents",
+      "total_votes": "304218554890.53570556640625000",
+      "url": "https://www.sentnl.io",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telosp2p.sentnl.io:4242",
+      "org": {
+        "candidate_name": "Sentnl",
+        "website": "https://www.sentnl.io",
+        "code_of_conduct": "https://medium.com/@charles.holtzkampf/telos-code-of-conduct-b9d3d15528cf",
+        "ownership_disclosure": "https://medium.com/@charles.holtzkampf/sentnl-telos-bp-candidacy-6ad8eb92e2b5",
+        "email": "charles@sentnl.io",
+        "branding": {
+          "logo_256": "https://www.sentnl.io/sentnl_256.png",
+          "logo_1024": "https://www.sentnl.io/sentnl_1024.png",
+          "logo_svg": "https://www.sentnl.io/sentnl.svg"
+        },
+        "location": {
+          "name": "London",
+          "country": "GB",
+          "latitude": 51.51118829,
+          "longitude": -0.09617353
+        },
+        "social": {
+          "steemit": "",
+          "twitter": "sentnl_io",
+          "facebook": "",
+          "github": "ankh2054",
+          "reddit": "",
+          "keybase": "ankh2054",
+          "telegram": "ankh2054"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://telosapi.sentnl.io",
+        "API failed: https://telosapi.sentnl.io/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.798952+00:00"
+    },
+    {
+      "owner": "comethblocks",
+      "total_votes": "292626381895.34295654296875000",
+      "url": "https://telos.cometh.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808547+00:00"
+    },
+    {
+      "owner": "teloskoreabp",
+      "total_votes": "291625034318.27850341796875000",
+      "url": "https://teloskorea.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808505+00:00"
+    },
+    {
+      "owner": "creativblock",
+      "total_votes": "289936628366.91699218750000000",
+      "url": "https://www.creativblock.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808457+00:00"
+    },
+    {
+      "owner": "theteloscope",
+      "total_votes": "283644253621.06213378906250000",
+      "url": "https://theteloscope.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.theteloscope.io:9876",
+      "org": {
+        "candidate_name": "TheTeloscope",
+        "website": "https://theteloscope.io",
+        "ownership_disclosure": "https://github.com/theteloscope/theteloscope-web/tree/master/transparency/ownershipdisclosure",
+        "code_of_conduct": "https://github.com/theteloscope/theteloscope-web/tree/master/transparency/codeofconduct",
+        "email": "support@theteloscope.io",
+        "phone": "TFRegistry",
+        "branding": {
+          "logo_256": "https://theteloscope.io/img/teloscope-logo-256.png",
+          "logo_1024": "https://theteloscope.io/img/teloscope-logo-1024.png",
+          "logo_svg": "https://theteloscope.io/img/teloscope-logo.svg"
+        },
+        "location": {
+          "name": "Asturias",
+          "country": "ES",
+          "latitude": 43.53,
+          "longitude": -5.67
+        },
+        "social": {
+          "steemit": "",
+          "twitter": "TheTeloscope",
+          "youtube": "channel/UCQO901djDCBHGPaMg5mrnWQ",
+          "facebook": "",
+          "github": "theteloscope",
+          "reddit": "theteloscope",
+          "keybase": "",
+          "telegram": "TheTeloscope",
+          "wechat": ""
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.799061+00:00"
+    },
+    {
+      "owner": "teloskitchen",
+      "total_votes": "281250826760.41357421875000000",
+      "url": "https://telos.kitchen",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799163+00:00"
+    },
+    {
+      "owner": "cryptolions1",
+      "total_votes": "275544295889.59088134765625000",
+      "url": "https://cryptolions.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "telos.cryptolions.io:9871",
+      "org": {
+        "candidate_name": "CryptoLions\ud83e\udd81",
+        "website": "https://cryptolions.io",
+        "code_of_conduct": "https://cryptolions.io/code-of-conduct",
+        "ownership_disclosure": "https://cryptolions.io/ownership-disclosure",
+        "email": "roar@cryptolions.io",
+        "github_user": "ansigroup",
+        "chain_resources": "https://backup.cryptolions.io/TelosMainNet",
+        "other_resources": [
+          "https://eosnetworkmonitor.io",
+          "https://telos.certs.cryptolions.io",
+          "https://telos.kolobok.io",
+          "https://telos.simplemarket.io",
+          "https://simpleassets.io",
+          "https://redemptionbank.io"
+        ],
+        "branding": {
+          "logo_256": "https://imgs.cryptolions.io/logo_256.png",
+          "logo_1024": "https://imgs.cryptolions.io/logo_1024.png",
+          "logo_svg": "https://imgs.cryptolions.io/logo.svg"
+        },
+        "location": {
+          "name": "Ukraine",
+          "country": "UA",
+          "latitude": 49.8397,
+          "longitude": 24.0297
+        },
+        "social": {
+          "keybase": "cryptolions",
+          "telegram": "CryptoLions_io",
+          "twitter": "EOS_CryptoLions",
+          "github": "CryptoLions",
+          "youtube": "channel/UCB7F-KO0mmZ1yVBCq0_1gtA"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.799266+00:00"
+    },
+    {
+      "owner": "votedutcheos",
+      "total_votes": "269564384962.59790039062500000",
+      "url": "https://dutcheos.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808414+00:00"
+    },
+    {
+      "owner": "teloskiwinzz",
+      "total_votes": "269093926633.63784790039062500",
+      "url": "https://bp.kiwi",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telosmainnet.bp.kiwi:9786",
+      "org": {
+        "candidate_name": "Telos Kiwi",
+        "website": "https://bp.kiwi",
+        "code_of_conduct": "https://bp.kiwi/code-of-conduct.pdf",
+        "email": "ops@bp.kiwi",
+        "ownership_disclosure": "https://proton.kiwi/ownership-disclosure",
+        "branding": {
+          "logo_256": "https://bp.kiwi/256logo.png",
+          "logo_1024": "https://bp.kiwi/1024kiwi.png",
+          "logo_svg": "https://bp.kiwi/kiwisvg.svg"
+        },
+        "location": {
+          "name": "Sydney",
+          "country": "AU",
+          "latitude": -33.8688,
+          "longitude": 151.2093
+        },
+        "social": {
+          "steemit": "",
+          "twitter": "TelosKiwi",
+          "youtube": "TelosKiwi",
+          "reddit": "",
+          "telegram": "TelosKiwi",
+          "github": "",
+          "keybase": "",
+          "wechat": "",
+          "facebook": ""
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://telosmainnet.bp.kiwi",
+        "API failed: https://telosmainnet.bp.kiwi/v1/chain/get_info",
+        "Testnet SSL failed: https://telostestnet.bp.kiwi",
+        "Testnet API failed: https://telostestnet.bp.kiwi/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808371+00:00"
+    },
+    {
+      "owner": "eosiodetroit",
+      "total_votes": "268724199937.75762939453125000",
+      "url": "https://detroitledger.tech",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p.telos.eosdetroit.io:1337",
+      "org": {
+        "candidate_name": "Detroit Ledger Technologies",
+        "website": "https://detroitledger.tech/",
+        "ownership_disclosure": "https://detroitledger.tech/about",
+        "code_of_conduct": "https://steemit.com/eos/@eos.detroit/eos-detroit-membership-guidelines",
+        "email": "ask@detroitledger.tech",
+        "github_user": [
+          "eosdetroit",
+          "wakeupjohnny"
+        ],
+        "chain_resources": "",
+        "other_resources": [],
+        "phone": "tf-registry",
+        "branding": {
+          "logo_256": "https://detroitledger.tech/images/TELOS_D_logo.png",
+          "logo_1024": "https://detroitledger.tech/images/TELOS_D_logo_1024.png",
+          "logo_svg": "https://detroitledger.tech/images/logos/EOSD_logo.svg"
+        },
+        "location": {
+          "name": "Detroit",
+          "country": "US",
+          "latitude": 42.3314,
+          "longitude": -83.0458
+        },
+        "social": {
+          "steemit": "eos.detroit",
+          "twitter": "detledgertech",
+          "youtube": "detroitledgertechnologies",
+          "facebook": "detroitledgertech",
+          "github": "eosdetroit",
+          "reddit": "eosdetroit",
+          "keybase": "wakeupjohnny",
+          "telegram": "detroitledgertech",
+          "wechat": "robrigo_eosdetroit"
+        }
+      },
+      "validationErrors": [
+        "API failed: https://hyperion.telos.detroitledger.tech/v1/chain/get_info",
+        "Testnet SSL failed: https://testnet.telos.detroitledger.tech"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799391+00:00"
+    },
+    {
+      "owner": "ledgerwisete",
+      "total_votes": "262342299335.41943359375000000",
+      "url": "https://ledgerwise.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telosp2p.ledgerwise.io:23877",
+      "org": {
+        "candidate_name": "LedgerWise",
+        "website": "https://ledgerwise.io",
+        "code_of_conduct": "https://ledgerwise.io/conduct.html",
+        "ownership_disclosure": "https://ledgerwise.io/ownership.html",
+        "email": "hello@ledgerwise.io",
+        "github_user": "jorfermo",
+        "phone": "",
+        "branding": {
+          "logo_256": "https://ledgerwise.io/img/icon256.png",
+          "logo_1024": "https://ledgerwise.io/img/icon1024.png",
+          "logo_svg": "https://ledgerwise.io/img/icon.svg"
+        },
+        "location": {
+          "name": "India",
+          "country": "IN",
+          "latitude": 27.806298,
+          "longitude": 77.3805321
+        },
+        "social": {
+          "telegram": "ledgerwiseio",
+          "twitter": "ledgerwise",
+          "keybase": "tanishv",
+          "github": "ledgerwise"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.799456+00:00"
+    },
+    {
+      "owner": "bp.adex",
+      "total_votes": "240665720817.98242187500000000",
+      "url": "https://telos.a-dex.io",
+      "is_active": 1,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p-telos.a-dex.xyz:9976",
+      "org": {
+        "candidate_name": "A-DEX BP",
+        "website": "https://telos.a-dex.io",
+        "code_of_conduct": "https://telos.a-dex.io/code-of-conduct",
+        "ownership_disclosure": "https://telos.a-dex.io/ownership",
+        "email": "support@a-dex.io",
+        "github_user": "avm07",
+        "branding": {
+          "logo_256": "https://telos.a-dex.io/logo256.png",
+          "logo_1024": "https://telos.a-dex.io/logo1024.png",
+          "logo_svg": "https://telos.a-dex.io/logo.svg"
+        },
+        "location": {
+          "name": "Dubai,UAE",
+          "country": "AE",
+          "latitude": 25.0657,
+          "longitude": 55.17128
+        },
+        "social": {
+          "steemit": "a-dex",
+          "github": "a-dex",
+          "twitter": "a_dex_official",
+          "telegram": "a_dex_official",
+          "medium": "a-dex"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.799525+00:00"
+    },
+    {
+      "owner": "telosuknodes",
+      "total_votes": "232923948214.08956909179687500",
+      "url": "https://tonomy.foundation",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808326+00:00"
+    },
+    {
+      "owner": "dailytelosbp",
+      "total_votes": "229475562345.58267211914062500",
+      "url": "https://dailytelos.tlccc.sg",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.dailytelos.net:9876",
+      "org": {
+        "candidate_name": "Daily Telos",
+        "website": "https://dailytelos.net",
+        "code_of_conduct": "https://dailytelos.net/bp/#conduct",
+        "ownership_disclosure": "https://dailytelos.net/bp/#ownership",
+        "email": "info@dailytelos.net",
+        "branding": {
+          "logo_256": "https://dailytelos.tlccc.sg/img/Daily-telos-256.png",
+          "logo_1024": "https://dailytelos.tlccc.sg/img/Daily-telos-1024.png",
+          "logo_svg": "https://dailytelos.tlccc.sg/img/Daily-telos.svg"
+        },
+        "location": {
+          "name": "Singapore",
+          "country": "SG",
+          "latitude": 1.3274,
+          "longitude": 103.8907
+        },
+        "social": {
+          "twitter": "DailyTelos",
+          "telegram": "dailytelos",
+          "github": "dailytelos"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api.dailytelos.net",
+        "API failed: https://api.dailytelos.net/v1/chain/get_info",
+        "Testnet SSL failed: https://testnet.dailytelos.net",
+        "Testnet API failed: https://testnet.dailytelos.net/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808273+00:00"
+    },
+    {
+      "owner": "openrepublic",
+      "total_votes": "223601247239.63955688476562500",
+      "url": "https://openrepublic.net",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808187+00:00"
+    },
+    {
+      "owner": "vairosean123",
+      "total_votes": "221255550490.40097045898437500",
+      "url": "https://primarch.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808141+00:00"
+    },
+    {
+      "owner": "telosglobal1",
+      "total_votes": "212088807613.49157714843750000",
+      "url": "https://telosglobal.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808099+00:00"
+    },
+    {
+      "owner": "eosbarcelona",
+      "total_votes": "212014608680.53414916992187500",
+      "url": "https://eos.barcelona/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telosp2p.eos.barcelona:2095",
+      "org": {
+        "candidate_name": "eosBarcelona",
+        "website": "https://eos.barcelona/telos",
+        "ownership_disclosure": "https://eos.barcelona/#about",
+        "code_of_conduct": "https://eos.barcelona/#about",
+        "email": "contact@eos.barcelona",
+        "phone": "TF_Registry",
+        "branding": {
+          "logo_256": "https://eos.barcelona/images/eosLogo-256.png",
+          "logo_1024": "https://eos.barcelona/images/eosLogo-1024.png",
+          "logo_svg": "https://eos.barcelona/images/Eos.svg"
+        },
+        "location": {
+          "name": "Barcelona",
+          "country": "ES",
+          "latitude": 41.3667,
+          "longitude": 2.0667
+        },
+        "social": {
+          "steemit": "jrosich",
+          "twitter": "eosbarcelona",
+          "youtube": "",
+          "facebook": "",
+          "github": "jrosich",
+          "reddit": "eosbarcelona",
+          "keybase": "eosbarcelona",
+          "telegram": "eosbarcelona",
+          "wechat": ""
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://telos.eos.barcelona",
+        "API failed: https://telos.eos.barcelona/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808060+00:00"
+    },
+    {
+      "owner": "orbitalblock",
+      "total_votes": "197000200919.10009765625000000",
+      "url": "https://www.orbitalblock.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p-telos-mainnet.orbitalblock.com:9876",
+      "org": {
+        "candidate_name": "OrbitalBlock",
+        "website": "https://www.orbitalblock.com",
+        "code_of_conduct": "https://www.orbitalblock.com/code-of-conduct",
+        "ownership_disclosure": "https://www.orbitalblock.com/ownership-disclosure",
+        "email": "contact@orbitalblock.com",
+        "other_resources": [],
+        "branding": {
+          "logo_256": "https://www.orbitalblock.com/images/logo_256.png",
+          "logo_1024": "https://www.orbitalblock.com/images/logo_1024.png",
+          "logo_svg": "https://www.orbitalblock.com/images/logo.svg"
+        },
+        "location": {
+          "name": "Toronto",
+          "country": "CA",
+          "latitude": 43.6562,
+          "longitude": -79.3908
+        },
+        "social": {
+          "keybase": "orbitalblock",
+          "twitter": "orbitalblockcom",
+          "telegram": "orbitalblockcom",
+          "reddit": "orbitalblockcom"
+        }
+      },
+      "validationErrors": [
+        "No ssl_endpoint found in any bp.json node"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799591+00:00"
+    },
+    {
+      "owner": "edeniaedenia",
+      "total_votes": "196058364853.61779785156250000",
+      "url": "https://edenia.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telos.edenia.cloud:9878",
+      "org": {
+        "candidate_name": "Edenia",
+        "website": "https://edenia.com/blockchain-networks/telos",
+        "code_of_conduct": "https://edenia.com/block-producer/#code-of-conduct",
+        "ownership_disclosure": "https://edenia.com/block-producer/#ownership-disclosure",
+        "email": "bp@edenia.com",
+        "github_user": "edenia",
+        "chain_resources": "https://archive.edenia.cloud",
+        "other_resources": [
+          "https://telos.antelope.tools",
+          "https://guide.eoscostarica.io",
+          "https://guias.eoscostarica.io"
+        ],
+        "branding": {
+          "logo_256": "https://edenia.com/logos/edenia-bp-logo-256.svg",
+          "logo_1024": "https://edenia.com/logos/edenia-bp-logo-1024.svg",
+          "logo_svg": "https://edenia.com/logos/edenia-bp-logo.svg"
+        },
+        "location": {
+          "name": "San Jose",
+          "country": "CR",
+          "latitude": 9.936377,
+          "longitude": -84.078155
+        },
+        "social": {
+          "keybase": "",
+          "telegram": "eoscr",
+          "twitter": "EdeniaWeb3",
+          "github": "edenia",
+          "youtube": "channel/UCvYinCH3O1iKpi-_dNfQAGQ",
+          "facebook": "costaricaeos",
+          "hive": "eos-costarica",
+          "reddit": "eoscostarica",
+          "wechat": ""
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://telos.edenia.cloud",
+        "API failed: https://telos.edenia.cloud/v1/chain/get_info",
+        "Testnet SSL failed: https://telos-testnet.edenia.cloud",
+        "Testnet API failed: https://telos-testnet.edenia.cloud/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.808018+00:00"
+    },
+    {
+      "owner": "eostribeprod",
+      "total_votes": "189400882300.83703613281250000",
+      "url": "https://cryptotribe.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "api.telos.cryptotribe.io:7876",
+      "org": {
+        "candidate_name": "eostribe",
+        "website": "https://cryptotribe.io",
+        "code_of_conduct": "https://steemit.com/cryptocurrency/@eostribe/eos-tribe-code-of-conduct",
+        "ownership_disclosure": "https://steemit.com/eos/@eostribe/eos-tribe-ownership-disclosure",
+        "email": "eugene@cryptotribe.io",
+        "other_resources": [
+          "https://www.tribewallet.io"
+        ],
+        "branding": {
+          "logo_256": "https://cryptotribe.io/images/eos-tribe-logo-square-256px.png",
+          "logo_1024": "https://cryptotribe.io/images/eos-tribe-logo-square-1024px.png",
+          "logo_svg": "https://cryptotribe.io/images/logo.svg"
+        },
+        "location": {
+          "name": "Miami,FL",
+          "country": "US",
+          "latitude": 25.776052,
+          "longitude": -80.193129
+        },
+        "social": {
+          "steemit": "eostribe",
+          "telegram": "eostribe",
+          "wechat": "realeostribe",
+          "twitter": "eostribe",
+          "facebook": "groups/eostribe",
+          "reddit": "eostribeBP",
+          "keybase": "eostribe"
+        },
+        "support": {
+          "name": "Eugene.Luzgin",
+          "email": "eugene@cryptotribe.io"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api.telos.cryptotribe.io",
+        "API failed: https://api.telos.cryptotribe.io/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807966+00:00"
+    },
+    {
+      "owner": "totaltelosbp",
+      "total_votes": "185598984673.28997802734375000",
+      "url": "https://totaltelos.tech",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807884+00:00"
+    },
+    {
+      "owner": "telosculture",
+      "total_votes": "179335772360.73693847656250000",
+      "url": "https://cultureblock.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807834+00:00"
+    },
+    {
+      "owner": "zkeraproject",
+      "total_votes": "168895021327.11325073242187500",
+      "url": "https://telos-validator.zkera.fi",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807785+00:00"
+    },
+    {
+      "owner": "actifittelos",
+      "total_votes": "168652009695.09869384765625000",
+      "url": "https://actifit.io",
+      "is_active": 0,
+      "sslVerified": true,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "telosp2p.actifit.io:9876",
+      "org": {
+        "candidate_name": "Actifit Telos",
+        "website": "https://actifit.io",
+        "code_of_conduct": "https://actifit.io/conduct",
+        "ownership_disclosure": "https://actifit.io/ownership",
+        "email": "info@actifit.io",
+        "github_user": "mcfarhat",
+        "branding": {
+          "logo_256": "https://actifit.io/img/actifit_logo_256.png",
+          "logo_1024": "https://actifit.io/img/actifit-logo-1024.png",
+          "logo_svg": "https://actifit.io/img/actifit_logo.svg"
+        },
+        "location": {
+          "name": "Beirut, LB",
+          "country": "LB",
+          "latitude": 33.789004,
+          "longitude": 35.498459
+        },
+        "social": {
+          "steemit": "actifit",
+          "hive": "actifit",
+          "github": "actifit",
+          "youtube": "Actifitfitness",
+          "twitter": "actifit_fitness",
+          "reddit": "actifit",
+          "facebook": "actifit.fitness",
+          "medium": "actifit.fitness",
+          "telegram": "actifit"
+        }
+      },
+      "validationErrors": [
+        "API failed: https://telosapi.actifit.io/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807722+00:00"
+    },
+    {
+      "owner": "tlosimperabp",
+      "total_votes": "160972150531.27246093750000000",
+      "url": "https://eosimpera.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807668+00:00"
+    },
+    {
+      "owner": "swedencornet",
+      "total_votes": "159307404344.49255371093750000",
+      "url": "https://eossweden.eu/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807597+00:00"
+    },
+    {
+      "owner": "goodblocktls",
+      "total_votes": "156051554817.71289062500000000",
+      "url": "https://goodblock.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807553+00:00"
+    },
+    {
+      "owner": "dnomadlabsbp",
+      "total_votes": "154861360284.40933227539062500",
+      "url": "https://digitalnomadlabs.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807507+00:00"
+    },
+    {
+      "owner": "fortisblocks",
+      "total_votes": "150712315426.48696899414062500",
+      "url": "https://fortisbp.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807468+00:00"
+    },
+    {
+      "owner": "trustyblocks",
+      "total_votes": "146678185672.57864379882812500",
+      "url": "https://www.trustyblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807423+00:00"
+    },
+    {
+      "owner": "blockbastrds",
+      "total_votes": "145853913215.58065795898437500",
+      "url": "https://bp.blockbastards.io/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://bp.blockbastards.io/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807390+00:00"
+    },
+    {
+      "owner": "reactorfusio",
+      "total_votes": "142338446774.63418579101562500",
+      "url": "https://telos-bp.reactorfusion.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807350+00:00"
+    },
+    {
+      "owner": "theteloscrew",
+      "total_votes": "141638491268.10897827148437500",
+      "url": "https://teloscrew.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807300+00:00"
+    },
+    {
+      "owner": "telosdacnode",
+      "total_votes": "138312524482.45428466796875000",
+      "url": "https://www.telosdac.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807251+00:00"
+    },
+    {
+      "owner": "bp.any",
+      "total_votes": "133266332695.82075500488281250",
+      "url": "https://anypot.io",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799657+00:00"
+    },
+    {
+      "owner": "veloblocksbp",
+      "total_votes": "129895621986.51132202148437500",
+      "url": "https://veloblocksbp.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807129+00:00"
+    },
+    {
+      "owner": "telosmiamibp",
+      "total_votes": "126675527570.92039489746093750",
+      "url": "https://zenblocks.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p.telos.zenblocks.io:9876",
+      "org": {
+        "candidate_name": "ZenBlocks.io",
+        "website": "https://zenblocks.io",
+        "code_of_conduct": "https://zenblocks.io#cc",
+        "ownership_disclosure": "https://zenblocks.io#od",
+        "email": "info@zenblocks.io",
+        "github_user": [
+          "marlonwilliams"
+        ],
+        "phone": "tf-registry",
+        "branding": {
+          "logo_256": "https://zenblocks.io/wp-content/uploads/2021/02/logo_256_mia.png",
+          "logo_1024": "https://zenblocks.io/wp-content/uploads/2021/02/logo_1024_mia.png",
+          "logo_svg": "https://zenblocks.io/wp-content/uploads/2021/02/logo_256_mia.svg"
+        },
+        "location": {
+          "name": "Miami",
+          "country": "US",
+          "latitude": 25.761681,
+          "longitude": -80.191788
+        },
+        "social": {
+          "steemit": "eosmiami",
+          "github": "eosmiami",
+          "facebook": "eosmiami",
+          "telegram": "eosmiami",
+          "keybase": "eosmiami",
+          "twitter": "eosmiami"
+        }
+      },
+      "validationErrors": [
+        "SSL failed: https://api.eos.miami",
+        "API failed: https://api.eos.miami/v1/chain/get_info"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807087+00:00"
+    },
+    {
+      "owner": "telosyouthio",
+      "total_votes": "119594528553.00933837890625000",
+      "url": "https://www.telosyouth.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807043+00:00"
+    },
+    {
+      "owner": "qaraqolblock",
+      "total_votes": "113680180952.74877929687500000",
+      "url": "https://qaraqol.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.807002+00:00"
+    },
+    {
+      "owner": "nodersteam11",
+      "total_votes": "111764626381.29479980468750000",
+      "url": "https://noders.team",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806960+00:00"
+    },
+    {
+      "owner": "eosdublinwow",
+      "total_votes": "110834012071.73347473144531250",
+      "url": "https://eosdublin.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://eosdublin.comtelos.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806908+00:00"
+    },
+    {
+      "owner": "omnidexblock",
+      "total_votes": "109091279682.31091308593750000",
+      "url": "https://www.eosphere.io",
+      "is_active": 0,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "peer1-telos.eosphere.io:9876",
+      "org": {
+        "candidate_name": "EOSphere",
+        "website": "https://www.eosphere.io",
+        "code_of_conduct": "https://www.eosphere.io/code-of-conduct",
+        "ownership_disclosure": "https://www.eosphere.io/ownership",
+        "email": "info@eosphere.io",
+        "phone": "TF Registry",
+        "github_user": "rossco99",
+        "branding": {
+          "logo_256": "https://www.eosphere.io/eospherelogosquare256.png",
+          "logo_1024": "https://www.eosphere.io/eospherelogosquare1024.png",
+          "logo_svg": "https://www.eosphere.io/eospherelogosquare.svg"
+        },
+        "location": {
+          "name": "Australia",
+          "country": "AU",
+          "latitude": -31.953512,
+          "longitude": 115.857048
+        },
+        "social": {
+          "steemit": "eosphere",
+          "twitter": "eosphere_io",
+          "youtube": "eosphere",
+          "facebook": "eosphereio",
+          "github": "eosphere",
+          "reddit": "eosphere",
+          "keybase": "eosphere",
+          "telegram": "eosphere_io",
+          "wechat": "ross-eosphere"
+        }
+      },
+      "validationErrors": [
+        "Testnet SSL failed: https://telos-testnet.eosphere.io"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806864+00:00"
+    },
+    {
+      "owner": "xtopalaprime",
+      "total_votes": "107452754084.12904357910156250",
+      "url": "https://www.ixnayontheweb2.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806822+00:00"
+    },
+    {
+      "owner": "kandaweather",
+      "total_votes": "101222859853.58013916015625000",
+      "url": "https://kandaweather.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806778+00:00"
+    },
+    {
+      "owner": "smartelos",
+      "total_votes": "98932740623.79785156250000000",
+      "url": "https://smartelos.com",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799715+00:00"
+    },
+    {
+      "owner": "projectblanc",
+      "total_votes": "96309683606.86637878417968750",
+      "url": "https://projectblanc.ch",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806735+00:00"
+    },
+    {
+      "owner": "cryptosuviio",
+      "total_votes": "79769836281.78416442871093750",
+      "url": "https://telos.cryptosuvi.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806690+00:00"
+    },
+    {
+      "owner": "smoothbrainz",
+      "total_votes": "79619679701.34465026855468750",
+      "url": "https://smoothbrainblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806646+00:00"
+    },
+    {
+      "owner": "veradox12321",
+      "total_votes": "72255136921.99377441406250000",
+      "url": "https://veradox.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806599+00:00"
+    },
+    {
+      "owner": "eosmetaliobp",
+      "total_votes": "70074085257.99588012695312500",
+      "url": "https://eosmetal.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806551+00:00"
+    },
+    {
+      "owner": "reaxmainnetb",
+      "total_votes": "67825838991.93498229980468750",
+      "url": "https://reax.pro",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806465+00:00"
+    },
+    {
+      "owner": "guild.nefty",
+      "total_votes": "60910410843.93286895751953125",
+      "url": "https://bp.neftyblocks.com",
+      "is_active": 0,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "telos-public-seed.neftyblocks.com:9877",
+      "org": {
+        "candidate_name": "NeftyGuild",
+        "website": "https://bp.neftyblocks.com",
+        "email": "info@neftyblocks.com",
+        "github_user": "jandrad",
+        "branding": {
+          "logo_256": "https://bp.neftyblocks.com/imgs/logo-256.png",
+          "logo_1024": "https://bp.neftyblocks.com/imgs/logo-1024.png",
+          "logo_svg": "https://bp.neftyblocks.com/imgs/logo.svg"
+        },
+        "location": {
+          "name": "Guatemala",
+          "country": "GT",
+          "latitude": 14.628434,
+          "longitude": -90.522713
+        },
+        "social": {
+          "telegram": "neftyblocks",
+          "twitter": "neftyblocks",
+          "github": "neftyblocks",
+          "youtube": "channel/UCAOiiR1k9uF6zvvsmfnws3w"
+        }
+      },
+      "validationErrors": [],
+      "checkedAt": "2026-04-08T16:29:53.806421+00:00"
+    },
+    {
+      "owner": "prestolabbp1",
+      "total_votes": "57164244295.20429992675781250",
+      "url": "flipster.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806375+00:00"
+    },
+    {
+      "owner": "eosvibesbloc",
+      "total_votes": "52209843535.33328247070312500",
+      "url": "https://eosvibes.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806332+00:00"
+    },
+    {
+      "owner": "cypherglasss",
+      "total_votes": "43776234151.37889862060546875",
+      "url": "https://bp.cypherglass.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806286+00:00"
+    },
+    {
+      "owner": "telosboston1",
+      "total_votes": "43230077150.46894073486328125",
+      "url": "https://telosboston.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806225+00:00"
+    },
+    {
+      "owner": "tlsvenezuela",
+      "total_votes": "42532833023.28843688964843750",
+      "url": "https://telosvenezuela.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806157+00:00"
+    },
+    {
+      "owner": "telosyasprod",
+      "total_votes": "41406062191.64315032958984375",
+      "url": "https://www.telosyas.co.ke",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806115+00:00"
+    },
+    {
+      "owner": "hkeostelosbp",
+      "total_votes": "41255117639.29874420166015625",
+      "url": "https://www.hkeos.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806070+00:00"
+    },
+    {
+      "owner": "telosvoyager",
+      "total_votes": "39936372929.87328338623046875",
+      "url": "http://www.telosvoyager.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.806030+00:00"
+    },
+    {
+      "owner": "nebulablocks",
+      "total_votes": "38504109783.53114318847656250",
+      "url": "https://hackthemall.club",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805983+00:00"
+    },
+    {
+      "owner": "tlscafeblock",
+      "total_votes": "38100077593.42312622070312500",
+      "url": "https://www.eoscafeblock.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805942+00:00"
+    },
+    {
+      "owner": "21zephyr1111",
+      "total_votes": "35844564759.00511169433593750",
+      "url": "https://telos-21zephyr.maltablock.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805891+00:00"
+    },
+    {
+      "owner": "csxcommunity",
+      "total_votes": "35464667514.02062988281250000",
+      "url": "https://telos.csx.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805840+00:00"
+    },
+    {
+      "owner": "atticlabtlbp",
+      "total_votes": "34279994671.91787719726562500",
+      "url": "https://atticlab.net/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805754+00:00"
+    },
+    {
+      "owner": "velaryonbloc",
+      "total_votes": "34164778657.11334228515625000",
+      "url": "https://twelvebit.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {
+        "candidate_name": "VelaryonBlock",
+        "website": "https://www.twelvebit.io",
+        "code_of_conduct": "https://www.twelvebit.io/block-production",
+        "ownership_disclosure": "https://www.twelvebit.io/block-production",
+        "email": "hello@twelvebit.io",
+        "phone": "",
+        "branding": {
+          "logo_256": "",
+          "logo_1024": "",
+          "logo_svg": ""
+        },
+        "location": {
+          "name": "London",
+          "country": "GB",
+          "latitude": 51.51070644588241,
+          "longitude": -0.08079014020725717
+        },
+        "social": {
+          "telegram": "Rozza1227",
+          "twitter": "VelaryonBlock",
+          "github": "twelvebit-io",
+          "medium": ""
+        }
+      },
+      "validationErrors": [
+        "No ssl_endpoint found in any bp.json node"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805711+00:00"
+    },
+    {
+      "owner": "telosintasia",
+      "total_votes": "33130847663.62917327880859375",
+      "url": "https://ikuwara.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805658+00:00"
+    },
+    {
+      "owner": "tlsvancouver",
+      "total_votes": "26369485041.79743957519531250",
+      "url": "https://www.telosvancouver.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805590+00:00"
+    },
+    {
+      "owner": "alohaeosprod",
+      "total_votes": "25510246401.85337066650390625",
+      "url": "https://www.alohaeos.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "Mainnet chain ID not found in chains.json"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805539+00:00"
+    },
+    {
+      "owner": "telosnewyork",
+      "total_votes": "25455768225.29947280883789062",
+      "url": "https://nytelos.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805493+00:00"
+    },
+    {
+      "owner": "blindblocart",
+      "total_votes": "24822906886.00032043457031250",
+      "url": "https://api.blindblocart.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805448+00:00"
+    },
+    {
+      "owner": "eosvenezuela",
+      "total_votes": "22096948128.14119720458984375",
+      "url": "https://eosvenezuela.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805405+00:00"
+    },
+    {
+      "owner": "cryptobloksx",
+      "total_votes": "21415453486.53635787963867188",
+      "url": "https://bp.cryptobloks.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "Mainnet chain ID not found in chains.json"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805361+00:00"
+    },
+    {
+      "owner": "dmaildotcobp",
+      "total_votes": "20402141088.64999008178710938",
+      "url": "https://dmail.co",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805318+00:00"
+    },
+    {
+      "owner": "pandabloks",
+      "total_votes": "19338249920.41057586669921875",
+      "url": "https://pandabloks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805267+00:00"
+    },
+    {
+      "owner": "teloscantons",
+      "total_votes": "19174152140.60317230224609375",
+      "url": "https://teloscanton.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805186+00:00"
+    },
+    {
+      "owner": "octagontelos",
+      "total_votes": "18646139951.13642501831054688",
+      "url": "https://octagonlabs.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805144+00:00"
+    },
+    {
+      "owner": "blocksmithio",
+      "total_votes": "18487689205.87766265869140625",
+      "url": "https://eosblocksmith.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.805092+00:00"
+    },
+    {
+      "owner": "tokenika4tls",
+      "total_votes": "17887243216.48073577880859375",
+      "url": "https://tokenika.io/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804995+00:00"
+    },
+    {
+      "owner": "telosamigoss",
+      "total_votes": "17573762353.26880645751953125",
+      "url": "https://www.tlos.news",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": "p2p-mainnet.tlos.news:9876",
+      "org": {
+        "candidate_name": "TelosAmigoss",
+        "website": "https://www.tlos.news",
+        "code_of_conduct": "https://www.tlos.news",
+        "ownership_disclosure": "https://www.tlos.news",
+        "email": "contact@tlos.news",
+        "other_resources": [],
+        "branding": {
+          "logo_256": "https://www.tlos.news/images/256.png",
+          "logo_1024": "https://www.tlos.news/images/1024.png"
+        },
+        "location": {
+          "name": "Canada",
+          "country": "CA",
+          "latitude": 53.459,
+          "longitude": -113.435
+        },
+        "social": {
+          "keybase": "telosamigoss",
+          "twitter": "telosamigoss"
+        }
+      },
+      "validationErrors": [
+        "No ssl_endpoint found in any bp.json node"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799770+00:00"
+    },
+    {
+      "owner": "telosafrique",
+      "total_votes": "14469750804.96427917480468750",
+      "url": "https://eosnairobi.io/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804937+00:00"
+    },
+    {
+      "owner": "eossandiego1",
+      "total_votes": "13704429516.22725486755371094",
+      "url": "http://eossandiego.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804885+00:00"
+    },
+    {
+      "owner": "dappetizerbp",
+      "total_votes": "13260318428.86182022094726562",
+      "url": "https://dappetizer.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804840+00:00"
+    },
+    {
+      "owner": "legendsblokp",
+      "total_votes": "12677215401.91744232177734375",
+      "url": "https://lotrtelos.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804791+00:00"
+    },
+    {
+      "owner": "eosgermanybp",
+      "total_votes": "12509859250.37302017211914062",
+      "url": "https://eosgermany.one",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804752+00:00"
+    },
+    {
+      "owner": "vote4scatter",
+      "total_votes": "12229777248.16177749633789062",
+      "url": "https://get-scatter.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804706+00:00"
+    },
+    {
+      "owner": "bpeosindexio",
+      "total_votes": "11223299380.56782913208007812",
+      "url": "https://telosindex.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804663+00:00"
+    },
+    {
+      "owner": "telos1russia",
+      "total_votes": "9477033089.28094482421875000",
+      "url": "https://telosrussia.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804622+00:00"
+    },
+    {
+      "owner": "nodenodeorg1",
+      "total_votes": "8051899465.76033115386962891",
+      "url": "https://www.nodenode.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804575+00:00"
+    },
+    {
+      "owner": "printbloksbp",
+      "total_votes": "6523290235.70782566070556641",
+      "url": "https://www.printbloks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804535+00:00"
+    },
+    {
+      "owner": "monsterblock",
+      "total_votes": "6509589169.23528480529785156",
+      "url": "https://monsterblock.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804489+00:00"
+    },
+    {
+      "owner": "telosusa2222",
+      "total_votes": "6287478413.71893119812011719",
+      "url": "https://eosusa.io/bp/telos",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://eosusa.io/bp/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799838+00:00"
+    },
+    {
+      "owner": "telosusa1111",
+      "total_votes": "6287163572.71893119812011719",
+      "url": "https://eosusa.io/bp/telos",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://eosusa.io/bp/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799880+00:00"
+    },
+    {
+      "owner": "telosusa3333",
+      "total_votes": "6286063571.71893119812011719",
+      "url": "https://eosusa.io/bp/telos",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://eosusa.io/bp/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799937+00:00"
+    },
+    {
+      "owner": "telosusa4444",
+      "total_votes": "6286063571.71893119812011719",
+      "url": "https://eosusa.io/bp/telos",
+      "is_active": 1,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://eosusa.io/bp/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.799973+00:00"
+    },
+    {
+      "owner": "telawakeiobp",
+      "total_votes": "6250374341.13673973083496094",
+      "url": "https://eosawake.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804363+00:00"
+    },
+    {
+      "owner": "telawakeiobp",
+      "total_votes": "6250374341.13673973083496094",
+      "url": "https://eosawake.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804456+00:00"
+    },
+    {
+      "owner": "teleclipse24",
+      "total_votes": "5507961644.73165988922119141",
+      "url": "https://telos.eclipse24.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804312+00:00"
+    },
+    {
+      "owner": "blocksynergy",
+      "total_votes": "3526914370.00000000000000000",
+      "url": "https://blocksynergy.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804191+00:00"
+    },
+    {
+      "owner": "telosnexusbp",
+      "total_votes": "3526914370.00000000000000000",
+      "url": "https://telosnexusbp.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804267+00:00"
+    },
+    {
+      "owner": "3dkrenderbp1",
+      "total_votes": "3113057676.94364929199218750",
+      "url": "https://telos.3dkrender.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804147+00:00"
+    },
+    {
+      "owner": "sanfrancisco",
+      "total_votes": "2684844840.59800910949707031",
+      "url": "http://bp.telossf.net",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804103+00:00"
+    },
+    {
+      "owner": "telasiachina",
+      "total_votes": "2625584739.86528730392456055",
+      "url": "https://www.telasiachina.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804054+00:00"
+    },
+    {
+      "owner": "gyftieblocks",
+      "total_votes": "2238360688.06236886978149414",
+      "url": "https://api.gyftie.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.804007+00:00"
+    },
+    {
+      "owner": "beyondbtctls",
+      "total_votes": "2228510496.01608610153198242",
+      "url": "",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "No URL registered on chain"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803999+00:00"
+    },
+    {
+      "owner": "jijiplannode",
+      "total_votes": "2083755170.18891286849975586",
+      "url": "http://jijiplan.com/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803952+00:00"
+    },
+    {
+      "owner": "eosouwallet1",
+      "total_votes": "1656144572.04736161231994629",
+      "url": "https://www.lend0x.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803898+00:00"
+    },
+    {
+      "owner": "telosafrica1",
+      "total_votes": "916495742.23401033878326416",
+      "url": "https://telosafrica.co",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803848+00:00"
+    },
+    {
+      "owner": "telgoingosbp",
+      "total_votes": "912870301.62483954429626465",
+      "url": "https://www.goingos.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803805+00:00"
+    },
+    {
+      "owner": "telosnigeria",
+      "total_votes": "696140505.50350749492645264",
+      "url": "https://eosnigeria.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803753+00:00"
+    },
+    {
+      "owner": "1teloslondon",
+      "total_votes": "559364486.09440934658050537",
+      "url": "https://www.1teloslondon.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.803693+00:00"
+    },
+    {
+      "owner": "blocksideita",
+      "total_votes": "543527947.93326807022094727",
+      "url": "https://telos.blockside.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802793+00:00"
+    },
+    {
+      "owner": "sanfranc1sco",
+      "total_votes": "504392493.50971794128417969",
+      "url": "http://bp.eossf.net",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802751+00:00"
+    },
+    {
+      "owner": "carbon12labs",
+      "total_votes": "444736050.41923666000366211",
+      "url": "https://www.carbon.money",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802708+00:00"
+    },
+    {
+      "owner": "tlosafricabp",
+      "total_votes": "292708392.27819818258285522",
+      "url": "http://telos4africa.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802670+00:00"
+    },
+    {
+      "owner": "blockchained",
+      "total_votes": "259691885.44811797142028809",
+      "url": "https://telos.blckchnd.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802627+00:00"
+    },
+    {
+      "owner": "telgoingos13",
+      "total_votes": "242496979.33428001403808594",
+      "url": "http://www.goingos.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802585+00:00"
+    },
+    {
+      "owner": "minerpoolblk",
+      "total_votes": "223690576.69686967134475708",
+      "url": "http://minerpool.rf.gd",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802528+00:00"
+    },
+    {
+      "owner": "swmarkdahlmd",
+      "total_votes": "159875544.70747485756874084",
+      "url": "https://sw.markdahl.cloud",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802463+00:00"
+    },
+    {
+      "owner": "tlsnodeonebp",
+      "total_votes": "145806166.19946292042732239",
+      "url": "https://www.nodeone.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "Mainnet chain ID not found in chains.json"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802420+00:00"
+    },
+    {
+      "owner": "telosgoooooo",
+      "total_votes": "128749098.95553652942180634",
+      "url": "https://telosgo.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802374+00:00"
+    },
+    {
+      "owner": "gqytqnjtguge",
+      "total_votes": "77485797.35251480340957642",
+      "url": "https://telosiseos.xyz",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802328+00:00"
+    },
+    {
+      "owner": "telosghanago",
+      "total_votes": "72310065.56971766054630280",
+      "url": "https://telosghana.co",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802265+00:00"
+    },
+    {
+      "owner": "teloshexagon",
+      "total_votes": "22109558.55145382881164551",
+      "url": "https://eoshexagon.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802193+00:00"
+    },
+    {
+      "owner": "gigachaintop",
+      "total_votes": "5110015.00000000000000000",
+      "url": "gigachain.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802139+00:00"
+    },
+    {
+      "owner": "zionblockbp1",
+      "total_votes": "3054882.00000044237822294",
+      "url": "https://telos.block26.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.802019+00:00"
+    },
+    {
+      "owner": "telosclearbp",
+      "total_votes": "1464543.69462826848030090",
+      "url": "https://clearbp.org",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801948+00:00"
+    },
+    {
+      "owner": "sofosnetwork",
+      "total_votes": "1424019.90920673124492168",
+      "url": "https://sofos.network",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801898+00:00"
+    },
+    {
+      "owner": "cryptoblock4",
+      "total_votes": "1000007.00000000000000000",
+      "url": "cryptoblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801845+00:00"
+    },
+    {
+      "owner": "tlsheartland",
+      "total_votes": "300000.00000000000000000",
+      "url": "https://telosheartland.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801790+00:00"
+    },
+    {
+      "owner": "telosdubaibp",
+      "total_votes": "245018.61672293668380007",
+      "url": "telosdubaibp.net",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801742+00:00"
+    },
+    {
+      "owner": "telbeststore",
+      "total_votes": "95677.27288210391998291",
+      "url": "https://www.eosstore.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801676+00:00"
+    },
+    {
+      "owner": "teldotwikibp",
+      "total_votes": "86000.00000000000000000",
+      "url": "https://eos.wiki",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801549+00:00"
+    },
+    {
+      "owner": "telstorebest",
+      "total_votes": "86000.00000000000000000",
+      "url": "https://www.eosstore.co",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801620+00:00"
+    },
+    {
+      "owner": "tlosportugal",
+      "total_votes": "20577.69686147570610046",
+      "url": "https://telosportugal.eu",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801481+00:00"
+    },
+    {
+      "owner": "astoundingly",
+      "total_votes": "7938.92626146236580098",
+      "url": "",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "No URL registered on chain"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801467+00:00"
+    },
+    {
+      "owner": "eosteaeostea",
+      "total_votes": "6452.87583084384550602",
+      "url": "https://telos.eostea.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801407+00:00"
+    },
+    {
+      "owner": "opl",
+      "total_votes": "301.29575474496959941",
+      "url": "https://oneplay.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801347+00:00"
+    },
+    {
+      "owner": "telosinfra11",
+      "total_votes": "219.12418526906839134",
+      "url": "http://www.webhostingphilippines.ph",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801279+00:00"
+    },
+    {
+      "owner": "gmhfsk4yeisk",
+      "total_votes": "2.34462878237903194",
+      "url": "",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "No URL registered on chain"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801266+00:00"
+    },
+    {
+      "owner": "anydex",
+      "total_votes": "0.00000000000000000",
+      "url": "https://anydex.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800009+00:00"
+    },
+    {
+      "owner": "bf.gm",
+      "total_votes": "0.00000000000000000",
+      "url": "https://blazingfast.org",
+      "is_active": 0,
+      "sslVerified": true,
+      "apiVerified": true,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p-telos.blazingfast.org:9876",
+      "org": {
+        "candidate_name": "BLAZINGFAST",
+        "website": "https://blazingfast.org",
+        "code_of_conduct": "https://blazingfast.org/code-of-conduct",
+        "ownership_disclosure": "https://blazingfast.org/ownership",
+        "email": "",
+        "github_user": "",
+        "branding": {
+          "logo_256": "https://blazingfast.org/logo256.png",
+          "logo_1024": "https://blazingfast.org/logo1024.png",
+          "logo_svg": "https://blazingfast.org/logo.svg"
+        },
+        "location": {
+          "name": "Falkenstein",
+          "country": "DE",
+          "latitude": 50.47788,
+          "longitude": 12.37129
+        },
+        "social": {
+          "steemit": "",
+          "github": "",
+          "twitter": "",
+          "telegram": "",
+          "medium": ""
+        }
+      },
+      "validationErrors": [
+        "Testnet SSL failed: https://telos-testnet.blazingfast.org"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800078+00:00"
+    },
+    {
+      "owner": "blockbstrdbp",
+      "total_votes": "0.00000000000000000",
+      "url": "https://bp.blockbastards.io/telos",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "bp.json at https://bp.blockbastards.io/telosbp.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800138+00:00"
+    },
+    {
+      "owner": "bpspherenode",
+      "total_votes": "0.00000000000000000",
+      "url": "https://www.bpsphere.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800286+00:00"
+    },
+    {
+      "owner": "cryptoblock1",
+      "total_votes": "0.00000000000000000",
+      "url": "cryptoblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800353+00:00"
+    },
+    {
+      "owner": "cryptoblock2",
+      "total_votes": "0.00000000000000000",
+      "url": "cryptoblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800416+00:00"
+    },
+    {
+      "owner": "cryptoblock3",
+      "total_votes": "0.00000000000000000",
+      "url": "cryptoblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800465+00:00"
+    },
+    {
+      "owner": "cryptoblocks",
+      "total_votes": "0.00000000000000000",
+      "url": "cryptoblocks.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800498+00:00"
+    },
+    {
+      "owner": "eosblocktree",
+      "total_votes": "0.00000000000000000",
+      "url": "eosblocktree.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800543+00:00"
+    },
+    {
+      "owner": "gravity12345",
+      "total_votes": "0.00000000000000000",
+      "url": "https://gravity.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800611+00:00"
+    },
+    {
+      "owner": "hyperspacebp",
+      "total_votes": "0.00000000000000000",
+      "url": "https://www.hyperspacetech.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800664+00:00"
+    },
+    {
+      "owner": "iamnotawhale",
+      "total_votes": "0.00000000000000000",
+      "url": "https://www.youtube.com/watch?v=KThlYHfIVa8",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800734+00:00"
+    },
+    {
+      "owner": "kesaritooooo",
+      "total_votes": "0.00000000000000000",
+      "url": "https://goodnoblock.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800782+00:00"
+    },
+    {
+      "owner": "poaewiurjkfd",
+      "total_votes": "0.00000000000000000",
+      "url": "101981379",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800856+00:00"
+    },
+    {
+      "owner": "protecttlos1",
+      "total_votes": "0.00000000000000000",
+      "url": "https://www.orbitalblock.com",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": true,
+      "apiVerifiedTestNet": true,
+      "p2pEndpoint": "p2p-telos-mainnet.orbitalblock.com:9876",
+      "org": {
+        "candidate_name": "OrbitalBlock",
+        "website": "https://www.orbitalblock.com",
+        "code_of_conduct": "https://www.orbitalblock.com/code-of-conduct",
+        "ownership_disclosure": "https://www.orbitalblock.com/ownership-disclosure",
+        "email": "contact@orbitalblock.com",
+        "other_resources": [],
+        "branding": {
+          "logo_256": "https://www.orbitalblock.com/images/logo_256.png",
+          "logo_1024": "https://www.orbitalblock.com/images/logo_1024.png",
+          "logo_svg": "https://www.orbitalblock.com/images/logo.svg"
+        },
+        "location": {
+          "name": "Toronto",
+          "country": "CA",
+          "latitude": 43.6562,
+          "longitude": -79.3908
+        },
+        "social": {
+          "keybase": "orbitalblock",
+          "twitter": "orbitalblockcom",
+          "telegram": "orbitalblockcom",
+          "reddit": "orbitalblockcom"
+        }
+      },
+      "validationErrors": [
+        "No ssl_endpoint found in any bp.json node"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800941+00:00"
+    },
+    {
+      "owner": "radiuslabsio",
+      "total_votes": "0.00000000000000000",
+      "url": "http://radiuslabs.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.800996+00:00"
+    },
+    {
+      "owner": "telos4africa",
+      "total_votes": "0.00000000000000000",
+      "url": "http://telos4africa.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801049+00:00"
+    },
+    {
+      "owner": "yunblocktree",
+      "total_votes": "0.00000000000000000",
+      "url": "telos.leocontreras.io",
+      "is_active": 0,
+      "sslVerified": false,
+      "apiVerified": false,
+      "sslVerifiedTestNet": false,
+      "apiVerifiedTestNet": false,
+      "p2pEndpoint": null,
+      "org": {},
+      "validationErrors": [
+        "chains.json missing or unreachable"
+      ],
+      "checkedAt": "2026-04-08T16:29:53.801161+00:00"
+    }
+  ]
+}
