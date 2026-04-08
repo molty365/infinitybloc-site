@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Telos BP Validator · infinitybloc</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --border:    #30363d;
+      --text:      #e6edf3;
+      --muted:     #8b949e;
+      --green:     #3fb950;
+      --red:       #f85149;
+      --yellow:    #d29922;
+      --blue:      #58a6ff;
+      --purple:    #bc8cff;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    header h1 { font-size: 18px; font-weight: 600; }
+    header .meta { color: var(--muted); font-size: 12px; margin-left: auto; }
+
+    .controls {
+      padding: 16px 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    input[type=search] {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 6px 12px;
+      font-size: 13px;
+      width: 220px;
+      outline: none;
+    }
+    input[type=search]:focus { border-color: var(--blue); }
+
+    .filter-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      padding: 5px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: color .15s, border-color .15s;
+    }
+    .filter-btn.active { color: var(--text); border-color: var(--blue); }
+
+    .stats {
+      display: flex;
+      gap: 24px;
+      padding: 12px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat { display: flex; flex-direction: column; }
+    .stat .value { font-size: 20px; font-weight: 600; }
+    .stat .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+    .stat .value.green { color: var(--green); }
+    .stat .value.red   { color: var(--red); }
+
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th {
+      text-align: left;
+      padding: 10px 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    th:hover { color: var(--text); }
+    th.sorted { color: var(--blue); }
+
+    td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    tr:hover td { background: var(--surface); }
+
+    .rank    { color: var(--muted); width: 40px; text-align: right; }
+    .owner   { font-weight: 600; }
+    .website { color: var(--blue); text-decoration: none; font-size: 12px; }
+    .website:hover { text-decoration: underline; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      border-radius: 99px;
+      padding: 2px 8px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .pill.pass { background: #1c3a2a; color: var(--green); }
+    .pill.fail { background: #3a1c1c; color: var(--red);   }
+    .pill.na   { background: #1e2228; color: var(--muted); }
+
+    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+    .errors {
+      max-width: 280px;
+      white-space: normal;
+      color: var(--red);
+      font-size: 11px;
+    }
+
+    .loading, .empty {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 16px 24px;
+      color: var(--muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="/images/logo-256.png" alt="infinitybloc" height="28" />
+  <h1>Telos BP Validator</h1>
+  <div class="meta" id="meta">Loading…</div>
+</header>
+
+<div class="stats" id="stats"></div>
+
+<div class="controls">
+  <input type="search" id="search" placeholder="Search producer…" oninput="render()" />
+  <button class="filter-btn active" data-filter="all"      onclick="setFilter('all',this)">All</button>
+  <button class="filter-btn"        data-filter="passing"  onclick="setFilter('passing',this)">Passing</button>
+  <button class="filter-btn"        data-filter="failing"  onclick="setFilter('failing',this)">Failing</button>
+  <button class="filter-btn"        data-filter="testnet"  onclick="setFilter('testnet',this)">Testnet ✓</button>
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="rank">#</th>
+        <th onclick="sort('owner')">Producer</th>
+        <th onclick="sort('sslVerified')">Mainnet SSL</th>
+        <th onclick="sort('apiVerified')">Mainnet API</th>
+        <th onclick="sort('sslVerifiedTestNet')">Testnet SSL</th>
+        <th onclick="sort('apiVerifiedTestNet')">Testnet API</th>
+        <th>Errors</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"><tr><td colspan="7" class="loading">Loading validation data…</td></tr></tbody>
+  </table>
+</div>
+
+<footer>
+  Results refreshed every 6 hours via GitHub Actions · Served by
+  <a href="https://infinitybloc.io">infinitybloc</a> ·
+  <a href="/validation/latest.json">Raw JSON</a>
+</footer>
+
+<script>
+  let allProducers = [];
+  let currentFilter = 'all';
+  let sortKey = null;
+  let sortAsc = true;
+
+  async function load() {
+    try {
+      const resp = await fetch('/validation/latest.json');
+      if (!resp.ok) throw new Error(resp.status);
+      const data = await resp.json();
+
+      allProducers = data.producers || [];
+
+      const d = new Date(data.generatedAt);
+      document.getElementById('meta').textContent =
+        `Updated ${d.toLocaleString()} · ${allProducers.length} producers`;
+
+      const passing    = allProducers.filter(p => p.sslVerified && p.apiVerified).length;
+      const testnetOk  = allProducers.filter(p => p.sslVerifiedTestNet && p.apiVerifiedTestNet).length;
+      const withErrors = allProducers.filter(p => p.validationErrors?.length).length;
+
+      document.getElementById('stats').innerHTML = `
+        <div class="stat"><span class="value">${allProducers.length}</span><span class="label">Total BPs</span></div>
+        <div class="stat"><span class="value green">${passing}</span><span class="label">Mainnet Passing</span></div>
+        <div class="stat"><span class="value red">${allProducers.length - passing}</span><span class="label">Mainnet Failing</span></div>
+        <div class="stat"><span class="value">${testnetOk}</span><span class="label">Testnet Passing</span></div>
+        <div class="stat"><span class="value red">${withErrors}</span><span class="label">With Errors</span></div>
+      `;
+
+      render();
+    } catch (e) {
+      document.getElementById('tbody').innerHTML =
+        `<tr><td colspan="7" class="empty">Failed to load validation data: ${e.message}</td></tr>`;
+      document.getElementById('meta').textContent = 'Error loading data';
+    }
+  }
+
+  function pill(val, naLabel) {
+    if (val === null || val === undefined) return `<span class="pill na"><span class="dot"></span>${naLabel ?? 'N/A'}</span>`;
+    return val
+      ? `<span class="pill pass"><span class="dot"></span>Pass</span>`
+      : `<span class="pill fail"><span class="dot"></span>Fail</span>`;
+  }
+
+  function setFilter(f, btn) {
+    currentFilter = f;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  }
+
+  function sort(key) {
+    if (sortKey === key) { sortAsc = !sortAsc; }
+    else { sortKey = key; sortAsc = true; }
+    document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
+    event.target.classList.add('sorted');
+    render();
+  }
+
+  function render() {
+    const q = document.getElementById('search').value.toLowerCase();
+
+    let rows = allProducers.filter(p => {
+      if (q && !p.owner.toLowerCase().includes(q)) return false;
+      if (currentFilter === 'passing') return p.sslVerified && p.apiVerified;
+      if (currentFilter === 'failing') return !p.sslVerified || !p.apiVerified;
+      if (currentFilter === 'testnet') return p.sslVerifiedTestNet && p.apiVerifiedTestNet;
+      return true;
+    });
+
+    if (sortKey) {
+      rows = [...rows].sort((a, b) => {
+        const av = a[sortKey], bv = b[sortKey];
+        const cmp = typeof av === 'boolean'
+          ? (av === bv ? 0 : av ? -1 : 1)
+          : String(av).localeCompare(String(bv));
+        return sortAsc ? cmp : -cmp;
+      });
+    }
+
+    if (!rows.length) {
+      document.getElementById('tbody').innerHTML =
+        `<tr><td colspan="7" class="empty">No producers match your filter.</td></tr>`;
+      return;
+    }
+
+    document.getElementById('tbody').innerHTML = rows.map((p, i) => {
+      const org     = p.org || {};
+      const website = (org.website || p.url || '').trim();
+      const country = org.location?.country ?? '';
+      const errors  = (p.validationErrors || []).join(' · ') || '';
+
+      // testnet: if both fields are false AND not in chains.json, show N/A
+      const hasTestnet = p.sslVerifiedTestNet || p.apiVerifiedTestNet ||
+        (p.validationErrors || []).some(e => /testnet/i.test(e));
+
+      return `<tr>
+        <td class="rank">${i + 1}</td>
+        <td>
+          <span class="owner">${p.owner}</span>
+          ${country ? `<span style="margin-left:6px;font-size:11px;color:var(--muted)">${country}</span>` : ''}
+          ${website ? `<br><a class="website" href="${website}" target="_blank" rel="noopener">${website.replace(/^https?:\/\//, '')}</a>` : ''}
+        </td>
+        <td>${pill(p.sslVerified)}</td>
+        <td>${pill(p.apiVerified)}</td>
+        <td>${hasTestnet ? pill(p.sslVerifiedTestNet) : pill(null, 'None')}</td>
+        <td>${hasTestnet ? pill(p.apiVerifiedTestNet) : pill(null, 'None')}</td>
+        <td class="errors">${errors}</td>
+      </tr>`;
+    }).join('');
+  }
+
+  load();
+</script>
+
+</body>
+</html>
