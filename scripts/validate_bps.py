@@ -165,6 +165,10 @@ async def validate_producer(
         "sslVerifiedTestNet":   False,
         "apiVerifiedTestNet":   False,
         "apiResponseMsTestNet": -1,
+        "missedBlocksPerRotation": producer.get("missed_blocks_per_rotation", 0),
+        "lifetimeMissedBlocks":    producer.get("lifetime_missed_blocks", 0),
+        "lifetimeProducedBlocks":  producer.get("lifetime_produced_blocks", 0),
+        "timesKicked":             producer.get("times_kicked", 0),
         "p2pEndpoint":          None,
         "org":                  {},
         "validationErrors":     [],
@@ -247,6 +251,10 @@ def update_history(results: list, generated_at: str) -> None:
             r["owner"]: r["apiResponseMs"]
             for r in results
             if r["apiResponseMs"] > 0
+        },
+        "missed": {
+            r["owner"]: r["missedBlocksPerRotation"]
+            for r in results
         },
     }
     history["runs"].append(snapshot)
