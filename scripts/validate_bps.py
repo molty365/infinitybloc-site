@@ -13,6 +13,7 @@ import ssl
 import sys
 import time
 from datetime import datetime, timezone
+from typing import Optional, Tuple
 
 # ── Chain constants ──────────────────────────────────────────────────────────
 TELOS_API        = "https://mainnet.telos.net"
@@ -71,7 +72,7 @@ async def get_all_producers(session: aiohttp.ClientSession) -> list:
     return producers
 
 
-async def fetch_json(session: aiohttp.ClientSession, url: str) -> dict | None:
+async def fetch_json(session: aiohttp.ClientSession, url: str) -> Optional[dict]:
     try:
         async with session.get(url, timeout=FETCH_TIMEOUT, ssl=NO_SSL) as resp:
             if resp.status == 200:
@@ -91,7 +92,7 @@ async def check_ssl(session: aiohttp.ClientSession, endpoint: str) -> bool:
         return False
 
 
-async def check_api(session: aiohttp.ClientSession, endpoint: str) -> tuple[bool, int]:
+async def check_api(session: aiohttp.ClientSession, endpoint: str) -> Tuple[bool, int]:
     url = endpoint.rstrip("/") + "/v1/chain/get_info"
     t0  = time.monotonic()
     try:
@@ -105,7 +106,7 @@ async def check_api(session: aiohttp.ClientSession, endpoint: str) -> tuple[bool
     return False, -1
 
 
-def best_endpoint(nodes: list) -> str | None:
+def best_endpoint(nodes: list) -> Optional[str]:
     for preferred in (["query"], ["producer"], ["seed"]):
         for node in nodes:
             nt    = node.get("node_type", "")
@@ -119,7 +120,7 @@ def best_endpoint(nodes: list) -> str | None:
 
 async def resolve_bp_json(
     session: aiohttp.ClientSession, base_url: str
-) -> tuple[dict | None, list, str | None]:
+) -> tuple[Optional[dict], list, Optional[str]]:
     """
     Try chains.json → mainnet entry first.
     Fall back to /bp.json directly if chains.json is missing or lacks the chain ID.
