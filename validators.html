@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Telos BP Validator · infinitybloc</title>
+  <!-- Chart.js only — no date adapter needed (we format timestamps ourselves) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -27,7 +27,6 @@
       line-height: 1.5;
     }
 
-    /* ── Header ── */
     header {
       padding: 16px 24px;
       border-bottom: 1px solid var(--border);
@@ -39,7 +38,6 @@
     header h1 { font-size: 18px; font-weight: 600; }
     .meta { color: var(--muted); font-size: 12px; margin-left: auto; }
 
-    /* ── Stats ── */
     .stats {
       display: flex;
       gap: 28px;
@@ -54,7 +52,6 @@
     .red   { color: var(--red)   !important; }
     .blue  { color: var(--blue)  !important; }
 
-    /* ── Tabs ── */
     .tabs {
       display: flex;
       border-bottom: 1px solid var(--border);
@@ -76,9 +73,8 @@
     .panel { display: none; }
     .panel.active { display: block; }
 
-    /* ── Performance chart panel ── */
+    /* ── Performance panel ── */
     .perf-panel { padding: 24px; }
-
     .perf-toolbar {
       display: flex;
       align-items: center;
@@ -86,12 +82,7 @@
       margin-bottom: 16px;
       flex-wrap: wrap;
     }
-    .perf-title {
-      font-size: 15px;
-      font-weight: 600;
-      flex: 1;
-      text-align: center;
-    }
+    .perf-title { font-size: 15px; font-weight: 600; flex: 1; text-align: center; }
     .btn {
       background: #21262d;
       border: 1px solid var(--border);
@@ -101,30 +92,25 @@
       font-size: 12px;
       font-weight: 600;
       cursor: pointer;
-      letter-spacing: .03em;
       transition: background .15s;
     }
     .btn:hover { background: #30363d; }
-    .btn.view-table { background: #1f6feb; border-color: #1f6feb; }
-    .btn.view-table:hover { background: #388bfd; }
+    .btn.primary { background: #1f6feb; border-color: #1f6feb; }
+    .btn.primary:hover { background: #388bfd; }
 
     .chart-wrap {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 20px 20px 12px;
+      padding: 20px 20px 14px;
     }
-    .chart-canvas-wrap {
-      position: relative;
-      height: 420px;
-    }
+    .chart-canvas-wrap { position: relative; height: 440px; }
 
-    /* ── Legend ── */
     .bp-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px 16px;
-      margin-top: 20px;
+      gap: 6px 18px;
+      margin-top: 18px;
       padding-top: 14px;
       border-top: 1px solid var(--border);
     }
@@ -134,45 +120,28 @@
       gap: 6px;
       cursor: pointer;
       font-size: 12px;
-      padding: 2px 0;
       user-select: none;
       transition: opacity .15s;
     }
-    .legend-item.hidden { opacity: .3; }
+    .legend-item.hidden { opacity: .28; }
     .legend-line {
       width: 22px;
       height: 3px;
       border-radius: 2px;
       flex-shrink: 0;
     }
-    .legend-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
     .legend-controls {
       display: flex;
       gap: 8px;
       margin-top: 14px;
     }
 
-    /* ── Y-axis label ── */
-    .y-label {
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      font-size: 11px;
+    .notice {
+      text-align: center;
+      padding: 60px 24px;
       color: var(--muted);
-      position: absolute;
-      left: -32px;
-      top: 50%;
-      transform: translateX(-50%) rotate(-90deg);
-      white-space: nowrap;
-    }
-    .chart-inner {
-      position: relative;
-      padding-left: 8px;
+      font-size: 13px;
+      line-height: 1.8;
     }
 
     /* ── Table panel ── */
@@ -251,7 +220,7 @@
     .latency.na     { color: var(--muted); }
     .errors { max-width: 260px; white-space: normal; color: var(--red); font-size: 11px; }
 
-    .loading, .empty { text-align: center; padding: 80px 24px; color: var(--muted); }
+    .loading, .empty { text-align: center; padding: 60px 24px; color: var(--muted); }
 
     footer {
       padding: 14px 24px; color: var(--muted); font-size: 12px;
@@ -263,7 +232,7 @@
 <body>
 
 <header>
-  <img src="/images/logo-256.png" alt="infinitybloc" height="28" />
+  <img src="/images/logo-256.png" alt="infinitybloc" height="28" onerror="this.style.display='none'" />
   <h1>Telos BP Validator</h1>
   <div class="meta" id="meta">Loading…</div>
 </header>
@@ -275,39 +244,31 @@
   <div class="tab"        onclick="showTab('table',this)">📋 Producer Table</div>
 </div>
 
-<!-- ══ Performance Chart Panel ════════════════════════════════════════════ -->
+<!-- ══ Performance Chart ═══════════════════════════════════════════════════ -->
 <div class="panel active" id="panel-perf">
   <div class="perf-panel">
-
     <div class="perf-toolbar">
-      <button class="btn view-table" onclick="showTab('table', document.querySelectorAll('.tab')[1])">
-        VIEW TABLE
-      </button>
-      <span class="perf-title" id="chartTitle">Telos Validator API Performance</span>
+      <button class="btn primary" onclick="showTab('table', document.querySelectorAll('.tab')[1])">VIEW TABLE</button>
+      <span class="perf-title">Telos Validator API Performance</span>
     </div>
 
     <div class="chart-wrap">
-      <div class="chart-inner">
+      <div id="chartArea">
         <div class="chart-canvas-wrap">
           <canvas id="perfChart"></canvas>
         </div>
+        <div class="bp-legend" id="bpLegend"></div>
+        <div class="legend-controls">
+          <button class="btn" onclick="selectAll(true)">SELECT ALL</button>
+          <button class="btn" onclick="selectAll(false)">DESELECT ALL</button>
+        </div>
       </div>
-
-      <!-- Legend -->
-      <div class="bp-legend" id="bpLegend">
-        <span style="color:var(--muted);font-size:12px">Loading…</span>
-      </div>
-
-      <div class="legend-controls">
-        <button class="btn" onclick="selectAll(true)">SELECT ALL</button>
-        <button class="btn" onclick="selectAll(false)">DESELECT ALL</button>
-      </div>
+      <div id="chartNotice" class="notice" style="display:none"></div>
     </div>
-
   </div>
 </div>
 
-<!-- ══ Table Panel ═════════════════════════════════════════════════════════ -->
+<!-- ══ Table ════════════════════════════════════════════════════════════════ -->
 <div class="panel" id="panel-table">
   <div class="controls">
     <input type="search" id="search" placeholder="Search producer…" oninput="renderTable()" />
@@ -321,13 +282,13 @@
       <thead>
         <tr>
           <th class="rank">#</th>
-          <th onclick="sort('owner')">Producer</th>
-          <th onclick="sort('sslVerified')">SSL</th>
-          <th onclick="sort('apiVerified')">API</th>
-          <th onclick="sort('apiResponseMs')">Latency</th>
-          <th onclick="sort('sslVerifiedTestNet')">Testnet SSL</th>
-          <th onclick="sort('apiVerifiedTestNet')">Testnet API</th>
-          <th onclick="sort('apiResponseMsTestNet')">Testnet ms</th>
+          <th onclick="sort('owner',this)">Producer</th>
+          <th onclick="sort('sslVerified',this)">SSL</th>
+          <th onclick="sort('apiVerified',this)">API</th>
+          <th onclick="sort('apiResponseMs',this)">Latency</th>
+          <th onclick="sort('sslVerifiedTestNet',this)">Testnet SSL</th>
+          <th onclick="sort('apiVerifiedTestNet',this)">Testnet API</th>
+          <th onclick="sort('apiResponseMsTestNet',this)">Testnet ms</th>
           <th>Errors</th>
         </tr>
       </thead>
@@ -345,23 +306,32 @@
 </footer>
 
 <script>
-/* ── Colour palette (25 distinct colours) ── */
+/* ── Palette ── */
 const PALETTE = [
   '#58a6ff','#3fb950','#f85149','#d29922','#bc8cff',
   '#ff7b72','#79c0ff','#56d364','#ffa657','#f0883e',
-  '#e3b341','#a5d6ff','#7ee787','#ff9bce','#d2a8ff',
-  '#ffa198','#b3d9ff','#85e89d','#ffb8c2','#cae8ff',
-  '#00b4d8','#06d6a0','#ef476f','#ffd166','#118ab2',
+  '#e3b341','#a5d6ff','#85e89d','#ff9bce','#d2a8ff',
+  '#ffa198','#b3d9ff','#06d6a0','#ef476f','#ffd166',
+  '#00b4d8','#cae8ff','#118ab2','#7ee787','#ffb8c2',
 ];
 
 /* ── State ── */
 let producers    = [];
-let history      = { runs: [] };
+let historyRuns  = [];
 let perfChart    = null;
 let hiddenBPs    = new Set();
 let sortKey      = null;
 let sortAsc      = true;
 let currentFilter = 'all';
+
+/* ── Helpers ── */
+function fmtTime(isoStr) {
+  const d = new Date(isoStr);
+  const mo = d.toLocaleString('en', { month: 'short', day: 'numeric' });
+  const hh = String(d.getHours()).padStart(2,'0');
+  const mm = String(d.getMinutes()).padStart(2,'0');
+  return `${mo} ${hh}:${mm}`;
+}
 
 /* ── Tabs ── */
 function showTab(name, btn) {
@@ -371,47 +341,47 @@ function showTab(name, btn) {
   document.getElementById('panel-' + name).classList.add('active');
 }
 
-/* ── Load data ── */
+/* ── Load ── */
 async function load() {
+  let latest, hist;
+
+  /* Fetch both files; let history silently fail */
   try {
-    const [latestResp, histResp] = await Promise.all([
-      fetch('/validation/latest.json'),
-      fetch('/validation/history.json').catch(() => null),
-    ]);
-
-    if (!latestResp.ok) throw new Error('HTTP ' + latestResp.status);
-    const latest = await latestResp.json();
-    producers = latest.producers || [];
-
-    if (histResp && histResp.ok) {
-      history = await histResp.json();
-    }
-
-    if (!producers.length) {
-      document.getElementById('meta').textContent = 'No data yet — first validation run pending.';
-      document.getElementById('tbody').innerHTML =
-        '<tr><td colspan="9" class="empty">Waiting for first run…</td></tr>';
-      document.getElementById('bpLegend').innerHTML =
-        '<span style="color:var(--muted)">No data yet</span>';
-      return;
-    }
-
-    const d = new Date(latest.generatedAt);
-    document.getElementById('meta').textContent =
-      `Updated ${d.toLocaleString()} · ${producers.length} active BPs`;
-
-    buildStats();
-    buildPerfChart();
-    renderTable();
-
+    const r = await fetch('/validation/latest.json');
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    latest = await r.json();
   } catch(e) {
-    document.getElementById('meta').textContent = 'Error: ' + e.message;
+    document.getElementById('meta').textContent = 'Error loading data: ' + e.message;
     document.getElementById('tbody').innerHTML =
       `<tr><td colspan="9" class="empty">Failed to load: ${e.message}</td></tr>`;
+    return;
   }
+
+  try {
+    const r = await fetch('/validation/history.json');
+    if (r.ok) hist = await r.json();
+  } catch(_) {}
+
+  producers   = latest.producers || [];
+  historyRuns = (hist && hist.runs) ? hist.runs : [];
+
+  if (!producers.length) {
+    document.getElementById('meta').textContent = 'No data yet — first validation run pending.';
+    document.getElementById('tbody').innerHTML =
+      '<tr><td colspan="9" class="empty">Waiting for first run…</td></tr>';
+    return;
+  }
+
+  const d = new Date(latest.generatedAt);
+  document.getElementById('meta').textContent =
+    `Updated ${d.toLocaleString()} · ${producers.length} active BPs`;
+
+  buildStats();
+  buildChart();   /* isolated — won't crash the rest of the page */
+  renderTable();
 }
 
-/* ── Stats bar ── */
+/* ── Stats ── */
 function buildStats() {
   const total   = producers.length;
   const passing = producers.filter(p => p.sslVerified && p.apiVerified).length;
@@ -428,156 +398,148 @@ function buildStats() {
   `;
 }
 
-/* ── Performance time-series chart ── */
-function buildPerfChart() {
-  const runs = history.runs || [];
+/* ── Chart ── */
+function buildChart() {
+  try {
+    if (historyRuns.length < 2) {
+      /* Not enough history yet — show a placeholder */
+      document.getElementById('chartArea').style.display   = 'none';
+      document.getElementById('chartNotice').style.display = 'block';
+      document.getElementById('chartNotice').innerHTML = `
+        <strong style="color:var(--text)">Chart will appear after a few runs</strong><br><br>
+        The service runs every 6 hours via GitHub Actions.<br>
+        ${historyRuns.length === 1
+          ? 'First data point recorded — one more run needed to draw lines.'
+          : 'Trigger a manual run from GitHub Actions to start collecting data.'}
+        <br><br>
+        <strong style="color:var(--text)">Current snapshot: ${producers.filter(p=>p.apiVerified).length} / ${producers.length} BPs responding</strong>
+      `;
+      return;
+    }
 
-  // Collect all BP names that appear in history or latest, sorted alphabetically
-  const bpNames = Array.from(new Set([
-    ...producers.map(p => p.owner),
-    ...runs.flatMap(r => Object.keys(r.bps || {})),
-  ])).sort();
+    /* Build labels from run timestamps */
+    const labels = historyRuns.map(r => fmtTime(r.t));
 
-  // Build Chart.js datasets
-  const datasets = bpNames.map((name, i) => {
-    const color = PALETTE[i % PALETTE.length];
+    /* Collect all BP names across all runs */
+    const bpNames = Array.from(new Set(
+      historyRuns.flatMap(r => Object.keys(r.bps || {}))
+    )).sort();
 
-    // One data point per run
-    const data = runs.map(run => ({
-      x: new Date(run.t),
-      y: run.bps[name] ?? null,
-    })).filter(pt => pt.y !== null);
+    const datasets = bpNames.map((name, i) => {
+      const color = PALETTE[i % PALETTE.length];
+      const data  = historyRuns.map(r => r.bps[name] != null ? r.bps[name] : null);
+      return {
+        label:            name,
+        data,
+        borderColor:      color,
+        backgroundColor:  color,
+        borderWidth:      1.5,
+        pointRadius:      2.5,
+        pointHoverRadius: 5,
+        tension:          0.3,
+        spanGaps:         true,
+        hidden:           hiddenBPs.has(name),
+      };
+    });
 
-    return {
-      label:           name,
-      data,
-      borderColor:     color,
-      backgroundColor: color,
-      borderWidth:     1.5,
-      pointRadius:     2.5,
-      pointHoverRadius: 5,
-      tension:         0.3,
-      spanGaps:        true,
-      hidden:          hiddenBPs.has(name),
-    };
-  });
+    const ctx = document.getElementById('perfChart').getContext('2d');
+    if (perfChart) perfChart.destroy();
 
-  const ctx = document.getElementById('perfChart').getContext('2d');
-  if (perfChart) perfChart.destroy();
-
-  perfChart = new Chart(ctx, {
-    type: 'line',
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          backgroundColor: '#1c2128',
-          borderColor: '#30363d',
-          borderWidth: 1,
-          titleColor: '#e6edf3',
-          bodyColor: '#8b949e',
-          callbacks: {
-            label: ctx => ` ${ctx.dataset.label}: ${ctx.raw.y} ms`,
+    perfChart = new Chart(ctx, {
+      type: 'line',
+      data: { labels, datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#1c2128',
+            borderColor:     '#30363d',
+            borderWidth:     1,
+            titleColor:      '#e6edf3',
+            bodyColor:       '#8b949e',
+            callbacks: {
+              label: ctx => ` ${ctx.dataset.label}: ${ctx.raw !== null ? ctx.raw + ' ms' : '—'}`,
+            },
           },
         },
+        scales: {
+          x: {
+            grid:  { color: '#21262d' },
+            ticks: {
+              color: '#8b949e',
+              maxTicksLimit: 12,
+              font: { size: 11 },
+              maxRotation: 45,
+            },
+          },
+          y: {
+            beginAtZero: true,
+            grid:  { color: '#21262d' },
+            ticks: { color: '#8b949e', font: { size: 11 } },
+            title: { display: true, text: 'milliseconds', color: '#8b949e', font: { size: 11 } },
+          },
+        },
+        animation: { duration: 400 },
       },
-      scales: {
-        x: {
-          type: 'time',
-          time: {
-            tooltipFormat: 'MMM d, HH:mm',
-            displayFormats: { hour: 'HH:mm', day: 'MMM d' },
-          },
-          grid:  { color: '#21262d' },
-          ticks: { color: '#8b949e', maxTicksLimit: 10, font: { size: 11 } },
-        },
-        y: {
-          beginAtZero: true,
-          grid:  { color: '#21262d' },
-          ticks: { color: '#8b949e', font: { size: 11 } },
-          title: {
-            display: true,
-            text: 'milliseconds',
-            color: '#8b949e',
-            font: { size: 11 },
-          },
-        },
-      },
-      animation: { duration: 400 },
-    },
-  });
+    });
 
-  // Build custom legend
-  const legend = document.getElementById('bpLegend');
-
-  if (runs.length === 0) {
-    legend.innerHTML = `
-      <div style="color:var(--muted);font-size:12px;width:100%;text-align:center;padding:8px 0">
-        Chart will populate after the first few validation runs (every 6 hours).
-        <br>Current snapshot: ${producers.filter(p=>p.apiVerified).length} BPs responding.
-      </div>`;
-    return;
-  }
-
-  legend.innerHTML = bpNames.map((name, i) => {
-    const color  = PALETTE[i % PALETTE.length];
-    const hidden = hiddenBPs.has(name);
-    return `
-      <div class="legend-item${hidden ? ' hidden' : ''}" onclick="toggleBP('${name}',this)" data-bp="${name}">
+    /* Custom legend */
+    document.getElementById('bpLegend').innerHTML = bpNames.map((name, i) => {
+      const color  = PALETTE[i % PALETTE.length];
+      const hidden = hiddenBPs.has(name);
+      return `<div class="legend-item${hidden?' hidden':''}" onclick="toggleBP('${name}',this)" data-bp="${name}">
         <span class="legend-line" style="background:${color}"></span>
-        <span class="legend-dot"  style="background:${color}"></span>
         ${name}
       </div>`;
-  }).join('');
+    }).join('');
+
+  } catch(e) {
+    document.getElementById('chartArea').style.display   = 'none';
+    document.getElementById('chartNotice').style.display = 'block';
+    document.getElementById('chartNotice').textContent   = 'Chart error: ' + e.message;
+    console.error('Chart build error:', e);
+  }
 }
 
 function toggleBP(name, el) {
-  const ds = perfChart.data.datasets.find(d => d.label === name);
+  const ds = perfChart && perfChart.data.datasets.find(d => d.label === name);
   if (!ds) return;
-  if (hiddenBPs.has(name)) {
-    hiddenBPs.delete(name);
-    ds.hidden = false;
-    el.classList.remove('hidden');
-  } else {
-    hiddenBPs.add(name);
-    ds.hidden = true;
-    el.classList.add('hidden');
-  }
+  if (hiddenBPs.has(name)) { hiddenBPs.delete(name); ds.hidden = false; el.classList.remove('hidden'); }
+  else                     { hiddenBPs.add(name);    ds.hidden = true;  el.classList.add('hidden'); }
   perfChart.update();
 }
 
 function selectAll(visible) {
+  if (!perfChart) return;
   hiddenBPs.clear();
   perfChart.data.datasets.forEach(ds => {
     ds.hidden = !visible;
     if (!visible) hiddenBPs.add(ds.label);
   });
-  document.querySelectorAll('.legend-item').forEach(el => {
-    el.classList.toggle('hidden', !visible);
-  });
+  document.querySelectorAll('.legend-item').forEach(el =>
+    el.classList.toggle('hidden', !visible));
   perfChart.update();
 }
 
 /* ── Table ── */
 function pill(val, naLabel) {
   if (val === null || val === undefined)
-    return `<span class="pill na"><span class="dot"></span>${naLabel ?? 'N/A'}</span>`;
+    return `<span class="pill na"><span class="dot"></span>${naLabel??'N/A'}</span>`;
   return val
     ? `<span class="pill pass"><span class="dot"></span>Pass</span>`
     : `<span class="pill fail"><span class="dot"></span>Fail</span>`;
 }
 function latencyBadge(ms) {
-  if (!ms || ms < 0) return `<span class="latency na">—</span>`;
+  if (ms == null || ms < 0) return `<span class="latency na">—</span>`;
   const cls = ms < 300 ? 'fast' : ms < 800 ? 'medium' : 'slow';
   return `<span class="latency ${cls}">${ms} ms</span>`;
 }
 function hasTestnet(p) {
   return p.sslVerifiedTestNet || p.apiVerifiedTestNet ||
-    (p.validationErrors || []).some(e => /testnet/i.test(e));
+    (p.validationErrors||[]).some(e => /testnet/i.test(e));
 }
 function setFilter(f, btn) {
   currentFilter = f;
@@ -585,11 +547,11 @@ function setFilter(f, btn) {
   btn.classList.add('active');
   renderTable();
 }
-function sort(key) {
+function sort(key, th) {
   sortAsc = sortKey === key ? !sortAsc : true;
   sortKey = key;
   document.querySelectorAll('th').forEach(t => t.classList.remove('sorted'));
-  event.currentTarget.classList.add('sorted');
+  th.classList.add('sorted');
   renderTable();
 }
 function renderTable() {
@@ -602,11 +564,11 @@ function renderTable() {
     return true;
   });
   if (sortKey) {
-    rows = [...rows].sort((a, b) => {
-      const av = a[sortKey], bv = b[sortKey];
-      let cmp = typeof av === 'boolean' ? (av===bv?0:av?-1:1)
-              : typeof av === 'number'  ? av - bv
-              : String(av).localeCompare(String(bv));
+    rows = [...rows].sort((a,b) => {
+      const av=a[sortKey], bv=b[sortKey];
+      const cmp = typeof av==='boolean' ? (av===bv?0:av?-1:1)
+                : typeof av==='number'  ? av-bv
+                : String(av).localeCompare(String(bv));
       return sortAsc ? cmp : -cmp;
     });
   }
@@ -615,25 +577,25 @@ function renderTable() {
       '<tr><td colspan="9" class="empty">No producers match.</td></tr>';
     return;
   }
-  document.getElementById('tbody').innerHTML = rows.map((p, i) => {
-    const org  = p.org || {};
-    const site = (org.website || p.url || '').trim();
-    const cc   = org.location?.country ?? '';
-    const errs = (p.validationErrors || []).join(' · ');
+  document.getElementById('tbody').innerHTML = rows.map((p,i) => {
+    const org  = p.org||{};
+    const site = (org.website||p.url||'').trim();
+    const cc   = org.location?.country??'';
+    const errs = (p.validationErrors||[]).join(' · ');
     const ht   = hasTestnet(p);
     return `<tr>
       <td class="rank">${i+1}</td>
       <td>
         <span class="owner">${p.owner}</span>
-        ${cc ? `<span style="margin-left:6px;font-size:11px;color:var(--muted)">${cc}</span>` : ''}
-        ${site ? `<br><a class="site" href="${site}" target="_blank" rel="noopener">${site.replace(/^https?:\/\//,'')}</a>` : ''}
+        ${cc?`<span style="margin-left:6px;font-size:11px;color:var(--muted)">${cc}</span>`:''}
+        ${site?`<br><a class="site" href="${site}" target="_blank" rel="noopener">${site.replace(/^https?:\/\//,'')}</a>`:''}
       </td>
       <td>${pill(p.sslVerified)}</td>
       <td>${pill(p.apiVerified)}</td>
       <td>${latencyBadge(p.apiResponseMs)}</td>
-      <td>${ht ? pill(p.sslVerifiedTestNet) : pill(null,'None')}</td>
-      <td>${ht ? pill(p.apiVerifiedTestNet) : pill(null,'None')}</td>
-      <td>${ht && p.apiVerifiedTestNet ? latencyBadge(p.apiResponseMsTestNet) : '<span class="latency na">—</span>'}</td>
+      <td>${ht?pill(p.sslVerifiedTestNet):pill(null,'None')}</td>
+      <td>${ht?pill(p.apiVerifiedTestNet):pill(null,'None')}</td>
+      <td>${ht&&p.apiVerifiedTestNet?latencyBadge(p.apiResponseMsTestNet):'<span class="latency na">—</span>'}</td>
       <td class="errors">${errs}</td>
     </tr>`;
   }).join('');
