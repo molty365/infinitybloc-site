@@ -35,3 +35,10 @@ jobs:
           git add validation/latest.json validation/history.json
           git diff --staged --quiet || git commit -m "chore: update BP validation results [skip ci]"
           git push
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name infinitybloc-site --branch main --commit-dirty=true
