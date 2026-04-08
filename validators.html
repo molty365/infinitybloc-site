@@ -276,12 +276,15 @@
     <button class="filter-btn"        onclick="setFilter('passing',this)">Passing</button>
     <button class="filter-btn"        onclick="setFilter('failing',this)">Failing</button>
     <button class="filter-btn"        onclick="setFilter('testnet',this)">Testnet ✓</button>
+    <button class="filter-btn"        onclick="setFilter('active',this)">Active ●</button>
+    <button class="filter-btn"        onclick="setFilter('standby',this)">Standby ○</button>
   </div>
   <div class="table-wrap">
     <table>
       <thead>
         <tr>
           <th class="rank">#</th>
+          <th onclick="sort('scheduleType',this)">Type</th>
           <th onclick="sort('owner',this)">Producer</th>
           <th onclick="sort('sslVerified',this)">SSL</th>
           <th onclick="sort('apiVerified',this)">API</th>
@@ -293,7 +296,7 @@
         </tr>
       </thead>
       <tbody id="tbody">
-        <tr><td colspan="9" class="loading">Loading…</td></tr>
+        <tr><td colspan="10" class="loading">Loading…</td></tr>
       </tbody>
     </table>
   </div>
@@ -390,7 +393,7 @@ function buildStats() {
   const avgMs   = msArr.length ? Math.round(msArr.reduce((a,b)=>a+b,0)/msArr.length) : null;
 
   document.getElementById('stats').innerHTML = `
-    <div class="stat"><span class="value">${total}</span><span class="label">Active BPs</span></div>
+    <div class="stat"><span class="value">${total}</span><span class="label">Registered BPs</span></div>
     <div class="stat"><span class="value green">${passing}</span><span class="label">Mainnet Passing</span></div>
     <div class="stat"><span class="value red">${total - passing}</span><span class="label">Mainnet Failing</span></div>
     <div class="stat"><span class="value">${tnOk}</span><span class="label">Testnet Passing</span></div>
@@ -560,7 +563,9 @@ function renderTable() {
     if (q && !p.owner.toLowerCase().includes(q)) return false;
     if (currentFilter === 'passing') return  p.sslVerified && p.apiVerified;
     if (currentFilter === 'failing') return !p.sslVerified || !p.apiVerified;
-    if (currentFilter === 'testnet') return  p.sslVerifiedTestNet && p.apiVerifiedTestNet;
+    if (currentFilter === 'testnet')  return  p.sslVerifiedTestNet && p.apiVerifiedTestNet;
+    if (currentFilter === 'active')   return  p.scheduleType === 'active';
+    if (currentFilter === 'standby')  return  p.scheduleType === 'standby';
     return true;
   });
   if (sortKey) {
@@ -574,7 +579,7 @@ function renderTable() {
   }
   if (!rows.length) {
     document.getElementById('tbody').innerHTML =
-      '<tr><td colspan="9" class="empty">No producers match.</td></tr>';
+      '<tr><td colspan="10" class="empty">No producers match.</td></tr>';
     return;
   }
   document.getElementById('tbody').innerHTML = rows.map((p,i) => {
@@ -583,8 +588,12 @@ function renderTable() {
     const cc   = org.location?.country??'';
     const errs = (p.validationErrors||[]).join(' · ');
     const ht   = hasTestnet(p);
+    const typeBadge = p.scheduleType === 'active'
+      ? '<span style="display:inline-block;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:600;background:#1c3a2a;color:#3fb950">ACTIVE</span>'
+      : '<span style="display:inline-block;padding:1px 7px;border-radius:99px;font-size:10px;font-weight:600;background:#21262d;color:#8b949e">STANDBY</span>';
     return `<tr>
       <td class="rank">${i+1}</td>
+      <td>${typeBadge}</td>
       <td>
         <span class="owner">${p.owner}</span>
         ${cc?`<span style="margin-left:6px;font-size:11px;color:var(--muted)">${cc}</span>`:''}

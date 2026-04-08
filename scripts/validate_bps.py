@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
 Telos BP Validation Service
-Only validates BPs currently in the active producer schedule.
-Outputs latest.json and maintains a rolling history.json.
+Validates all is_active=1 BPs (active schedule + standbys).
+Tags each BP as 'active' or 'standby'. Outputs latest.json and history.json.
 """
 
 import asyncio
@@ -32,15 +32,14 @@ MAX_HISTORY  = 56   # ~14 days at 6-hour intervals
 # ────────────────────────────────────────────────────────────────────────────
 
 async def get_active_schedule(session: aiohttp.ClientSession) -> set:
-    """Return the set of account names in the current active producer schedule."""
+    """Return the set of account names currently producing blocks."""
     try:
         async with session.get(
             f"{TELOS_API}/v1/chain/get_producer_schedule",
             timeout=FETCH_TIMEOUT, ssl=NO_SSL,
         ) as resp:
             data = await resp.json(content_type=None)
-        active = data.get("active", {}) or {}
-        producers = active.get("producers", [])
+        producers = (data.get("active") or {}).get("producers", [])
         return {p["producer_name"] for p in producers}
     except Exception as e:
         print(f"[ERROR] get_producer_schedule: {e}", file=sys.stderr)
@@ -48,7 +47,7 @@ async def get_active_schedule(session: aiohttp.ClientSession) -> set:
 
 
 async def get_all_producers(session: aiohttp.ClientSession) -> list:
-    """Page through get_producers to get registration info for all BPs."""
+    """Fetch all registered BPs, return only is_active=1 ones."""
     producers, lower_bound = [], ""
     while True:
         try:
@@ -69,7 +68,7 @@ async def get_all_producers(session: aiohttp.ClientSession) -> list:
             lower_bound = rows[-1]["owner"]
         else:
             break
-    return producers
+    return [p for p in producers if p.get("is_active") == 1]
 
 
 async def fetch_json(session: aiohttp.ClientSession, url: str) -> Optional[dict]:
@@ -120,12 +119,7 @@ def best_endpoint(nodes: list) -> Optional[str]:
 
 async def resolve_bp_json(
     session: aiohttp.ClientSession, base_url: str
-) -> tuple[Optional[dict], list, Optional[str]]:
-    """
-    Try chains.json → mainnet entry first.
-    Fall back to /bp.json directly if chains.json is missing or lacks the chain ID.
-    Returns (bp_json, errors, testnet_path).
-    """
+) -> Tuple[Optional[dict], list, Optional[str]]:
     errors = []
 
     chains_data = await fetch_json(session, f"{base_url}/chains.json")
@@ -151,12 +145,17 @@ async def resolve_bp_json(
     return None, errors, None
 
 
-async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> dict:
+async def validate_producer(
+    session: aiohttp.ClientSession,
+    producer: dict,
+    active_names: set,
+) -> dict:
     owner    = producer["owner"]
     base_url = producer.get("url", "").strip().rstrip("/")
 
     result = {
         "owner":                owner,
+        "scheduleType":         "active" if owner in active_names else "standby",
         "total_votes":          producer.get("total_votes", "0"),
         "url":                  base_url,
         "is_active":            producer.get("is_active", 0),
@@ -197,7 +196,7 @@ async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> d
 
     ssl_ep = best_endpoint(nodes)
     if ssl_ep:
-        (ssl_ok, (api_ok, api_ms)) = await asyncio.gather(
+        ssl_ok, (api_ok, api_ms) = await asyncio.gather(
             check_ssl(session, ssl_ep),
             check_api(session, ssl_ep),
         )
@@ -216,7 +215,7 @@ async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> d
         if testnet_json:
             testnet_ep = best_endpoint(testnet_json.get("nodes", []))
             if testnet_ep:
-                (ssl_ok, (api_ok, api_ms)) = await asyncio.gather(
+                ssl_ok, (api_ok, api_ms) = await asyncio.gather(
                     check_ssl(session, testnet_ep),
                     check_api(session, testnet_ep),
                 )
@@ -260,26 +259,22 @@ def update_history(results: list, generated_at: str) -> None:
 
 
 async def main():
-    connector = aiohttp.TCPConnector(limit=25, ssl=False)
+    connector = aiohttp.TCPConnector(limit=30, ssl=False)
     async with aiohttp.ClientSession(connector=connector) as session:
-        # Fetch active schedule and full producer list concurrently
-        print("Fetching producer schedule and list…", file=sys.stderr)
+        print("Fetching active schedule and producer list…", file=sys.stderr)
         schedule_task  = asyncio.create_task(get_active_schedule(session))
         producers_task = asyncio.create_task(get_all_producers(session))
-        active_names, all_producers = await asyncio.gather(schedule_task, producers_task)
+        active_names, all_active = await asyncio.gather(schedule_task, producers_task)
 
-    if not active_names:
-        print("[WARN] Could not fetch active schedule — validating all BPs.", file=sys.stderr)
-        scheduled = all_producers
-    else:
-        scheduled = [p for p in all_producers if p["owner"] in active_names]
-        print(f"Active schedule: {len(active_names)} BPs | matched: {len(scheduled)}", file=sys.stderr)
+    print(f"Active schedule: {len(active_names)} | Total is_active=1: {len(all_active)}", file=sys.stderr)
 
-    connector = aiohttp.TCPConnector(limit=25, ssl=False)
+    connector = aiohttp.TCPConnector(limit=30, ssl=False)
     async with aiohttp.ClientSession(connector=connector) as session:
-        results = await asyncio.gather(*[validate_producer(session, p) for p in scheduled])
+        results = await asyncio.gather(
+            *[validate_producer(session, p, active_names) for p in all_active]
+        )
 
-    passing = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
+    passing  = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
     print(f"Done. {passing}/{len(results)} passed mainnet checks.", file=sys.stderr)
 
     generated_at = datetime.now(timezone.utc).isoformat()
