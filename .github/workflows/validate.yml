@@ -23,9 +23,11 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install aiohttp
+        run: pip install aiohttp pyntelope requests
 
       - name: Run validation
+        env:
+          TLOSMECHANIC_KEY: ${{ secrets.TLOSMECHANIC_KEY }}
         run: python scripts/validate_bps.py > validation/latest.json
 
       - name: Commit results

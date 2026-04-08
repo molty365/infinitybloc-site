@@ -253,6 +253,7 @@
       <div style="display:flex;gap:6px">
         <button class="btn active-mode" id="btnApi"     onclick="setChartMode('api')"    style="background:#1f6feb;border-color:#1f6feb">API Latency</button>
         <button class="btn"             id="btnMissed"  onclick="setChartMode('missed')">Missed Blocks</button>
+        <button class="btn"             id="btnCpu"     onclick="setChartMode('cpu')">CPU Time (µs)</button>
       </div>
     </div>
 
@@ -410,10 +411,13 @@ let chartMode = 'api';   // 'api' | 'missed'
 
 function setChartMode(mode) {
   chartMode = mode;
-  document.getElementById('btnApi').style.background    = mode === 'api'    ? '#1f6feb' : '#21262d';
-  document.getElementById('btnApi').style.borderColor   = mode === 'api'    ? '#1f6feb' : '#30363d';
-  document.getElementById('btnMissed').style.background = mode === 'missed' ? '#1f6feb' : '#21262d';
-  document.getElementById('btnMissed').style.borderColor= mode === 'missed' ? '#1f6feb' : '#30363d';
+  ['btnApi','btnMissed','btnCpu'].forEach(id => {
+    document.getElementById(id).style.background  = '#21262d';
+    document.getElementById(id).style.borderColor = '#30363d';
+  });
+  const activeBtn = mode === 'api' ? 'btnApi' : mode === 'missed' ? 'btnMissed' : 'btnCpu';
+  document.getElementById(activeBtn).style.background  = '#1f6feb';
+  document.getElementById(activeBtn).style.borderColor = '#1f6feb';
   document.getElementById('chartTitle').textContent = mode === 'api'
     ? 'Telos Validator API Performance'
     : 'Missed Blocks per Rotation';
@@ -423,7 +427,8 @@ function setChartMode(mode) {
 /* ── Chart ── */
 function buildChart() {
   try {
-    if (historyRuns.length < 2) {
+    const cpuRuns = historyRuns.filter(r => r.cpu && Object.keys(r.cpu).length > 0);
+    if (historyRuns.length < 2 || (chartMode === 'cpu' && cpuRuns.length < 1)) {
       /* Not enough history yet — show a placeholder */
       document.getElementById('chartArea').style.display   = 'none';
       document.getElementById('chartNotice').style.display = 'block';
@@ -442,28 +447,35 @@ function buildChart() {
     /* Build labels from run timestamps */
     const labels = historyRuns.map(r => fmtTime(r.t));
 
-    /* Collect all BP names across all runs */
-    const bpNames = Array.from(new Set(
-      historyRuns.flatMap(r => Object.keys(r.bps || {}))
-    )).sort();
-
+    /* Collect all BP names across all runs for the active mode */
     const isMissed = chartMode === 'missed';
+    const isCpu    = chartMode === 'cpu';
+
+    const bpNames = Array.from(new Set(
+      historyRuns.flatMap(r => {
+        if (isCpu)    return Object.keys(r.cpu    || {});
+        if (isMissed) return Object.keys(r.missed || {});
+        return Object.keys(r.bps || {});
+      })
+    )).sort();
 
     const datasets = bpNames.map((name, i) => {
       const color = PALETTE[i % PALETTE.length];
-      const data  = isMissed
-        ? historyRuns.map(r => r.missed && r.missed[name] != null ? r.missed[name] : null)
-        : historyRuns.map(r => r.bps[name] != null ? r.bps[name] : null);
+      const data  = isCpu
+        ? historyRuns.map(r => (r.cpu && r.cpu[name] != null) ? r.cpu[name] : null)
+        : isMissed
+        ? historyRuns.map(r => (r.missed && r.missed[name] != null) ? r.missed[name] : null)
+        : historyRuns.map(r => (r.bps && r.bps[name] != null) ? r.bps[name] : null);
       return {
         label:            name,
         data,
         borderColor:      color,
         backgroundColor:  color,
         borderWidth:      1.5,
-        pointRadius:      2.5,
-        pointHoverRadius: 5,
+        pointRadius:      isCpu ? 5 : 2.5,
+        pointHoverRadius: 7,
         tension:          0.3,
-        spanGaps:         true,
+        spanGaps:         !isCpu,
         hidden:           hiddenBPs.has(name),
       };
     });
@@ -487,7 +499,12 @@ function buildChart() {
             titleColor:      '#e6edf3',
             bodyColor:       '#8b949e',
             callbacks: {
-              label: ctx => ` ${ctx.dataset.label}: ${ctx.raw !== null ? ctx.raw + (chartMode === 'api' ? ' ms' : ' missed') : '—'}`,
+              label: ctx => {
+                const val = ctx.raw;
+                if (val === null) return null;
+                const unit = chartMode === 'api' ? ' ms' : chartMode === 'missed' ? ' missed' : ' µs';
+                return ` ${ctx.dataset.label}: ${val}${unit}`;
+              },
             },
           },
         },
@@ -505,7 +522,7 @@ function buildChart() {
             beginAtZero: true,
             grid:  { color: '#21262d' },
             ticks: { color: '#8b949e', font: { size: 11 } },
-            title: { display: true, text: chartMode === 'api' ? 'milliseconds' : 'blocks missed', color: '#8b949e', font: { size: 11 } },
+            title: { display: true, text: chartMode === 'api' ? 'milliseconds' : chartMode === 'missed' ? 'blocks missed' : 'microseconds (µs)', color: '#8b949e', font: { size: 11 } },
           },
         },
         animation: { duration: 400 },

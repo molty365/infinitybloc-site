@@ -3,6 +3,7 @@
 Telos BP Validation Service
 Validates all is_active=1 BPs (active schedule + standbys).
 Tags each BP as 'active' or 'standby'. Outputs latest.json and history.json.
+Pushes a benchmark transaction each run to measure real CPU execution time per BP.
 """
 
 import asyncio
@@ -237,7 +238,68 @@ async def validate_producer(
     return result
 
 
-def update_history(results: list, generated_at: str) -> None:
+def push_benchmark_tx() -> Tuple[Optional[str], Optional[int]]:
+    """
+    Push a small transfer from tlosmechanic -> eosio.rex as a benchmark.
+    Returns (producer_name, cpu_usage_us) for the block that included it,
+    or (None, None) if the key is not set or the transaction fails.
+    """
+    key = os.environ.get("TLOSMECHANIC_KEY", "").strip()
+    if not key:
+        print("[Benchmark] TLOSMECHANIC_KEY not set — skipping", file=sys.stderr)
+        return None, None
+
+    try:
+        import pyntelope
+        import requests as req
+
+        net = pyntelope.TelosMainnet()
+        data = [
+            pyntelope.Data(name="from",     value=pyntelope.types.Name("tlosmechanic")),
+            pyntelope.Data(name="to",       value=pyntelope.types.Name("eosio.rex")),
+            pyntelope.Data(name="quantity", value=pyntelope.types.Asset("0.0001 TLOS")),
+            pyntelope.Data(name="memo",     value=pyntelope.types.String("infinitybloc benchmark")),
+        ]
+        auth   = pyntelope.Authorization(actor="tlosmechanic", permission="active")
+        action = pyntelope.Action(
+            account="eosio.token", name="transfer",
+            data=data, authorization=[auth]
+        )
+        trx    = pyntelope.Transaction(actions=[action])
+        linked = trx.link(net=net)
+        signed = linked.sign(key=key)
+        resp   = signed.send()
+
+        processed = resp.get("processed", {})
+        block_num  = processed.get("block_num")
+        cpu_us     = processed.get("receipt", {}).get("cpu_usage_us")
+
+        if not block_num or not cpu_us:
+            print(f"[Benchmark] Unexpected response: {resp}", file=sys.stderr)
+            return None, None
+
+        # Look up which BP produced this block
+        r = req.post(
+            f"{TELOS_API}/v1/chain/get_block",
+            json={"block_num_or_id": block_num},
+            timeout=10,
+        )
+        producer = r.json().get("producer")
+
+        print(f"[Benchmark] block={block_num} producer={producer} cpu={cpu_us}µs",
+              file=sys.stderr)
+        return producer, cpu_us
+
+    except Exception as exc:
+        print(f"[Benchmark] Failed: {exc}", file=sys.stderr)
+        return None, None
+
+
+def update_history(
+    results: list,
+    generated_at: str,
+    cpu_data: Tuple[Optional[str], Optional[int]] = (None, None),
+) -> None:
     history_path = os.path.normpath(HISTORY_PATH)
     try:
         with open(history_path) as f:
@@ -246,7 +308,7 @@ def update_history(results: list, generated_at: str) -> None:
         history = {"runs": []}
 
     snapshot = {
-        "t":   generated_at,
+        "t": generated_at,
         "bps": {
             r["owner"]: r["apiResponseMs"]
             for r in results
@@ -257,6 +319,11 @@ def update_history(results: list, generated_at: str) -> None:
             for r in results
         },
     }
+
+    producer, cpu_us = cpu_data
+    if producer and cpu_us:
+        snapshot["cpu"] = {producer: cpu_us}
+
     history["runs"].append(snapshot)
     history["runs"] = history["runs"][-MAX_HISTORY:]
 
@@ -274,7 +341,8 @@ async def main():
         producers_task = asyncio.create_task(get_all_producers(session))
         active_names, all_active = await asyncio.gather(schedule_task, producers_task)
 
-    print(f"Active schedule: {len(active_names)} | Total is_active=1: {len(all_active)}", file=sys.stderr)
+    print(f"Active schedule: {len(active_names)} | Total is_active=1: {len(all_active)}",
+          file=sys.stderr)
 
     connector = aiohttp.TCPConnector(limit=30, ssl=False)
     async with aiohttp.ClientSession(connector=connector) as session:
@@ -282,8 +350,11 @@ async def main():
             *[validate_producer(session, p, active_names) for p in all_active]
         )
 
-    passing  = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
+    passing = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
     print(f"Done. {passing}/{len(results)} passed mainnet checks.", file=sys.stderr)
+
+    # Push benchmark transaction (requires TLOSMECHANIC_KEY env var)
+    cpu_data = push_benchmark_tx()
 
     generated_at = datetime.now(timezone.utc).isoformat()
     output = {
@@ -293,7 +364,7 @@ async def main():
     }
 
     print(json.dumps(output, indent=2))
-    update_history(list(results), generated_at)
+    update_history(list(results), generated_at, cpu_data)
 
 
 if __name__ == "__main__":
