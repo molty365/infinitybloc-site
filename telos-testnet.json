@@ -26,7 +26,7 @@
   "nodes": [
     {
       "location": {
-        "name": "bp-telos",
+        "name": "bp-telos-testnet",
         "country": "US",
         "latitude": 25.7617,
         "longitude": -80.1918
@@ -35,14 +35,14 @@
     },
     {
       "location": {
-        "name": "api-telos",
+        "name": "api-telos-testnet",
         "country": "US",
         "latitude": 25.7617,
         "longitude": -80.1918
       },
       "node_type": "query",
-      "api_endpoint": "http://telos-mainnet.infinitybloc.io",
-      "ssl_endpoint": "https://telos-mainnet.infinitybloc.io",
+      "api_endpoint": "http://telos-testnet.infinitybloc.io",
+      "ssl_endpoint": "https://telos-testnet.infinitybloc.io",
       "features": [
         "chain-api",
         "account-query"
@@ -50,13 +50,13 @@
     },
     {
       "location": {
-        "name": "seed-telos",
+        "name": "seed-telos-testnet",
         "country": "US",
         "latitude": 25.7617,
         "longitude": -80.1918
       },
       "node_type": "seed",
-      "p2p_endpoint": "peer-telos-mainnet.infinitybloc.io:9876"
+      "p2p_endpoint": "peer-telos-testnet.infinitybloc.io:9877"
     }
   ]
 }

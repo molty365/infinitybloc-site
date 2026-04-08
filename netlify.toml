@@ -18,6 +18,11 @@
   [headers.values]
     Access-Control-Allow-Origin = "*"
 
+[[headers]]
+  for = "/telos-testnet.json"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+
 [[redirects]]
   from = "/team"
   to = "/team.html"
