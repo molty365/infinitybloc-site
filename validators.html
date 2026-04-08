@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Telos BP Validator · infinitybloc</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-date-fns/3.0.0/chartjs-adapter-date-fns.bundle.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg:      #0d1117;
       --surface: #161b22;
@@ -19,7 +19,6 @@
       --yellow:  #d29922;
       --blue:    #58a6ff;
     }
-
     body {
       background: var(--bg);
       color: var(--text);
@@ -28,9 +27,9 @@
       line-height: 1.5;
     }
 
-    /* ── Header ──────────────────────────────────────────── */
+    /* ── Header ── */
     header {
-      padding: 18px 24px;
+      padding: 16px 24px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
@@ -40,26 +39,24 @@
     header h1 { font-size: 18px; font-weight: 600; }
     .meta { color: var(--muted); font-size: 12px; margin-left: auto; }
 
-    /* ── Stat bar ─────────────────────────────────────────── */
+    /* ── Stats ── */
     .stats {
       display: flex;
       gap: 28px;
-      padding: 14px 24px;
+      padding: 12px 24px;
       background: var(--surface);
       border-bottom: 1px solid var(--border);
       flex-wrap: wrap;
     }
-    .stat { display: flex; flex-direction: column; }
-    .stat .value { font-size: 22px; font-weight: 600; }
+    .stat .value { font-size: 20px; font-weight: 600; }
     .stat .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
     .green { color: var(--green) !important; }
     .red   { color: var(--red)   !important; }
     .blue  { color: var(--blue)  !important; }
 
-    /* ── Tab nav ──────────────────────────────────────────── */
+    /* ── Tabs ── */
     .tabs {
       display: flex;
-      gap: 0;
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
       background: var(--surface);
@@ -71,68 +68,116 @@
       cursor: pointer;
       border-bottom: 2px solid transparent;
       margin-bottom: -1px;
-      transition: color .15s;
       user-select: none;
     }
     .tab:hover { color: var(--text); }
     .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
 
-    /* ── Panels ───────────────────────────────────────────── */
     .panel { display: none; }
     .panel.active { display: block; }
 
-    /* ── Charts panel ─────────────────────────────────────── */
-    .charts-grid {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 20px;
-      padding: 24px;
-    }
-    @media (max-width: 820px) { .charts-grid { grid-template-columns: 1fr; } }
+    /* ── Performance chart panel ── */
+    .perf-panel { padding: 24px; }
 
-    .chart-card {
+    .perf-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .perf-title {
+      font-size: 15px;
+      font-weight: 600;
+      flex: 1;
+      text-align: center;
+    }
+    .btn {
+      background: #21262d;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: .03em;
+      transition: background .15s;
+    }
+    .btn:hover { background: #30363d; }
+    .btn.view-table { background: #1f6feb; border-color: #1f6feb; }
+    .btn.view-table:hover { background: #388bfd; }
+
+    .chart-wrap {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 20px;
+      padding: 20px 20px 12px;
     }
-    .chart-card h3 {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      margin-bottom: 16px;
+    .chart-canvas-wrap {
+      position: relative;
+      height: 420px;
     }
-    .donut-wrap {
-      max-width: 240px;
-      margin: 0 auto;
-    }
-    .legend {
+
+    /* ── Legend ── */
+    .bp-legend {
       display: flex;
-      flex-direction: column;
-      gap: 8px;
+      flex-wrap: wrap;
+      gap: 6px 16px;
       margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
     }
     .legend-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      padding: 2px 0;
+      user-select: none;
+      transition: opacity .15s;
+    }
+    .legend-item.hidden { opacity: .3; }
+    .legend-line {
+      width: 22px;
+      height: 3px;
+      border-radius: 2px;
+      flex-shrink: 0;
     }
     .legend-dot {
-      width: 10px; height: 10px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       flex-shrink: 0;
     }
-    .legend-val { margin-left: auto; font-weight: 600; }
 
-    /* bar chart needs a fixed height */
-    .bar-wrap { position: relative; height: 340px; }
+    .legend-controls {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
 
-    /* ── Table panel controls ─────────────────────────────── */
+    /* ── Y-axis label ── */
+    .y-label {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 11px;
+      color: var(--muted);
+      position: absolute;
+      left: -32px;
+      top: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+      white-space: nowrap;
+    }
+    .chart-inner {
+      position: relative;
+      padding-left: 8px;
+    }
+
+    /* ── Table panel ── */
     .controls {
-      padding: 14px 24px;
+      padding: 12px 24px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -158,11 +203,9 @@
       padding: 5px 12px;
       font-size: 12px;
       cursor: pointer;
-      transition: color .15s, border-color .15s;
     }
     .filter-btn.active { color: var(--text); border-color: var(--blue); }
 
-    /* ── Table ────────────────────────────────────────────── */
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; }
     th {
@@ -186,47 +229,32 @@
       white-space: nowrap;
     }
     tr:hover td { background: var(--surface); }
-
     .rank  { color: var(--muted); width: 36px; text-align: right; }
     .owner { font-weight: 600; }
     .site  { color: var(--blue); text-decoration: none; font-size: 12px; }
     .site:hover { text-decoration: underline; }
 
     .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      border-radius: 99px;
-      padding: 2px 8px;
-      font-size: 11px;
-      font-weight: 600;
+      display: inline-flex; align-items: center; gap: 4px;
+      border-radius: 99px; padding: 2px 8px;
+      font-size: 11px; font-weight: 600;
     }
     .pill.pass { background: #1c3a2a; color: var(--green); }
-    .pill.fail { background: #3a1c1c; color: var(--red);   }
+    .pill.fail { background: #3a1c1c; color: var(--red); }
     .pill.na   { background: #1e2228; color: var(--muted); }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-    .latency {
-      font-size: 12px;
-      font-variant-numeric: tabular-nums;
-    }
+    .latency { font-size: 12px; font-variant-numeric: tabular-nums; }
     .latency.fast   { color: var(--green); }
     .latency.medium { color: var(--yellow); }
     .latency.slow   { color: var(--red); }
     .latency.na     { color: var(--muted); }
-
     .errors { max-width: 260px; white-space: normal; color: var(--red); font-size: 11px; }
 
-    .loading, .empty {
-      text-align: center;
-      padding: 80px 24px;
-      color: var(--muted);
-    }
+    .loading, .empty { text-align: center; padding: 80px 24px; color: var(--muted); }
 
     footer {
-      padding: 14px 24px;
-      color: var(--muted);
-      font-size: 12px;
+      padding: 14px 24px; color: var(--muted); font-size: 12px;
       border-top: 1px solid var(--border);
     }
     footer a { color: var(--blue); text-decoration: none; }
@@ -242,37 +270,44 @@
 
 <div class="stats" id="stats"></div>
 
-<!-- Tab nav -->
 <div class="tabs">
-  <div class="tab active" onclick="showTab('charts',this)">📊 Performance Charts</div>
+  <div class="tab active" onclick="showTab('perf',this)">📈 CPU Performance</div>
   <div class="tab"        onclick="showTab('table',this)">📋 Producer Table</div>
 </div>
 
-<!-- ── Charts panel ──────────────────────────────────────── -->
-<div class="panel active" id="panel-charts">
-  <div class="charts-grid">
+<!-- ══ Performance Chart Panel ════════════════════════════════════════════ -->
+<div class="panel active" id="panel-perf">
+  <div class="perf-panel">
 
-    <!-- Donut: pass/fail breakdown -->
-    <div class="chart-card">
-      <h3>Mainnet Health</h3>
-      <div class="donut-wrap">
-        <canvas id="donutChart"></canvas>
-      </div>
-      <div class="legend" id="donutLegend"></div>
+    <div class="perf-toolbar">
+      <button class="btn view-table" onclick="showTab('table', document.querySelectorAll('.tab')[1])">
+        VIEW TABLE
+      </button>
+      <span class="perf-title" id="chartTitle">Telos Validator API Performance</span>
     </div>
 
-    <!-- Bar: API response times -->
-    <div class="chart-card">
-      <h3>API Response Times (ms) — passing BPs only</h3>
-      <div class="bar-wrap">
-        <canvas id="barChart"></canvas>
+    <div class="chart-wrap">
+      <div class="chart-inner">
+        <div class="chart-canvas-wrap">
+          <canvas id="perfChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="bp-legend" id="bpLegend">
+        <span style="color:var(--muted);font-size:12px">Loading…</span>
+      </div>
+
+      <div class="legend-controls">
+        <button class="btn" onclick="selectAll(true)">SELECT ALL</button>
+        <button class="btn" onclick="selectAll(false)">DESELECT ALL</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ── Table panel ───────────────────────────────────────── -->
+<!-- ══ Table Panel ═════════════════════════════════════════════════════════ -->
 <div class="panel" id="panel-table">
   <div class="controls">
     <input type="search" id="search" placeholder="Search producer…" oninput="renderTable()" />
@@ -292,7 +327,7 @@
           <th onclick="sort('apiResponseMs')">Latency</th>
           <th onclick="sort('sslVerifiedTestNet')">Testnet SSL</th>
           <th onclick="sort('apiVerifiedTestNet')">Testnet API</th>
-          <th onclick="sort('apiResponseMsTestNet')">Testnet Latency</th>
+          <th onclick="sort('apiResponseMsTestNet')">Testnet ms</th>
           <th>Errors</th>
         </tr>
       </thead>
@@ -304,270 +339,307 @@
 </div>
 
 <footer>
-  Results refreshed every 6 hours via GitHub Actions ·
-  Served by <a href="https://infinitybloc.io">infinitybloc</a> ·
-  <a href="/validation/latest.json">Raw JSON</a>
+  Active schedule BPs only · Refreshed every 6 hours via GitHub Actions ·
+  <a href="https://infinitybloc.io">infinitybloc</a> ·
+  <a href="/validation/latest.json">JSON</a>
 </footer>
 
 <script>
-  /* ── State ─────────────────────────────────────────────── */
-  let allProducers = [];
-  let currentFilter = 'all';
-  let sortKey = null;
-  let sortAsc = true;
-  let donutChart, barChart;
+/* ── Colour palette (25 distinct colours) ── */
+const PALETTE = [
+  '#58a6ff','#3fb950','#f85149','#d29922','#bc8cff',
+  '#ff7b72','#79c0ff','#56d364','#ffa657','#f0883e',
+  '#e3b341','#a5d6ff','#7ee787','#ff9bce','#d2a8ff',
+  '#ffa198','#b3d9ff','#85e89d','#ffb8c2','#cae8ff',
+  '#00b4d8','#06d6a0','#ef476f','#ffd166','#118ab2',
+];
 
-  /* ── Tab switching ─────────────────────────────────────── */
-  function showTab(name, btn) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('panel-' + name).classList.add('active');
-  }
+/* ── State ── */
+let producers    = [];
+let history      = { runs: [] };
+let perfChart    = null;
+let hiddenBPs    = new Set();
+let sortKey      = null;
+let sortAsc      = true;
+let currentFilter = 'all';
 
-  /* ── Data load ─────────────────────────────────────────── */
-  async function load() {
-    try {
-      const resp = await fetch('/validation/latest.json');
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      const data = await resp.json();
+/* ── Tabs ── */
+function showTab(name, btn) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('panel-' + name).classList.add('active');
+}
 
-      allProducers = data.producers || [];
+/* ── Load data ── */
+async function load() {
+  try {
+    const [latestResp, histResp] = await Promise.all([
+      fetch('/validation/latest.json'),
+      fetch('/validation/history.json').catch(() => null),
+    ]);
 
-      if (!allProducers.length) {
-        document.getElementById('meta').textContent = 'No data yet — first validation run pending.';
-        document.getElementById('tbody').innerHTML =
-          '<tr><td colspan="9" class="empty">Waiting for first validation run…</td></tr>';
-        return;
-      }
+    if (!latestResp.ok) throw new Error('HTTP ' + latestResp.status);
+    const latest = await latestResp.json();
+    producers = latest.producers || [];
 
-      const d = new Date(data.generatedAt);
-      document.getElementById('meta').textContent =
-        `Updated ${d.toLocaleString()} · ${allProducers.length} producers`;
-
-      buildStats();
-      buildDonut();
-      buildBar();
-      renderTable();
-
-    } catch(e) {
-      document.getElementById('meta').textContent = 'Error: ' + e.message;
-      document.getElementById('tbody').innerHTML =
-        `<tr><td colspan="9" class="empty">Failed to load data: ${e.message}</td></tr>`;
-    }
-  }
-
-  /* ── Stats bar ─────────────────────────────────────────── */
-  function buildStats() {
-    const total      = allProducers.length;
-    const passing    = allProducers.filter(p => p.sslVerified && p.apiVerified).length;
-    const testnetOk  = allProducers.filter(p => p.sslVerifiedTestNet && p.apiVerifiedTestNet).length;
-    const withTestnet= allProducers.filter(p => p.sslVerifiedTestNet !== undefined && (p.sslVerifiedTestNet || p.apiVerifiedTestNet || (p.validationErrors||[]).some(e=>/testnet/i.test(e)))).length;
-
-    const passingMs = allProducers
-      .filter(p => p.apiVerified && p.apiResponseMs > 0)
-      .map(p => p.apiResponseMs);
-    const avgMs = passingMs.length
-      ? Math.round(passingMs.reduce((a,b) => a+b, 0) / passingMs.length)
-      : null;
-
-    document.getElementById('stats').innerHTML = `
-      <div class="stat"><span class="value">${total}</span><span class="label">Total BPs</span></div>
-      <div class="stat"><span class="value green">${passing}</span><span class="label">Mainnet Passing</span></div>
-      <div class="stat"><span class="value red">${total - passing}</span><span class="label">Mainnet Failing</span></div>
-      <div class="stat"><span class="value">${testnetOk}</span><span class="label">Testnet Passing</span></div>
-      ${avgMs !== null ? `<div class="stat"><span class="value blue">${avgMs} ms</span><span class="label">Avg API Latency</span></div>` : ''}
-    `;
-  }
-
-  /* ── Donut chart ───────────────────────────────────────── */
-  function buildDonut() {
-    const passing     = allProducers.filter(p =>  p.sslVerified &&  p.apiVerified).length;
-    const sslOnly     = allProducers.filter(p =>  p.sslVerified && !p.apiVerified).length;
-    const apiOnly     = allProducers.filter(p => !p.sslVerified &&  p.apiVerified).length;
-    const bothFail    = allProducers.filter(p => !p.sslVerified && !p.apiVerified).length;
-
-    const ctx = document.getElementById('donutChart').getContext('2d');
-    donutChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['SSL + API ✓', 'SSL only', 'API only', 'Both failing'],
-        datasets: [{
-          data: [passing, sslOnly, apiOnly, bothFail],
-          backgroundColor: ['#3fb950', '#58a6ff', '#d29922', '#f85149'],
-          borderWidth: 0,
-          hoverOffset: 6,
-        }]
-      },
-      options: {
-        cutout: '68%',
-        plugins: { legend: { display: false }, tooltip: { callbacks: {
-          label: ctx => ` ${ctx.label}: ${ctx.raw} BPs`
-        }}},
-        animation: { duration: 600 },
-      }
-    });
-
-    const colors = ['#3fb950','#58a6ff','#d29922','#f85149'];
-    const labels = ['SSL + API passing', 'SSL only passing', 'API only passing', 'Both failing'];
-    const vals   = [passing, sslOnly, apiOnly, bothFail];
-    document.getElementById('donutLegend').innerHTML = labels.map((l,i) => `
-      <div class="legend-item">
-        <span class="legend-dot" style="background:${colors[i]}"></span>
-        <span>${l}</span>
-        <span class="legend-val">${vals[i]}</span>
-      </div>`).join('');
-  }
-
-  /* ── Bar chart: response times ─────────────────────────── */
-  function buildBar() {
-    // Only BPs that passed API check and have a measured latency
-    const passing = allProducers
-      .filter(p => p.apiVerified && p.apiResponseMs > 0)
-      .sort((a, b) => a.apiResponseMs - b.apiResponseMs);
-
-    const labels = passing.map(p => p.owner);
-    const values = passing.map(p => p.apiResponseMs);
-
-    // Colour bars by speed
-    const colors = values.map(ms =>
-      ms < 300  ? '#3fb950' :
-      ms < 800  ? '#d29922' : '#f85149'
-    );
-
-    const ctx = document.getElementById('barChart').getContext('2d');
-    barChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [{
-          label: 'Response time (ms)',
-          data: values,
-          backgroundColor: colors,
-          borderRadius: 3,
-          borderSkipped: false,
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: { callbacks: {
-            label: ctx => ` ${ctx.raw} ms`
-          }}
-        },
-        scales: {
-          x: {
-            grid:  { color: '#21262d' },
-            ticks: { color: '#8b949e', font: { size: 11 } },
-            title: { display: true, text: 'ms', color: '#8b949e', font: { size: 11 } }
-          },
-          y: {
-            grid:  { display: false },
-            ticks: { color: '#e6edf3', font: { size: 11 } }
-          }
-        },
-        animation: { duration: 600 },
-      }
-    });
-  }
-
-  /* ── Table helpers ─────────────────────────────────────── */
-  function pill(val, naLabel) {
-    if (val === null || val === undefined)
-      return `<span class="pill na"><span class="dot"></span>${naLabel ?? 'N/A'}</span>`;
-    return val
-      ? `<span class="pill pass"><span class="dot"></span>Pass</span>`
-      : `<span class="pill fail"><span class="dot"></span>Fail</span>`;
-  }
-
-  function latencyBadge(ms) {
-    if (!ms || ms < 0) return `<span class="latency na">—</span>`;
-    const cls = ms < 300 ? 'fast' : ms < 800 ? 'medium' : 'slow';
-    return `<span class="latency ${cls}">${ms} ms</span>`;
-  }
-
-  function hasTestnet(p) {
-    return p.sslVerifiedTestNet || p.apiVerifiedTestNet ||
-      (p.validationErrors || []).some(e => /testnet/i.test(e));
-  }
-
-  function setFilter(f, btn) {
-    currentFilter = f;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderTable();
-  }
-
-  function sort(key) {
-    sortAsc = (sortKey === key) ? !sortAsc : true;
-    sortKey = key;
-    document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
-    event.currentTarget.classList.add('sorted');
-    renderTable();
-  }
-
-  function renderTable() {
-    const q = document.getElementById('search').value.toLowerCase();
-
-    let rows = allProducers.filter(p => {
-      if (q && !p.owner.toLowerCase().includes(q)) return false;
-      if (currentFilter === 'passing') return  p.sslVerified && p.apiVerified;
-      if (currentFilter === 'failing') return !p.sslVerified || !p.apiVerified;
-      if (currentFilter === 'testnet') return  p.sslVerifiedTestNet && p.apiVerifiedTestNet;
-      return true;
-    });
-
-    if (sortKey) {
-      rows = [...rows].sort((a, b) => {
-        const av = a[sortKey], bv = b[sortKey];
-        let cmp;
-        if (typeof av === 'boolean') {
-          cmp = av === bv ? 0 : av ? -1 : 1;
-        } else if (typeof av === 'number') {
-          cmp = av - bv;
-        } else {
-          cmp = String(av).localeCompare(String(bv));
-        }
-        return sortAsc ? cmp : -cmp;
-      });
+    if (histResp && histResp.ok) {
+      history = await histResp.json();
     }
 
-    if (!rows.length) {
+    if (!producers.length) {
+      document.getElementById('meta').textContent = 'No data yet — first validation run pending.';
       document.getElementById('tbody').innerHTML =
-        '<tr><td colspan="9" class="empty">No producers match this filter.</td></tr>';
+        '<tr><td colspan="9" class="empty">Waiting for first run…</td></tr>';
+      document.getElementById('bpLegend').innerHTML =
+        '<span style="color:var(--muted)">No data yet</span>';
       return;
     }
 
-    document.getElementById('tbody').innerHTML = rows.map((p, i) => {
-      const org     = p.org || {};
-      const website = (org.website || p.url || '').trim();
-      const country = org.location?.country ?? '';
-      const errors  = (p.validationErrors || []).join(' · ');
-      const ht      = hasTestnet(p);
+    const d = new Date(latest.generatedAt);
+    document.getElementById('meta').textContent =
+      `Updated ${d.toLocaleString()} · ${producers.length} active BPs`;
 
-      return `<tr>
-        <td class="rank">${i + 1}</td>
-        <td>
-          <span class="owner">${p.owner}</span>
-          ${country ? `<span style="margin-left:6px;font-size:11px;color:var(--muted)">${country}</span>` : ''}
-          ${website ? `<br><a class="site" href="${website}" target="_blank" rel="noopener">${website.replace(/^https?:\/\//,'')}</a>` : ''}
-        </td>
-        <td>${pill(p.sslVerified)}</td>
-        <td>${pill(p.apiVerified)}</td>
-        <td>${latencyBadge(p.apiResponseMs)}</td>
-        <td>${ht ? pill(p.sslVerifiedTestNet) : pill(null,'None')}</td>
-        <td>${ht ? pill(p.apiVerifiedTestNet) : pill(null,'None')}</td>
-        <td>${ht && p.apiVerifiedTestNet ? latencyBadge(p.apiResponseMsTestNet) : '<span class="latency na">—</span>'}</td>
-        <td class="errors">${errors}</td>
-      </tr>`;
-    }).join('');
+    buildStats();
+    buildPerfChart();
+    renderTable();
+
+  } catch(e) {
+    document.getElementById('meta').textContent = 'Error: ' + e.message;
+    document.getElementById('tbody').innerHTML =
+      `<tr><td colspan="9" class="empty">Failed to load: ${e.message}</td></tr>`;
+  }
+}
+
+/* ── Stats bar ── */
+function buildStats() {
+  const total   = producers.length;
+  const passing = producers.filter(p => p.sslVerified && p.apiVerified).length;
+  const tnOk    = producers.filter(p => p.sslVerifiedTestNet && p.apiVerifiedTestNet).length;
+  const msArr   = producers.filter(p => p.apiVerified && p.apiResponseMs > 0).map(p => p.apiResponseMs);
+  const avgMs   = msArr.length ? Math.round(msArr.reduce((a,b)=>a+b,0)/msArr.length) : null;
+
+  document.getElementById('stats').innerHTML = `
+    <div class="stat"><span class="value">${total}</span><span class="label">Active BPs</span></div>
+    <div class="stat"><span class="value green">${passing}</span><span class="label">Mainnet Passing</span></div>
+    <div class="stat"><span class="value red">${total - passing}</span><span class="label">Mainnet Failing</span></div>
+    <div class="stat"><span class="value">${tnOk}</span><span class="label">Testnet Passing</span></div>
+    ${avgMs !== null ? `<div class="stat"><span class="value blue">${avgMs} ms</span><span class="label">Avg Latency</span></div>` : ''}
+  `;
+}
+
+/* ── Performance time-series chart ── */
+function buildPerfChart() {
+  const runs = history.runs || [];
+
+  // Collect all BP names that appear in history or latest, sorted alphabetically
+  const bpNames = Array.from(new Set([
+    ...producers.map(p => p.owner),
+    ...runs.flatMap(r => Object.keys(r.bps || {})),
+  ])).sort();
+
+  // Build Chart.js datasets
+  const datasets = bpNames.map((name, i) => {
+    const color = PALETTE[i % PALETTE.length];
+
+    // One data point per run
+    const data = runs.map(run => ({
+      x: new Date(run.t),
+      y: run.bps[name] ?? null,
+    })).filter(pt => pt.y !== null);
+
+    return {
+      label:           name,
+      data,
+      borderColor:     color,
+      backgroundColor: color,
+      borderWidth:     1.5,
+      pointRadius:     2.5,
+      pointHoverRadius: 5,
+      tension:         0.3,
+      spanGaps:        true,
+      hidden:          hiddenBPs.has(name),
+    };
+  });
+
+  const ctx = document.getElementById('perfChart').getContext('2d');
+  if (perfChart) perfChart.destroy();
+
+  perfChart = new Chart(ctx, {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1c2128',
+          borderColor: '#30363d',
+          borderWidth: 1,
+          titleColor: '#e6edf3',
+          bodyColor: '#8b949e',
+          callbacks: {
+            label: ctx => ` ${ctx.dataset.label}: ${ctx.raw.y} ms`,
+          },
+        },
+      },
+      scales: {
+        x: {
+          type: 'time',
+          time: {
+            tooltipFormat: 'MMM d, HH:mm',
+            displayFormats: { hour: 'HH:mm', day: 'MMM d' },
+          },
+          grid:  { color: '#21262d' },
+          ticks: { color: '#8b949e', maxTicksLimit: 10, font: { size: 11 } },
+        },
+        y: {
+          beginAtZero: true,
+          grid:  { color: '#21262d' },
+          ticks: { color: '#8b949e', font: { size: 11 } },
+          title: {
+            display: true,
+            text: 'milliseconds',
+            color: '#8b949e',
+            font: { size: 11 },
+          },
+        },
+      },
+      animation: { duration: 400 },
+    },
+  });
+
+  // Build custom legend
+  const legend = document.getElementById('bpLegend');
+
+  if (runs.length === 0) {
+    legend.innerHTML = `
+      <div style="color:var(--muted);font-size:12px;width:100%;text-align:center;padding:8px 0">
+        Chart will populate after the first few validation runs (every 6 hours).
+        <br>Current snapshot: ${producers.filter(p=>p.apiVerified).length} BPs responding.
+      </div>`;
+    return;
   }
 
-  load();
-</script>
+  legend.innerHTML = bpNames.map((name, i) => {
+    const color  = PALETTE[i % PALETTE.length];
+    const hidden = hiddenBPs.has(name);
+    return `
+      <div class="legend-item${hidden ? ' hidden' : ''}" onclick="toggleBP('${name}',this)" data-bp="${name}">
+        <span class="legend-line" style="background:${color}"></span>
+        <span class="legend-dot"  style="background:${color}"></span>
+        ${name}
+      </div>`;
+  }).join('');
+}
 
+function toggleBP(name, el) {
+  const ds = perfChart.data.datasets.find(d => d.label === name);
+  if (!ds) return;
+  if (hiddenBPs.has(name)) {
+    hiddenBPs.delete(name);
+    ds.hidden = false;
+    el.classList.remove('hidden');
+  } else {
+    hiddenBPs.add(name);
+    ds.hidden = true;
+    el.classList.add('hidden');
+  }
+  perfChart.update();
+}
+
+function selectAll(visible) {
+  hiddenBPs.clear();
+  perfChart.data.datasets.forEach(ds => {
+    ds.hidden = !visible;
+    if (!visible) hiddenBPs.add(ds.label);
+  });
+  document.querySelectorAll('.legend-item').forEach(el => {
+    el.classList.toggle('hidden', !visible);
+  });
+  perfChart.update();
+}
+
+/* ── Table ── */
+function pill(val, naLabel) {
+  if (val === null || val === undefined)
+    return `<span class="pill na"><span class="dot"></span>${naLabel ?? 'N/A'}</span>`;
+  return val
+    ? `<span class="pill pass"><span class="dot"></span>Pass</span>`
+    : `<span class="pill fail"><span class="dot"></span>Fail</span>`;
+}
+function latencyBadge(ms) {
+  if (!ms || ms < 0) return `<span class="latency na">—</span>`;
+  const cls = ms < 300 ? 'fast' : ms < 800 ? 'medium' : 'slow';
+  return `<span class="latency ${cls}">${ms} ms</span>`;
+}
+function hasTestnet(p) {
+  return p.sslVerifiedTestNet || p.apiVerifiedTestNet ||
+    (p.validationErrors || []).some(e => /testnet/i.test(e));
+}
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+}
+function sort(key) {
+  sortAsc = sortKey === key ? !sortAsc : true;
+  sortKey = key;
+  document.querySelectorAll('th').forEach(t => t.classList.remove('sorted'));
+  event.currentTarget.classList.add('sorted');
+  renderTable();
+}
+function renderTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  let rows = producers.filter(p => {
+    if (q && !p.owner.toLowerCase().includes(q)) return false;
+    if (currentFilter === 'passing') return  p.sslVerified && p.apiVerified;
+    if (currentFilter === 'failing') return !p.sslVerified || !p.apiVerified;
+    if (currentFilter === 'testnet') return  p.sslVerifiedTestNet && p.apiVerifiedTestNet;
+    return true;
+  });
+  if (sortKey) {
+    rows = [...rows].sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      let cmp = typeof av === 'boolean' ? (av===bv?0:av?-1:1)
+              : typeof av === 'number'  ? av - bv
+              : String(av).localeCompare(String(bv));
+      return sortAsc ? cmp : -cmp;
+    });
+  }
+  if (!rows.length) {
+    document.getElementById('tbody').innerHTML =
+      '<tr><td colspan="9" class="empty">No producers match.</td></tr>';
+    return;
+  }
+  document.getElementById('tbody').innerHTML = rows.map((p, i) => {
+    const org  = p.org || {};
+    const site = (org.website || p.url || '').trim();
+    const cc   = org.location?.country ?? '';
+    const errs = (p.validationErrors || []).join(' · ');
+    const ht   = hasTestnet(p);
+    return `<tr>
+      <td class="rank">${i+1}</td>
+      <td>
+        <span class="owner">${p.owner}</span>
+        ${cc ? `<span style="margin-left:6px;font-size:11px;color:var(--muted)">${cc}</span>` : ''}
+        ${site ? `<br><a class="site" href="${site}" target="_blank" rel="noopener">${site.replace(/^https?:\/\//,'')}</a>` : ''}
+      </td>
+      <td>${pill(p.sslVerified)}</td>
+      <td>${pill(p.apiVerified)}</td>
+      <td>${latencyBadge(p.apiResponseMs)}</td>
+      <td>${ht ? pill(p.sslVerifiedTestNet) : pill(null,'None')}</td>
+      <td>${ht ? pill(p.apiVerifiedTestNet) : pill(null,'None')}</td>
+      <td>${ht && p.apiVerifiedTestNet ? latencyBadge(p.apiResponseMsTestNet) : '<span class="latency na">—</span>'}</td>
+      <td class="errors">${errs}</td>
+    </tr>`;
+  }).join('');
+}
+
+load();
+</script>
 </body>
 </html>
