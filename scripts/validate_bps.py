@@ -240,11 +240,12 @@ async def validate_producer(
 
 def push_benchmark_tx() -> dict:
     """
-    Push 5 benchmark transactions spaced ~8s apart so each lands in a different
-    BP slot. Returns a dict {producer: cpu_us} for every BP captured this run,
-    or {} if TLOSMECHANIC_KEY is not set or all transactions fail.
+    Call tlosmechanic::cpu (Mersenne prime benchmark, identical to eosmechanics)
+    5 times spaced ~8s apart so each lands in a different BP slot.
+    Returns a dict {producer: cpu_us} for every BP captured this run,
+    or {} if TLOSMECHANIC_KEY is not set or all calls fail.
 
-    With 21 active BPs rotating through 6-second slots, 5 transactions cover
+    With 21 active BPs rotating through 6-second slots, 5 calls cover
     ~5 different BPs per run — all 21 active BPs appear within ~4-5 runs.
     """
     key = os.environ.get("TLOSMECHANIC_KEY", "").strip()
@@ -265,16 +266,11 @@ def push_benchmark_tx() -> dict:
             if i > 0:
                 time.sleep(SLOT_GAP)
             try:
-                data = [
-                    pyntelope.Data(name="from",     value=pyntelope.types.Name("tlosmechanic")),
-                    pyntelope.Data(name="to",       value=pyntelope.types.Name("eosio.rex")),
-                    pyntelope.Data(name="quantity", value=pyntelope.types.Asset("0.0001 TLOS")),
-                    pyntelope.Data(name="memo",     value=pyntelope.types.String(f"infinitybloc benchmark {i+1}")),
-                ]
+                # Call tlosmechanic::cpu — Mersenne prime benchmark, same as eosmechanics
                 auth   = pyntelope.Authorization(actor="tlosmechanic", permission="active")
                 action = pyntelope.Action(
-                    account="eosio.token", name="transfer",
-                    data=data, authorization=[auth]
+                    account="tlosmechanic", name="cpu",
+                    data=[], authorization=[auth]
                 )
                 trx    = pyntelope.Transaction(actions=[action])
                 linked = trx.link(net=net)
@@ -289,6 +285,7 @@ def push_benchmark_tx() -> dict:
                     print(f"[Benchmark {i+1}] Unexpected response: {resp}", file=sys.stderr)
                     continue
 
+                time.sleep(2)  # wait for block to finalise
                 r = req.post(
                     f"{TELOS_API}/v1/chain/get_block",
                     json={"block_num_or_id": block_num},
