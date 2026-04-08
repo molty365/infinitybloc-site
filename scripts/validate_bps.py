@@ -238,67 +238,83 @@ async def validate_producer(
     return result
 
 
-def push_benchmark_tx() -> Tuple[Optional[str], Optional[int]]:
+def push_benchmark_tx() -> dict:
     """
-    Push a small transfer from tlosmechanic -> eosio.rex as a benchmark.
-    Returns (producer_name, cpu_usage_us) for the block that included it,
-    or (None, None) if the key is not set or the transaction fails.
+    Push 5 benchmark transactions spaced ~8s apart so each lands in a different
+    BP slot. Returns a dict {producer: cpu_us} for every BP captured this run,
+    or {} if TLOSMECHANIC_KEY is not set or all transactions fail.
+
+    With 21 active BPs rotating through 6-second slots, 5 transactions cover
+    ~5 different BPs per run — all 21 active BPs appear within ~4-5 runs.
     """
     key = os.environ.get("TLOSMECHANIC_KEY", "").strip()
     if not key:
         print("[Benchmark] TLOSMECHANIC_KEY not set — skipping", file=sys.stderr)
-        return None, None
+        return {}
 
     try:
         import pyntelope
         import requests as req
 
         net = pyntelope.TelosMainnet()
-        data = [
-            pyntelope.Data(name="from",     value=pyntelope.types.Name("tlosmechanic")),
-            pyntelope.Data(name="to",       value=pyntelope.types.Name("eosio.rex")),
-            pyntelope.Data(name="quantity", value=pyntelope.types.Asset("0.0001 TLOS")),
-            pyntelope.Data(name="memo",     value=pyntelope.types.String("infinitybloc benchmark")),
-        ]
-        auth   = pyntelope.Authorization(actor="tlosmechanic", permission="active")
-        action = pyntelope.Action(
-            account="eosio.token", name="transfer",
-            data=data, authorization=[auth]
-        )
-        trx    = pyntelope.Transaction(actions=[action])
-        linked = trx.link(net=net)
-        signed = linked.sign(key=key)
-        resp   = signed.send()
+        results: dict = {}
+        NUM_TXS   = 5
+        SLOT_GAP  = 8   # seconds between pushes (> one 6-second BP slot)
 
-        processed = resp.get("processed", {})
-        block_num  = processed.get("block_num")
-        cpu_us     = processed.get("receipt", {}).get("cpu_usage_us")
+        for i in range(NUM_TXS):
+            if i > 0:
+                time.sleep(SLOT_GAP)
+            try:
+                data = [
+                    pyntelope.Data(name="from",     value=pyntelope.types.Name("tlosmechanic")),
+                    pyntelope.Data(name="to",       value=pyntelope.types.Name("eosio.rex")),
+                    pyntelope.Data(name="quantity", value=pyntelope.types.Asset("0.0001 TLOS")),
+                    pyntelope.Data(name="memo",     value=pyntelope.types.String(f"infinitybloc benchmark {i+1}")),
+                ]
+                auth   = pyntelope.Authorization(actor="tlosmechanic", permission="active")
+                action = pyntelope.Action(
+                    account="eosio.token", name="transfer",
+                    data=data, authorization=[auth]
+                )
+                trx    = pyntelope.Transaction(actions=[action])
+                linked = trx.link(net=net)
+                signed = linked.sign(key=key)
+                resp   = signed.send()
 
-        if not block_num or not cpu_us:
-            print(f"[Benchmark] Unexpected response: {resp}", file=sys.stderr)
-            return None, None
+                processed = resp.get("processed", {})
+                block_num  = processed.get("block_num")
+                cpu_us     = processed.get("receipt", {}).get("cpu_usage_us")
 
-        # Look up which BP produced this block
-        r = req.post(
-            f"{TELOS_API}/v1/chain/get_block",
-            json={"block_num_or_id": block_num},
-            timeout=10,
-        )
-        producer = r.json().get("producer")
+                if not block_num or not cpu_us:
+                    print(f"[Benchmark {i+1}] Unexpected response: {resp}", file=sys.stderr)
+                    continue
 
-        print(f"[Benchmark] block={block_num} producer={producer} cpu={cpu_us}µs",
-              file=sys.stderr)
-        return producer, cpu_us
+                r = req.post(
+                    f"{TELOS_API}/v1/chain/get_block",
+                    json={"block_num_or_id": block_num},
+                    timeout=10,
+                )
+                producer = r.json().get("producer")
+                if producer:
+                    results[producer] = cpu_us
+                    print(f"[Benchmark {i+1}/{NUM_TXS}] block={block_num} "
+                          f"producer={producer} cpu={cpu_us}µs", file=sys.stderr)
+
+            except Exception as exc:
+                print(f"[Benchmark {i+1}] Failed: {exc}", file=sys.stderr)
+
+        print(f"[Benchmark] Captured {len(results)} BPs: {list(results.keys())}", file=sys.stderr)
+        return results
 
     except Exception as exc:
-        print(f"[Benchmark] Failed: {exc}", file=sys.stderr)
-        return None, None
+        print(f"[Benchmark] Fatal: {exc}", file=sys.stderr)
+        return {}
 
 
 def update_history(
     results: list,
     generated_at: str,
-    cpu_data: Tuple[Optional[str], Optional[int]] = (None, None),
+    cpu_data: Optional[dict] = None,
 ) -> None:
     history_path = os.path.normpath(HISTORY_PATH)
     try:
@@ -320,9 +336,8 @@ def update_history(
         },
     }
 
-    producer, cpu_us = cpu_data
-    if producer and cpu_us:
-        snapshot["cpu"] = {producer: cpu_us}
+    if cpu_data:
+        snapshot["cpu"] = cpu_data
 
     history["runs"].append(snapshot)
     history["runs"] = history["runs"][-MAX_HISTORY:]
@@ -353,7 +368,7 @@ async def main():
     passing = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
     print(f"Done. {passing}/{len(results)} passed mainnet checks.", file=sys.stderr)
 
-    # Push benchmark transaction (requires TLOSMECHANIC_KEY env var)
+    # Push 5 benchmark transactions to capture ~5 different BPs this run
     cpu_data = push_benchmark_tx()
 
     generated_at = datetime.now(timezone.utc).isoformat()
@@ -364,7 +379,7 @@ async def main():
     }
 
     print(json.dumps(output, indent=2))
-    update_history(list(results), generated_at, cpu_data)
+    update_history(list(results), generated_at, cpu_data if cpu_data else None)
 
 
 if __name__ == "__main__":

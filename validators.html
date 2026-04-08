@@ -251,9 +251,9 @@
       <button class="btn primary" onclick="showTab('table', document.querySelectorAll('.tab')[1])">VIEW TABLE</button>
       <span class="perf-title" id="chartTitle">Telos Validator API Performance</span>
       <div style="display:flex;gap:6px">
-        <button class="btn active-mode" id="btnApi"     onclick="setChartMode('api')"    style="background:#1f6feb;border-color:#1f6feb">API Latency</button>
+        <button class="btn active-mode" id="btnCpu"     onclick="setChartMode('cpu')"    style="background:#1f6feb;border-color:#1f6feb">CPU Time (µs)</button>
+        <button class="btn"             id="btnApi"     onclick="setChartMode('api')">API Latency</button>
         <button class="btn"             id="btnMissed"  onclick="setChartMode('missed')">Missed Blocks</button>
-        <button class="btn"             id="btnCpu"     onclick="setChartMode('cpu')">CPU Time (µs)</button>
       </div>
     </div>
 
@@ -407,7 +407,7 @@ function buildStats() {
 }
 
 /* ── Chart mode ── */
-let chartMode = 'api';   // 'api' | 'missed'
+let chartMode = 'cpu';   // 'cpu' | 'api' | 'missed'
 
 function setChartMode(mode) {
   chartMode = mode;
