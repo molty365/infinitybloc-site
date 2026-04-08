@@ -10,6 +10,7 @@ import aiohttp
 import json
 import ssl
 import sys
+import time
 from datetime import datetime, timezone
 
 # ── Chain constants ─────────────────────────────────────────────────────────
@@ -77,17 +78,25 @@ async def check_ssl(session: aiohttp.ClientSession, endpoint: str) -> bool:
         return False
 
 
-async def check_api(session: aiohttp.ClientSession, endpoint: str) -> bool:
-    """Return True if /v1/chain/get_info returns a valid chain_id."""
+async def check_api(session: aiohttp.ClientSession, endpoint: str) -> tuple[bool, int]:
+    """
+    Return (success, latency_ms).
+    success = True if /v1/chain/get_info returns a valid chain_id.
+    latency_ms = round-trip time in milliseconds, or -1 on failure.
+    """
+    url = endpoint.rstrip("/") + "/v1/chain/get_info"
+    t0 = time.monotonic()
     try:
-        url = endpoint.rstrip("/") + "/v1/chain/get_info"
         async with session.get(url, timeout=CHECK_TIMEOUT, ssl=NO_SSL) as resp:
             if resp.status == 200:
                 data = await resp.json(content_type=None)
-                return bool(data.get("chain_id"))
+                if data.get("chain_id"):
+                    ms = int((time.monotonic() - t0) * 1000)
+                    return True, ms
     except Exception:
         pass
-    return False
+    ms = int((time.monotonic() - t0) * 1000)
+    return False, -1
 
 
 def best_endpoint(nodes: list) -> str | None:
@@ -116,8 +125,10 @@ async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> d
         "is_active":          producer.get("is_active", 0),
         "sslVerified":        False,
         "apiVerified":        False,
+        "apiResponseMs":      -1,
         "sslVerifiedTestNet": False,
         "apiVerifiedTestNet": False,
+        "apiResponseMsTestNet": -1,
         "p2pEndpoint":        None,
         "org":                {},
         "validationErrors":   [],
@@ -161,15 +172,16 @@ async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> d
             result["p2pEndpoint"] = node["p2p_endpoint"]
             break
 
-    # 3. Mainnet SSL + API
+    # 3. Mainnet SSL + API (concurrent)
     ssl_ep = best_endpoint(nodes)
     if ssl_ep:
-        ssl_ok, api_ok = await asyncio.gather(
+        (ssl_ok, (api_ok, api_ms)) = await asyncio.gather(
             check_ssl(session, ssl_ep),
             check_api(session, ssl_ep),
         )
-        result["sslVerified"] = ssl_ok
-        result["apiVerified"] = api_ok
+        result["sslVerified"]   = ssl_ok
+        result["apiVerified"]   = api_ok
+        result["apiResponseMs"] = api_ms
         if not ssl_ok:
             errors.append(f"SSL failed: {ssl_ep}")
         if not api_ok:
@@ -177,19 +189,20 @@ async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> d
     else:
         errors.append("No ssl_endpoint found in any bp.json node")
 
-    # 4. Testnet bp.json + checks (optional)
+    # 4. Testnet bp.json + checks (optional, concurrent)
     testnet_path = chains.get(TESTNET_CHAIN_ID)
     if testnet_path:
         testnet_json = await fetch_json(session, base_url + testnet_path)
         if testnet_json:
             testnet_ep = best_endpoint(testnet_json.get("nodes", []))
             if testnet_ep:
-                ssl_ok, api_ok = await asyncio.gather(
+                (ssl_ok, (api_ok, api_ms)) = await asyncio.gather(
                     check_ssl(session, testnet_ep),
                     check_api(session, testnet_ep),
                 )
-                result["sslVerifiedTestNet"] = ssl_ok
-                result["apiVerifiedTestNet"] = api_ok
+                result["sslVerifiedTestNet"]    = ssl_ok
+                result["apiVerifiedTestNet"]    = api_ok
+                result["apiResponseMsTestNet"]  = api_ms
                 if not ssl_ok:
                     errors.append(f"Testnet SSL failed: {testnet_ep}")
                 if not api_ok:
@@ -202,7 +215,6 @@ async def validate_producer(session: aiohttp.ClientSession, producer: dict) -> d
 
 
 async def main():
-    # Shared connector with reasonable concurrency limit
     connector = aiohttp.TCPConnector(limit=25, ssl=False)
 
     async with aiohttp.ClientSession(connector=connector) as session:
@@ -213,13 +225,13 @@ async def main():
         tasks   = [validate_producer(session, p) for p in producers]
         results = await asyncio.gather(*tasks)
 
-    passed    = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
-    print(f"Done. {passed}/{len(results)} passed mainnet checks.", file=sys.stderr)
+    passing = sum(1 for r in results if r["sslVerified"] and r["apiVerified"])
+    print(f"Done. {passing}/{len(results)} passed mainnet checks.", file=sys.stderr)
 
     output = {
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "generatedAt":    datetime.now(timezone.utc).isoformat(),
         "totalProducers": len(results),
-        "producers": sorted(results, key=lambda r: float(r["total_votes"]), reverse=True),
+        "producers":      sorted(results, key=lambda r: float(r["total_votes"]), reverse=True),
     }
 
     print(json.dumps(output, indent=2))

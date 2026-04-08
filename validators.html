@@ -4,20 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Telos BP Validator · infinitybloc</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0d1117;
-      --surface:   #161b22;
-      --border:    #30363d;
-      --text:      #e6edf3;
-      --muted:     #8b949e;
-      --green:     #3fb950;
-      --red:       #f85149;
-      --yellow:    #d29922;
-      --blue:      #58a6ff;
-      --purple:    #bc8cff;
+      --bg:      #0d1117;
+      --surface: #161b22;
+      --border:  #30363d;
+      --text:    #e6edf3;
+      --muted:   #8b949e;
+      --green:   #3fb950;
+      --red:     #f85149;
+      --yellow:  #d29922;
+      --blue:    #58a6ff;
     }
 
     body {
@@ -28,21 +28,113 @@
       line-height: 1.5;
     }
 
+    /* ── Header ──────────────────────────────────────────── */
     header {
-      padding: 20px 24px;
+      padding: 18px 24px;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
     header h1 { font-size: 18px; font-weight: 600; }
-    header .meta { color: var(--muted); font-size: 12px; margin-left: auto; }
+    .meta { color: var(--muted); font-size: 12px; margin-left: auto; }
 
-    .controls {
-      padding: 16px 24px;
+    /* ── Stat bar ─────────────────────────────────────────── */
+    .stats {
       display: flex;
-      gap: 12px;
+      gap: 28px;
+      padding: 14px 24px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .stat { display: flex; flex-direction: column; }
+    .stat .value { font-size: 22px; font-weight: 600; }
+    .stat .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
+    .green { color: var(--green) !important; }
+    .red   { color: var(--red)   !important; }
+    .blue  { color: var(--blue)  !important; }
+
+    /* ── Tab nav ──────────────────────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      background: var(--surface);
+    }
+    .tab {
+      padding: 10px 18px;
+      font-size: 13px;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color .15s;
+      user-select: none;
+    }
+    .tab:hover { color: var(--text); }
+    .tab.active { color: var(--blue); border-bottom-color: var(--blue); }
+
+    /* ── Panels ───────────────────────────────────────────── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Charts panel ─────────────────────────────────────── */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 20px;
+      padding: 24px;
+    }
+    @media (max-width: 820px) { .charts-grid { grid-template-columns: 1fr; } }
+
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .chart-card h3 {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 16px;
+    }
+    .donut-wrap {
+      max-width: 240px;
+      margin: 0 auto;
+    }
+    .legend {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .legend-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend-val { margin-left: auto; font-weight: 600; }
+
+    /* bar chart needs a fixed height */
+    .bar-wrap { position: relative; height: 340px; }
+
+    /* ── Table panel controls ─────────────────────────────── */
+    .controls {
+      padding: 14px 24px;
+      display: flex;
+      gap: 10px;
       flex-wrap: wrap;
       align-items: center;
       border-bottom: 1px solid var(--border);
@@ -54,11 +146,10 @@
       color: var(--text);
       padding: 6px 12px;
       font-size: 13px;
-      width: 220px;
+      width: 210px;
       outline: none;
     }
     input[type=search]:focus { border-color: var(--blue); }
-
     .filter-btn {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -71,28 +162,12 @@
     }
     .filter-btn.active { color: var(--text); border-color: var(--blue); }
 
-    .stats {
-      display: flex;
-      gap: 24px;
-      padding: 12px 24px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .stat { display: flex; flex-direction: column; }
-    .stat .value { font-size: 20px; font-weight: 600; }
-    .stat .label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; }
-    .stat .value.green { color: var(--green); }
-    .stat .value.red   { color: var(--red); }
-
+    /* ── Table ────────────────────────────────────────────── */
     .table-wrap { overflow-x: auto; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+    table { width: 100%; border-collapse: collapse; }
     th {
       text-align: left;
-      padding: 10px 16px;
+      padding: 10px 14px;
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: .05em;
@@ -104,24 +179,23 @@
     }
     th:hover { color: var(--text); }
     th.sorted { color: var(--blue); }
-
     td {
-      padding: 10px 16px;
+      padding: 9px 14px;
       border-bottom: 1px solid var(--border);
       vertical-align: middle;
       white-space: nowrap;
     }
     tr:hover td { background: var(--surface); }
 
-    .rank    { color: var(--muted); width: 40px; text-align: right; }
-    .owner   { font-weight: 600; }
-    .website { color: var(--blue); text-decoration: none; font-size: 12px; }
-    .website:hover { text-decoration: underline; }
+    .rank  { color: var(--muted); width: 36px; text-align: right; }
+    .owner { font-weight: 600; }
+    .site  { color: var(--blue); text-decoration: none; font-size: 12px; }
+    .site:hover { text-decoration: underline; }
 
     .pill {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 4px;
       border-radius: 99px;
       padding: 2px 8px;
       font-size: 11px;
@@ -130,15 +204,18 @@
     .pill.pass { background: #1c3a2a; color: var(--green); }
     .pill.fail { background: #3a1c1c; color: var(--red);   }
     .pill.na   { background: #1e2228; color: var(--muted); }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
-
-    .errors {
-      max-width: 280px;
-      white-space: normal;
-      color: var(--red);
-      font-size: 11px;
+    .latency {
+      font-size: 12px;
+      font-variant-numeric: tabular-nums;
     }
+    .latency.fast   { color: var(--green); }
+    .latency.medium { color: var(--yellow); }
+    .latency.slow   { color: var(--red); }
+    .latency.na     { color: var(--muted); }
+
+    .errors { max-width: 260px; white-space: normal; color: var(--red); font-size: 11px; }
 
     .loading, .empty {
       text-align: center;
@@ -147,7 +224,7 @@
     }
 
     footer {
-      padding: 16px 24px;
+      padding: 14px 24px;
       color: var(--muted);
       font-size: 12px;
       border-top: 1px solid var(--border);
@@ -165,121 +242,302 @@
 
 <div class="stats" id="stats"></div>
 
-<div class="controls">
-  <input type="search" id="search" placeholder="Search producer…" oninput="render()" />
-  <button class="filter-btn active" data-filter="all"      onclick="setFilter('all',this)">All</button>
-  <button class="filter-btn"        data-filter="passing"  onclick="setFilter('passing',this)">Passing</button>
-  <button class="filter-btn"        data-filter="failing"  onclick="setFilter('failing',this)">Failing</button>
-  <button class="filter-btn"        data-filter="testnet"  onclick="setFilter('testnet',this)">Testnet ✓</button>
+<!-- Tab nav -->
+<div class="tabs">
+  <div class="tab active" onclick="showTab('charts',this)">📊 Performance Charts</div>
+  <div class="tab"        onclick="showTab('table',this)">📋 Producer Table</div>
 </div>
 
-<div class="table-wrap">
-  <table>
-    <thead>
-      <tr>
-        <th class="rank">#</th>
-        <th onclick="sort('owner')">Producer</th>
-        <th onclick="sort('sslVerified')">Mainnet SSL</th>
-        <th onclick="sort('apiVerified')">Mainnet API</th>
-        <th onclick="sort('sslVerifiedTestNet')">Testnet SSL</th>
-        <th onclick="sort('apiVerifiedTestNet')">Testnet API</th>
-        <th>Errors</th>
-      </tr>
-    </thead>
-    <tbody id="tbody"><tr><td colspan="7" class="loading">Loading validation data…</td></tr></tbody>
-  </table>
+<!-- ── Charts panel ──────────────────────────────────────── -->
+<div class="panel active" id="panel-charts">
+  <div class="charts-grid">
+
+    <!-- Donut: pass/fail breakdown -->
+    <div class="chart-card">
+      <h3>Mainnet Health</h3>
+      <div class="donut-wrap">
+        <canvas id="donutChart"></canvas>
+      </div>
+      <div class="legend" id="donutLegend"></div>
+    </div>
+
+    <!-- Bar: API response times -->
+    <div class="chart-card">
+      <h3>API Response Times (ms) — passing BPs only</h3>
+      <div class="bar-wrap">
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Table panel ───────────────────────────────────────── -->
+<div class="panel" id="panel-table">
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search producer…" oninput="renderTable()" />
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn"        onclick="setFilter('passing',this)">Passing</button>
+    <button class="filter-btn"        onclick="setFilter('failing',this)">Failing</button>
+    <button class="filter-btn"        onclick="setFilter('testnet',this)">Testnet ✓</button>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="rank">#</th>
+          <th onclick="sort('owner')">Producer</th>
+          <th onclick="sort('sslVerified')">SSL</th>
+          <th onclick="sort('apiVerified')">API</th>
+          <th onclick="sort('apiResponseMs')">Latency</th>
+          <th onclick="sort('sslVerifiedTestNet')">Testnet SSL</th>
+          <th onclick="sort('apiVerifiedTestNet')">Testnet API</th>
+          <th onclick="sort('apiResponseMsTestNet')">Testnet Latency</th>
+          <th>Errors</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+        <tr><td colspan="9" class="loading">Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <footer>
-  Results refreshed every 6 hours via GitHub Actions · Served by
-  <a href="https://infinitybloc.io">infinitybloc</a> ·
+  Results refreshed every 6 hours via GitHub Actions ·
+  Served by <a href="https://infinitybloc.io">infinitybloc</a> ·
   <a href="/validation/latest.json">Raw JSON</a>
 </footer>
 
 <script>
+  /* ── State ─────────────────────────────────────────────── */
   let allProducers = [];
   let currentFilter = 'all';
   let sortKey = null;
   let sortAsc = true;
+  let donutChart, barChart;
 
+  /* ── Tab switching ─────────────────────────────────────── */
+  function showTab(name, btn) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + name).classList.add('active');
+  }
+
+  /* ── Data load ─────────────────────────────────────────── */
   async function load() {
     try {
       const resp = await fetch('/validation/latest.json');
-      if (!resp.ok) throw new Error(resp.status);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
       const data = await resp.json();
 
       allProducers = data.producers || [];
+
+      if (!allProducers.length) {
+        document.getElementById('meta').textContent = 'No data yet — first validation run pending.';
+        document.getElementById('tbody').innerHTML =
+          '<tr><td colspan="9" class="empty">Waiting for first validation run…</td></tr>';
+        return;
+      }
 
       const d = new Date(data.generatedAt);
       document.getElementById('meta').textContent =
         `Updated ${d.toLocaleString()} · ${allProducers.length} producers`;
 
-      const passing    = allProducers.filter(p => p.sslVerified && p.apiVerified).length;
-      const testnetOk  = allProducers.filter(p => p.sslVerifiedTestNet && p.apiVerifiedTestNet).length;
-      const withErrors = allProducers.filter(p => p.validationErrors?.length).length;
+      buildStats();
+      buildDonut();
+      buildBar();
+      renderTable();
 
-      document.getElementById('stats').innerHTML = `
-        <div class="stat"><span class="value">${allProducers.length}</span><span class="label">Total BPs</span></div>
-        <div class="stat"><span class="value green">${passing}</span><span class="label">Mainnet Passing</span></div>
-        <div class="stat"><span class="value red">${allProducers.length - passing}</span><span class="label">Mainnet Failing</span></div>
-        <div class="stat"><span class="value">${testnetOk}</span><span class="label">Testnet Passing</span></div>
-        <div class="stat"><span class="value red">${withErrors}</span><span class="label">With Errors</span></div>
-      `;
-
-      render();
-    } catch (e) {
+    } catch(e) {
+      document.getElementById('meta').textContent = 'Error: ' + e.message;
       document.getElementById('tbody').innerHTML =
-        `<tr><td colspan="7" class="empty">Failed to load validation data: ${e.message}</td></tr>`;
-      document.getElementById('meta').textContent = 'Error loading data';
+        `<tr><td colspan="9" class="empty">Failed to load data: ${e.message}</td></tr>`;
     }
   }
 
+  /* ── Stats bar ─────────────────────────────────────────── */
+  function buildStats() {
+    const total      = allProducers.length;
+    const passing    = allProducers.filter(p => p.sslVerified && p.apiVerified).length;
+    const testnetOk  = allProducers.filter(p => p.sslVerifiedTestNet && p.apiVerifiedTestNet).length;
+    const withTestnet= allProducers.filter(p => p.sslVerifiedTestNet !== undefined && (p.sslVerifiedTestNet || p.apiVerifiedTestNet || (p.validationErrors||[]).some(e=>/testnet/i.test(e)))).length;
+
+    const passingMs = allProducers
+      .filter(p => p.apiVerified && p.apiResponseMs > 0)
+      .map(p => p.apiResponseMs);
+    const avgMs = passingMs.length
+      ? Math.round(passingMs.reduce((a,b) => a+b, 0) / passingMs.length)
+      : null;
+
+    document.getElementById('stats').innerHTML = `
+      <div class="stat"><span class="value">${total}</span><span class="label">Total BPs</span></div>
+      <div class="stat"><span class="value green">${passing}</span><span class="label">Mainnet Passing</span></div>
+      <div class="stat"><span class="value red">${total - passing}</span><span class="label">Mainnet Failing</span></div>
+      <div class="stat"><span class="value">${testnetOk}</span><span class="label">Testnet Passing</span></div>
+      ${avgMs !== null ? `<div class="stat"><span class="value blue">${avgMs} ms</span><span class="label">Avg API Latency</span></div>` : ''}
+    `;
+  }
+
+  /* ── Donut chart ───────────────────────────────────────── */
+  function buildDonut() {
+    const passing     = allProducers.filter(p =>  p.sslVerified &&  p.apiVerified).length;
+    const sslOnly     = allProducers.filter(p =>  p.sslVerified && !p.apiVerified).length;
+    const apiOnly     = allProducers.filter(p => !p.sslVerified &&  p.apiVerified).length;
+    const bothFail    = allProducers.filter(p => !p.sslVerified && !p.apiVerified).length;
+
+    const ctx = document.getElementById('donutChart').getContext('2d');
+    donutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['SSL + API ✓', 'SSL only', 'API only', 'Both failing'],
+        datasets: [{
+          data: [passing, sslOnly, apiOnly, bothFail],
+          backgroundColor: ['#3fb950', '#58a6ff', '#d29922', '#f85149'],
+          borderWidth: 0,
+          hoverOffset: 6,
+        }]
+      },
+      options: {
+        cutout: '68%',
+        plugins: { legend: { display: false }, tooltip: { callbacks: {
+          label: ctx => ` ${ctx.label}: ${ctx.raw} BPs`
+        }}},
+        animation: { duration: 600 },
+      }
+    });
+
+    const colors = ['#3fb950','#58a6ff','#d29922','#f85149'];
+    const labels = ['SSL + API passing', 'SSL only passing', 'API only passing', 'Both failing'];
+    const vals   = [passing, sslOnly, apiOnly, bothFail];
+    document.getElementById('donutLegend').innerHTML = labels.map((l,i) => `
+      <div class="legend-item">
+        <span class="legend-dot" style="background:${colors[i]}"></span>
+        <span>${l}</span>
+        <span class="legend-val">${vals[i]}</span>
+      </div>`).join('');
+  }
+
+  /* ── Bar chart: response times ─────────────────────────── */
+  function buildBar() {
+    // Only BPs that passed API check and have a measured latency
+    const passing = allProducers
+      .filter(p => p.apiVerified && p.apiResponseMs > 0)
+      .sort((a, b) => a.apiResponseMs - b.apiResponseMs);
+
+    const labels = passing.map(p => p.owner);
+    const values = passing.map(p => p.apiResponseMs);
+
+    // Colour bars by speed
+    const colors = values.map(ms =>
+      ms < 300  ? '#3fb950' :
+      ms < 800  ? '#d29922' : '#f85149'
+    );
+
+    const ctx = document.getElementById('barChart').getContext('2d');
+    barChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'Response time (ms)',
+          data: values,
+          backgroundColor: colors,
+          borderRadius: 3,
+          borderSkipped: false,
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: {
+            label: ctx => ` ${ctx.raw} ms`
+          }}
+        },
+        scales: {
+          x: {
+            grid:  { color: '#21262d' },
+            ticks: { color: '#8b949e', font: { size: 11 } },
+            title: { display: true, text: 'ms', color: '#8b949e', font: { size: 11 } }
+          },
+          y: {
+            grid:  { display: false },
+            ticks: { color: '#e6edf3', font: { size: 11 } }
+          }
+        },
+        animation: { duration: 600 },
+      }
+    });
+  }
+
+  /* ── Table helpers ─────────────────────────────────────── */
   function pill(val, naLabel) {
-    if (val === null || val === undefined) return `<span class="pill na"><span class="dot"></span>${naLabel ?? 'N/A'}</span>`;
+    if (val === null || val === undefined)
+      return `<span class="pill na"><span class="dot"></span>${naLabel ?? 'N/A'}</span>`;
     return val
       ? `<span class="pill pass"><span class="dot"></span>Pass</span>`
       : `<span class="pill fail"><span class="dot"></span>Fail</span>`;
+  }
+
+  function latencyBadge(ms) {
+    if (!ms || ms < 0) return `<span class="latency na">—</span>`;
+    const cls = ms < 300 ? 'fast' : ms < 800 ? 'medium' : 'slow';
+    return `<span class="latency ${cls}">${ms} ms</span>`;
+  }
+
+  function hasTestnet(p) {
+    return p.sslVerifiedTestNet || p.apiVerifiedTestNet ||
+      (p.validationErrors || []).some(e => /testnet/i.test(e));
   }
 
   function setFilter(f, btn) {
     currentFilter = f;
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    render();
+    renderTable();
   }
 
   function sort(key) {
-    if (sortKey === key) { sortAsc = !sortAsc; }
-    else { sortKey = key; sortAsc = true; }
+    sortAsc = (sortKey === key) ? !sortAsc : true;
+    sortKey = key;
     document.querySelectorAll('th').forEach(th => th.classList.remove('sorted'));
-    event.target.classList.add('sorted');
-    render();
+    event.currentTarget.classList.add('sorted');
+    renderTable();
   }
 
-  function render() {
+  function renderTable() {
     const q = document.getElementById('search').value.toLowerCase();
 
     let rows = allProducers.filter(p => {
       if (q && !p.owner.toLowerCase().includes(q)) return false;
-      if (currentFilter === 'passing') return p.sslVerified && p.apiVerified;
+      if (currentFilter === 'passing') return  p.sslVerified && p.apiVerified;
       if (currentFilter === 'failing') return !p.sslVerified || !p.apiVerified;
-      if (currentFilter === 'testnet') return p.sslVerifiedTestNet && p.apiVerifiedTestNet;
+      if (currentFilter === 'testnet') return  p.sslVerifiedTestNet && p.apiVerifiedTestNet;
       return true;
     });
 
     if (sortKey) {
       rows = [...rows].sort((a, b) => {
         const av = a[sortKey], bv = b[sortKey];
-        const cmp = typeof av === 'boolean'
-          ? (av === bv ? 0 : av ? -1 : 1)
-          : String(av).localeCompare(String(bv));
+        let cmp;
+        if (typeof av === 'boolean') {
+          cmp = av === bv ? 0 : av ? -1 : 1;
+        } else if (typeof av === 'number') {
+          cmp = av - bv;
+        } else {
+          cmp = String(av).localeCompare(String(bv));
+        }
         return sortAsc ? cmp : -cmp;
       });
     }
 
     if (!rows.length) {
       document.getElementById('tbody').innerHTML =
-        `<tr><td colspan="7" class="empty">No producers match your filter.</td></tr>`;
+        '<tr><td colspan="9" class="empty">No producers match this filter.</td></tr>';
       return;
     }
 
@@ -287,23 +545,22 @@
       const org     = p.org || {};
       const website = (org.website || p.url || '').trim();
       const country = org.location?.country ?? '';
-      const errors  = (p.validationErrors || []).join(' · ') || '';
-
-      // testnet: if both fields are false AND not in chains.json, show N/A
-      const hasTestnet = p.sslVerifiedTestNet || p.apiVerifiedTestNet ||
-        (p.validationErrors || []).some(e => /testnet/i.test(e));
+      const errors  = (p.validationErrors || []).join(' · ');
+      const ht      = hasTestnet(p);
 
       return `<tr>
         <td class="rank">${i + 1}</td>
         <td>
           <span class="owner">${p.owner}</span>
           ${country ? `<span style="margin-left:6px;font-size:11px;color:var(--muted)">${country}</span>` : ''}
-          ${website ? `<br><a class="website" href="${website}" target="_blank" rel="noopener">${website.replace(/^https?:\/\//, '')}</a>` : ''}
+          ${website ? `<br><a class="site" href="${website}" target="_blank" rel="noopener">${website.replace(/^https?:\/\//,'')}</a>` : ''}
         </td>
         <td>${pill(p.sslVerified)}</td>
         <td>${pill(p.apiVerified)}</td>
-        <td>${hasTestnet ? pill(p.sslVerifiedTestNet) : pill(null, 'None')}</td>
-        <td>${hasTestnet ? pill(p.apiVerifiedTestNet) : pill(null, 'None')}</td>
+        <td>${latencyBadge(p.apiResponseMs)}</td>
+        <td>${ht ? pill(p.sslVerifiedTestNet) : pill(null,'None')}</td>
+        <td>${ht ? pill(p.apiVerifiedTestNet) : pill(null,'None')}</td>
+        <td>${ht && p.apiVerifiedTestNet ? latencyBadge(p.apiResponseMsTestNet) : '<span class="latency na">—</span>'}</td>
         <td class="errors">${errors}</td>
       </tr>`;
     }).join('');
