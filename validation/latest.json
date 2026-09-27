@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-27T16:52:54.431535+00:00",
+  "generatedAt": "2026-09-27T21:15:56.394634+00:00",
   "totalProducers": 31,
   "producers": [
     {
@@ -16,7 +16,7 @@
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 15437,
-      "lifetimeProducedBlocks": 22251400,
+      "lifetimeProducedBlocks": 22252900,
       "timesKicked": 0,
       "p2pEndpoint": null,
       "org": {},
@@ -24,7 +24,7 @@
         "chains.json missing \u2014 trying /bp.json",
         "/bp.json also unreachable"
       ],
-      "checkedAt": "2026-09-27T16:51:59.452274+00:00"
+      "checkedAt": "2026-09-27T21:15:01.452942+00:00"
     },
     {
       "owner": "infinitybloc",
@@ -72,7 +72,7 @@
         "Testnet SSL failed: https://telos-testnet.infinitybloc.io",
         "Testnet API failed: https://telos-testnet.infinitybloc.io"
       ],
-      "checkedAt": "2026-09-27T16:51:59.452497+00:00"
+      "checkedAt": "2026-09-27T21:15:01.453174+00:00"
     },
     {
       "owner": "telosmadrid1",
@@ -88,7 +88,7 @@
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 14917,
-      "lifetimeProducedBlocks": 22238777,
+      "lifetimeProducedBlocks": 22240289,
       "timesKicked": 0,
       "p2pEndpoint": "seed.eosiomadrid.io:9870",
       "org": {
@@ -122,7 +122,7 @@
         "SSL failed: https://hyperion.eosiomadrid.io",
         "API failed: https://hyperion.eosiomadrid.io/v1/chain/get_info"
       ],
-      "checkedAt": "2026-09-27T16:51:59.452920+00:00"
+      "checkedAt": "2026-09-27T21:15:01.453558+00:00"
     },
     {
       "owner": "telosunlimit",
@@ -132,13 +132,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 246,
+      "apiResponseMs": 187,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 68,
+      "apiResponseMsTestNet": 99,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 1250,
-      "lifetimeProducedBlocks": 16194655,
+      "lifetimeProducedBlocks": 16196155,
       "timesKicked": 0,
       "p2pEndpoint": "p2p.telosunlimited.com:9876",
       "org": {
@@ -172,7 +172,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.453329+00:00"
+      "checkedAt": "2026-09-27T21:15:01.454052+00:00"
     },
     {
       "owner": "eosphereiobp",
@@ -182,13 +182,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 870,
+      "apiResponseMs": 728,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 749,
+      "apiResponseMsTestNet": 737,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 5602,
-      "lifetimeProducedBlocks": 19650515,
+      "lifetimeProducedBlocks": 19652015,
       "timesKicked": 0,
       "p2pEndpoint": "peer1-telos.eosphere.io:9876",
       "org": {
@@ -225,7 +225,7 @@
       "validationErrors": [
         "Testnet SSL failed: https://telos-testnet.eosphere.io"
       ],
-      "checkedAt": "2026-09-27T16:51:59.453635+00:00"
+      "checkedAt": "2026-09-27T21:15:01.454401+00:00"
     },
     {
       "owner": "votetelosusa",
@@ -235,13 +235,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 231,
+      "apiResponseMs": 215,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
-      "missedBlocksPerRotation": 0,
+      "missedBlocksPerRotation": 168,
       "lifetimeMissedBlocks": 19645,
-      "lifetimeProducedBlocks": 19615350,
+      "lifetimeProducedBlocks": 19616682,
       "timesKicked": 0,
       "p2pEndpoint": "telos.p2p.eosusa.io:9876",
       "org": {
@@ -275,7 +275,7 @@
       "validationErrors": [
         "bp.json at https://eosusa.io/bp/telosbp.json unreachable \u2014 trying /bp.json"
       ],
-      "checkedAt": "2026-09-27T16:51:59.453994+00:00"
+      "checkedAt": "2026-09-27T21:15:01.454742+00:00"
     },
     {
       "owner": "telosgreenbp",
@@ -285,13 +285,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 493,
+      "apiResponseMs": 595,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 429,
+      "apiResponseMsTestNet": 453,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 25185,
-      "lifetimeProducedBlocks": 22127596,
+      "lifetimeProducedBlocks": 22129096,
       "timesKicked": 0,
       "p2pEndpoint": "p2p2.telos.telosgreen.com:9877",
       "org": {
@@ -326,7 +326,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.454392+00:00"
+      "checkedAt": "2026-09-27T21:15:01.455119+00:00"
     },
     {
       "owner": "telosarabia1",
@@ -336,13 +336,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 437,
+      "apiResponseMs": 343,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 396,
+      "apiResponseMsTestNet": 387,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 9600,
-      "lifetimeProducedBlocks": 17996415,
+      "lifetimeProducedBlocks": 17997927,
       "timesKicked": 0,
       "p2pEndpoint": "p2p.telosarabia.net:9876",
       "org": {
@@ -372,7 +372,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.454659+00:00"
+      "checkedAt": "2026-09-27T21:15:01.455451+00:00"
     },
     {
       "owner": "persiantelos",
@@ -388,7 +388,7 @@
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 11820,
-      "lifetimeProducedBlocks": 15957361,
+      "lifetimeProducedBlocks": 15958873,
       "timesKicked": 0,
       "p2pEndpoint": "mainnet.persiantelos.com:8880",
       "org": {
@@ -417,7 +417,7 @@
       "validationErrors": [
         "No ssl_endpoint found in bp.json nodes"
       ],
-      "checkedAt": "2026-09-27T16:51:59.454993+00:00"
+      "checkedAt": "2026-09-27T21:15:01.455865+00:00"
     },
     {
       "owner": "teloscentral",
@@ -433,7 +433,7 @@
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 44640,
-      "lifetimeProducedBlocks": 11605172,
+      "lifetimeProducedBlocks": 11606684,
       "timesKicked": 0,
       "p2pEndpoint": "sslapi.teloscentral.com:9876",
       "org": {
@@ -466,7 +466,7 @@
         "Testnet SSL failed: https://sslapi.teloscentral.com:8891",
         "Testnet API failed: https://sslapi.teloscentral.com:8891"
       ],
-      "checkedAt": "2026-09-27T16:51:59.455216+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456080+00:00"
     },
     {
       "owner": "telosgermany",
@@ -476,13 +476,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 421,
+      "apiResponseMs": 403,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 338,
+      "apiResponseMsTestNet": 254,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 5621,
-      "lifetimeProducedBlocks": 9788970,
+      "lifetimeProducedBlocks": 9790473,
       "timesKicked": 0,
       "p2pEndpoint": "p2p.telosgermany.genereos.io:9876",
       "org": {
@@ -516,7 +516,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.455354+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456177+00:00"
     },
     {
       "owner": "telosindiabp",
@@ -526,13 +526,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 537,
+      "apiResponseMs": 444,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 543,
+      "apiResponseMsTestNet": 464,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 646,
-      "lifetimeProducedBlocks": 3454988,
+      "lifetimeProducedBlocks": 3456488,
       "timesKicked": 0,
       "p2pEndpoint": "p2p.telos.blocksindia.com:7776",
       "org": {
@@ -562,7 +562,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.455457+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456264+00:00"
     },
     {
       "owner": "bigironbptex",
@@ -572,13 +572,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 592,
+      "apiResponseMs": 452,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 857,
+      "apiResponseMsTestNet": 442,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 7749,
-      "lifetimeProducedBlocks": 6271534,
+      "lifetimeProducedBlocks": 6273034,
       "timesKicked": 0,
       "p2pEndpoint": "p2p.bigironbp.io:9876",
       "org": {
@@ -606,7 +606,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.455578+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456363+00:00"
     },
     {
       "owner": "amsterdam",
@@ -616,13 +616,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 939,
+      "apiResponseMs": 752,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 2259,
-      "lifetimeProducedBlocks": 8627146,
+      "lifetimeProducedBlocks": 8628646,
       "timesKicked": 0,
       "p2pEndpoint": "telos.eu.eosamsterdam.net:9120",
       "org": {
@@ -653,7 +653,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.455689+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456450+00:00"
     },
     {
       "owner": "eosriobrazil",
@@ -663,13 +663,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 520,
+      "apiResponseMs": 388,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 445,
+      "apiResponseMsTestNet": 482,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 5305,
-      "lifetimeProducedBlocks": 15349688,
+      "lifetimeProducedBlocks": 15351188,
       "timesKicked": 0,
       "p2pEndpoint": "telos.eosrio.io:8092",
       "org": {
@@ -702,7 +702,7 @@
         "chain_resources": "https://hyperion.docs.eosrio.io"
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.455819+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456530+00:00"
     },
     {
       "owner": "bp.yknot",
@@ -712,13 +712,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 885,
+      "apiResponseMs": 906,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 860,
-      "missedBlocksPerRotation": 0,
+      "apiResponseMsTestNet": 908,
+      "missedBlocksPerRotation": 1,
       "lifetimeMissedBlocks": 12973,
-      "lifetimeProducedBlocks": 2833481,
+      "lifetimeProducedBlocks": 2834992,
       "timesKicked": 0,
       "p2pEndpoint": "p2p-telos.y-knot.io",
       "org": {
@@ -747,7 +747,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.455942+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456620+00:00"
     },
     {
       "owner": "ledgerwisete",
@@ -757,13 +757,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 343,
+      "apiResponseMs": 319,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 1619,
-      "lifetimeProducedBlocks": 1091886,
+      "lifetimeProducedBlocks": 1093386,
       "timesKicked": 0,
       "p2pEndpoint": "telosp2p.ledgerwise.io:29876",
       "org": {
@@ -793,7 +793,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.456112+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456815+00:00"
     },
     {
       "owner": "cryptolions1",
@@ -803,13 +803,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 407,
+      "apiResponseMs": 443,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 466,
+      "apiResponseMsTestNet": 381,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 10733,
-      "lifetimeProducedBlocks": 1442366,
+      "lifetimeProducedBlocks": 1443866,
       "timesKicked": 0,
       "p2pEndpoint": "telos.cryptolions.io:9871",
       "org": {
@@ -848,7 +848,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.456213+00:00"
+      "checkedAt": "2026-09-27T21:15:01.456925+00:00"
     },
     {
       "owner": "eosiodetroit",
@@ -858,13 +858,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 203,
+      "apiResponseMs": 282,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 88,
+      "apiResponseMsTestNet": 199,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 9375,
-      "lifetimeProducedBlocks": 6759340,
+      "lifetimeProducedBlocks": 6760840,
       "timesKicked": 0,
       "p2pEndpoint": "p2p.telos.detroitledger.tech:1337",
       "org": {
@@ -904,7 +904,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.456324+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457036+00:00"
     },
     {
       "owner": "bp.adex",
@@ -914,13 +914,13 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 454,
+      "apiResponseMs": 375,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 420,
+      "apiResponseMsTestNet": 362,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 1498,
-      "lifetimeProducedBlocks": 927193,
+      "lifetimeProducedBlocks": 928694,
       "timesKicked": 0,
       "p2pEndpoint": "p2p-telos.a-dex.xyz:9976",
       "org": {
@@ -950,7 +950,7 @@
         }
       },
       "validationErrors": [],
-      "checkedAt": "2026-09-27T16:51:59.456436+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457150+00:00"
     },
     {
       "owner": "orbitalblock",
@@ -963,10 +963,10 @@
       "apiResponseMs": -1,
       "sslVerifiedTestNet": true,
       "apiVerifiedTestNet": true,
-      "apiResponseMsTestNet": 146,
+      "apiResponseMsTestNet": 198,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 64,
-      "lifetimeProducedBlocks": 813931,
+      "lifetimeProducedBlocks": 815431,
       "timesKicked": 0,
       "p2pEndpoint": "p2p-telos-mainnet.orbitalblock.com:9876",
       "org": {
@@ -997,7 +997,7 @@
       "validationErrors": [
         "No ssl_endpoint found in bp.json nodes"
       ],
-      "checkedAt": "2026-09-27T16:51:59.456545+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457265+00:00"
     },
     {
       "owner": "bp.any",
@@ -1021,7 +1021,7 @@
         "chains.json missing \u2014 trying /bp.json",
         "/bp.json also unreachable"
       ],
-      "checkedAt": "2026-09-27T16:51:59.456653+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457375+00:00"
     },
     {
       "owner": "smartelos",
@@ -1045,7 +1045,7 @@
         "chains.json missing \u2014 trying /bp.json",
         "/bp.json also unreachable"
       ],
-      "checkedAt": "2026-09-27T16:51:59.456757+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457489+00:00"
     },
     {
       "owner": "telosamigoss",
@@ -1061,7 +1061,7 @@
       "apiResponseMsTestNet": -1,
       "missedBlocksPerRotation": 0,
       "lifetimeMissedBlocks": 1107,
-      "lifetimeProducedBlocks": 215205,
+      "lifetimeProducedBlocks": 216705,
       "timesKicked": 0,
       "p2pEndpoint": "p2p-mainnet.tlos.news:9876",
       "org": {
@@ -1089,7 +1089,7 @@
       "validationErrors": [
         "No ssl_endpoint found in bp.json nodes"
       ],
-      "checkedAt": "2026-09-27T16:51:59.456952+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457667+00:00"
     },
     {
       "owner": "telosusa2222",
@@ -1099,7 +1099,7 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 242,
+      "apiResponseMs": 222,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
@@ -1139,7 +1139,7 @@
       "validationErrors": [
         "bp.json at https://eosusa.io/bp/telosbp.json unreachable \u2014 trying /bp.json"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457069+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457800+00:00"
     },
     {
       "owner": "telosusa1111",
@@ -1149,7 +1149,7 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 204,
+      "apiResponseMs": 217,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
@@ -1189,7 +1189,7 @@
       "validationErrors": [
         "bp.json at https://eosusa.io/bp/telosbp.json unreachable \u2014 trying /bp.json"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457133+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457879+00:00"
     },
     {
       "owner": "telosusa3333",
@@ -1199,7 +1199,7 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 159,
+      "apiResponseMs": 198,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
@@ -1239,7 +1239,7 @@
       "validationErrors": [
         "bp.json at https://eosusa.io/bp/telosbp.json unreachable \u2014 trying /bp.json"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457205+00:00"
+      "checkedAt": "2026-09-27T21:15:01.457937+00:00"
     },
     {
       "owner": "telosusa4444",
@@ -1249,7 +1249,7 @@
       "is_active": 1,
       "sslVerified": true,
       "apiVerified": true,
-      "apiResponseMs": 254,
+      "apiResponseMs": 194,
       "sslVerifiedTestNet": false,
       "apiVerifiedTestNet": false,
       "apiResponseMsTestNet": -1,
@@ -1289,7 +1289,7 @@
       "validationErrors": [
         "bp.json at https://eosusa.io/bp/telosbp.json unreachable \u2014 trying /bp.json"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457268+00:00"
+      "checkedAt": "2026-09-27T21:15:01.458009+00:00"
     },
     {
       "owner": "powernoru221",
@@ -1312,7 +1312,7 @@
       "validationErrors": [
         "No URL registered on chain"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457327+00:00"
+      "checkedAt": "2026-09-27T21:15:01.458056+00:00"
     },
     {
       "owner": "datacloudly1",
@@ -1347,7 +1347,7 @@
         "chains.json missing \u2014 trying /bp.json",
         "No ssl_endpoint found in bp.json nodes"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457336+00:00"
+      "checkedAt": "2026-09-27T21:15:01.458065+00:00"
     },
     {
       "owner": "datacloudly2",
@@ -1382,7 +1382,7 @@
         "chains.json missing \u2014 trying /bp.json",
         "No ssl_endpoint found in bp.json nodes"
       ],
-      "checkedAt": "2026-09-27T16:51:59.457441+00:00"
+      "checkedAt": "2026-09-27T21:15:01.458177+00:00"
     }
   ]
 }
